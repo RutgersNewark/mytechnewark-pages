@@ -1,1 +1,180 @@
-PCFET0NUWVBFIGh0bWw+PGh0bWwgbGFuZz0iZW4iPjxoZWFkPjxtZXRhIGNoYXJzZXQ9IlVURi04Ij48bWV0YSBuYW1lPSJ2aWV3cG9ydCIgY29udGVudD0id2lkdGg9ZGV2aWNlLXdpZHRoLCBpbml0aWFsLXNjYWxlPTEuMCI+PHRpdGxlPkVjaG9Qb2xsIHwgbXlUZWNoQE5ld2Fyazwvd Gl0bGU+PHN0eWxlPgpAaW1wb3J0IHVybCgnaHR0cHM6Ly9mb250cy5nb29nbGVhcGlzLmNvbS9jc3MyP2ZhbWlseT1MaWJyZStGcmFua2xpbjppdGFsLHdnaHRAMCwzMDA7MCw0MDA7MCw1MDA7MCw2MDA7MCw3MDA7MCw4MDA7MSw0MDAmZGlzcGxheT1zd2FwJyk7Cg==
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>EchoPoll | myTech@Newark</title><style>
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --scarlet:#CC0033;--scarlet-dk:#9e0025;--scarlet-bg:#fdf2f4;
+  --black:#1a1a1a;--gray-dark:#333333;--gray-mid:#666666;
+  --gray-light:#f5f5f5;--gray-border:#e0e0e0;--white:#ffffff;
+  --teal:#00626D;--teal-bg:#E3F3F0;
+  --gold:#C96A00;--gold-bg:#FFF4E6;
+  --navy:#1B3A6B;--navy-bg:#EEF2F8;
+  --green:#1A7A4A;--green-bg:#E6F4ED;
+  --purple:#5B2D8E;--purple-bg:#F3EEF9;
+  --font:'Libre Franklin',sans-serif;--max:964px;--radius:6px;
+}
+body{font-family:var(--font);color:var(--gray-dark);background:var(--white);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{color:var(--scarlet);}
+.hero{max-width:calc(var(--max)+64px);margin:0 auto;padding:0 32px;display:grid;grid-template-columns:1fr 1fr;min-height:240px;align-items:center;overflow:hidden;}
+.hero-text{padding:28px 40px 28px 0;}
+.hero-eyebrow{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--scarlet);margin-bottom:8px;}
+.hero-title{font-size:clamp(22px,3.2vw,36px);font-weight:800;color:var(--black);letter-spacing:-.02em;line-height:1.1;margin-bottom:10px;}
+.hero-tagline{font-size:13px;color:var(--gray-mid);line-height:1.6;margin-bottom:20px;max-width:420px;}
+.hero-btns{display:flex;flex-wrap:wrap;gap:8px;}
+.hero-cta{display:inline-flex;align-items:center;gap:6px;background:var(--scarlet);color:var(--white);text-decoration:none;padding:9px 16px;border-radius:var(--radius);font-size:12px;font-weight:700;transition:background .12s;}
+.hero-cta:hover{background:var(--scarlet-dk);}
+.hero-cta.outline{background:var(--white);color:var(--scarlet);border:1.5px solid var(--scarlet);}
+.hero-cta.outline:hover{background:var(--scarlet-bg);}
+.hero-img{height:240px;overflow:hidden;}
+.page-body{max-width:calc(var(--max)+64px);margin:0 auto;padding:0 32px;}
+.section-divider{border:none;border-top:1px solid var(--gray-border);margin:4px 0 0;}
+.section-hd{padding:22px 0 14px;}
+.section-hd h2{font-size:18px;font-weight:800;color:var(--black);letter-spacing:-.01em;margin-bottom:2px;}
+.section-hd p{font-size:12px;color:var(--gray-mid);}
+.icon-circle{border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.icon-circle svg{display:block;}
+.ic-sm{width:36px;height:36px;} .ic-sm svg{width:17px;height:17px;}
+.ic-md{width:44px;height:44px;} .ic-md svg{width:21px;height:21px;}
+.ic-scarlet{background:var(--scarlet-bg);color:var(--scarlet);}
+.ic-teal{background:var(--teal-bg);color:var(--teal);}
+.ic-gold{background:var(--gold-bg);color:var(--gold);}
+.ic-navy{background:var(--navy-bg);color:var(--navy);}
+.ic-green{background:var(--green-bg);color:var(--green);}
+.ic-purple{background:var(--purple-bg);color:var(--purple);}
+.clr-link{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:600;text-decoration:none;}
+.clr-link:hover{text-decoration:underline;}
+.clr-scarlet{color:var(--scarlet);} .clr-teal{color:var(--teal);} .clr-gold{color:var(--gold);}
+.clr-navy{color:var(--navy);} .clr-green{color:var(--green);} .clr-purple{color:var(--purple);}
+.features-row{display:grid;grid-template-columns:repeat(6,1fr);gap:0;border:1px solid var(--gray-border);border-radius:var(--radius);overflow:hidden;margin-bottom:28px;}
+.feat-item{padding:16px 12px 14px;border-right:1px solid var(--gray-border);display:flex;flex-direction:column;align-items:center;text-align:center;border-top:3px solid var(--scarlet);}
+.feat-item:last-child{border-right:none;}
+.feat-item span{font-size:11px;font-weight:600;color:var(--gray-dark);margin-top:8px;line-height:1.3;}
+.accomplish-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--gray-border);border-radius:var(--radius);overflow:hidden;margin-bottom:28px;}
+.acc-card{padding:18px 14px 16px;border-right:1px solid var(--gray-border);display:flex;flex-direction:column;align-items:center;text-align:center;border-top:3px solid transparent;transition:background .12s;}
+.acc-card:last-child{border-right:none;}
+.acc-card:hover{background:var(--gray-light);}
+.acc-card.c-scarlet{border-top-color:var(--scarlet);}
+.acc-card.c-teal{border-top-color:var(--teal);}
+.acc-card.c-gold{border-top-color:var(--gold);}
+.acc-card.c-navy{border-top-color:var(--navy);}
+.acc-card.c-green{border-top-color:var(--green);}
+.acc-card h3{font-size:12px;font-weight:700;color:var(--black);margin:10px 0 6px;line-height:1.3;}
+.acc-card p{font-size:11px;color:var(--gray-mid);line-height:1.4;}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:28px;}
+.why-card{border:1px solid var(--gray-border);border-radius:var(--radius);border-top:3px solid var(--scarlet);padding:18px 16px;}
+.why-card h3{font-size:13px;font-weight:700;color:var(--black);margin-bottom:6px;}
+.why-card p{font-size:11px;color:var(--gray-mid);line-height:1.5;}
+.steps-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-bottom:28px;position:relative;}
+.steps-row::before{content:'';position:absolute;top:17px;left:calc(12.5%);right:calc(12.5%);height:2px;background:var(--gray-border);z-index:0;}
+.step{display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;z-index:1;padding:0 12px;}
+.step-bubble{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:var(--white);background:var(--scarlet);margin-bottom:12px;flex-shrink:0;box-shadow:0 0 0 4px var(--white);}
+.step h4{font-size:12px;font-weight:700;color:var(--black);margin-bottom:5px;line-height:1.3;}
+.step p{font-size:11px;color:var(--gray-mid);line-height:1.4;}
+.kba-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:28px;}
+.kba-card{border:1px solid var(--gray-border);border-radius:var(--radius);border-top:3px solid var(--scarlet);padding:14px 12px;display:flex;flex-direction:column;align-items:center;text-align:center;transition:box-shadow .12s;}
+.kba-card:hover{box-shadow:0 2px 10px rgba(0,0,0,.08);}
+.kba-card h4{font-size:11px;font-weight:700;color:var(--black);margin:8px 0 5px;line-height:1.3;}
+.kba-card .clr-link{font-size:11px;margin-top:auto;}
+.help-bar{background:var(--gray-light);border-top:1px solid var(--gray-border);padding:20px 32px;margin-top:4px;}
+.help-bar-inner{max-width:calc(var(--max)+64px);margin:0 auto;display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:20px;align-items:start;}
+.hb-item{display:flex;align-items:flex-start;gap:12px;}
+.hb-icon{width:38px;height:38px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+.hb-icon svg{width:18px;height:18px;}
+.hb-scarlet{background:var(--scarlet-bg);color:var(--scarlet);}
+.hb-navy{background:var(--navy-bg);color:var(--navy);}
+.hb-teal{background:var(--teal-bg);color:var(--teal);}
+.hb-text strong{font-size:12px;font-weight:700;color:var(--black);display:block;margin-bottom:2px;}
+.hb-text p,.hb-text a{font-size:11px;color:var(--gray-mid);text-decoration:none;line-height:1.5;display:block;}
+.hb-text a:hover{color:var(--scarlet);text-decoration:underline;}
+.hb-link{display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:600;text-decoration:none;margin-top:4px;}
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;} .hero-text{padding:24px 0 18px;} .hero-img{height:180px;}
+  .features-row{grid-template-columns:repeat(3,1fr);}
+  .feat-item:nth-child(3){border-right:none;}
+  .feat-item:nth-child(1),.feat-item:nth-child(2),.feat-item:nth-child(3){border-bottom:1px solid var(--gray-border);}
+  .accomplish-grid{grid-template-columns:1fr 1fr 1fr;}
+  .acc-card:nth-child(3){border-right:none;}
+  .acc-card:nth-child(1),.acc-card:nth-child(2),.acc-card:nth-child(3){border-bottom:1px solid var(--gray-border);}
+  .why-grid{grid-template-columns:1fr;}
+  .steps-row{grid-template-columns:1fr 1fr;} .steps-row::before{display:none;}
+  .kba-grid{grid-template-columns:repeat(3,1fr);}
+  .help-bar-inner{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:580px){
+  .features-row{grid-template-columns:repeat(2,1fr);}
+  .accomplish-grid{grid-template-columns:1fr 1fr;}
+  .steps-row{grid-template-columns:1fr;}
+  .kba-grid{grid-template-columns:repeat(2,1fr);}
+  .help-bar-inner{grid-template-columns:1fr;}
+}
+</style></head><body>
+<div class="hero">
+  <div class="hero-text">
+    <p class="hero-eyebrow">Engage Your Students</p>
+    <h1 class="hero-title">Increase Participation and Engagement with Real-Time Polling</h1>
+    <p class="hero-tagline">EchoPoll is Rutgers–Newark's enterprise classroom engagement tool. EchoPoll integrates seamlessly with Canvas so you can launch and manage polls before, during, and after class.</p>
+    <div class="hero-btns">
+      <a href="https://rutgers.instructure.com/login/saml/" target="_blank" rel="noopener" class="hero-cta">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        Open in Canvas
+      </a>
+      <a href="https://account577280.wixsite.com/mytechnewark/kb/echopoll-getting-started" target="_top" class="hero-cta outline">What's EchoPoll?</a>
+    </div>
+  </div>
+  <div class="hero-img">
+    <img src="Echo_Poll_Landing_Hero.png" alt="Instructor teaching with EchoPoll polling displayed in classroom" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+  </div>
+</div>
+<div class="page-body">
+  <hr class="section-divider">
+  <div class="section-hd"><h2>What EchoPoll Can Do</h2></div>
+  <div class="features-row">
+    <div class="feat-item"><div class="icon-circle ic-md ic-scarlet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div><span>Live Polling</span></div>
+    <div class="feat-item"><div class="icon-circle ic-md ic-teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><span>Attendance Tracking</span></div>
+    <div class="feat-item"><div class="icon-circle ic-md ic-gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><span>Q&amp;A Sessions</span></div>
+    <div class="feat-item"><div class="icon-circle ic-md ic-navy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><span>Formative Activities</span></div>
+    <div class="feat-item"><div class="icon-circle ic-md ic-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><span>Pre-Class Insights</span></div>
+    <div class="feat-item"><div class="icon-circle ic-md ic-purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><span>Grade Sync with Canvas</span></div>
+  </div>
+  <hr class="section-divider">
+  <div class="section-hd"><h2>What Are You Trying to Accomplish?</h2><p>Select a goal to find the right EchoPoll approach for your course.</p></div>
+  <div class="accomplish-grid">
+    <div class="acc-card c-scarlet"><div class="icon-circle ic-md ic-scarlet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h3>Increase Participation</h3><p>Give every student a voice during class with live polls, word clouds, and quick checks.</p></div>
+    <div class="acc-card c-teal"><div class="icon-circle ic-md ic-teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div><h3>Check Student Understanding</h3><p>Identify misconceptions in real time and adjust your teaching accordingly.</p></div>
+    <div class="acc-card c-gold"><div class="icon-circle ic-md ic-gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><h3>Take Attendance</h3><p>Track attendance automatically using EchoPoll participation data.</p></div>
+    <div class="acc-card c-navy"><div class="icon-circle ic-md ic-navy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><h3>Encourage Discussion</h3><p>Use polling results to encourage student reflection and class discussion.</p></div>
+    <div class="acc-card c-green"><div class="icon-circle ic-md ic-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><h3>Gather Feedback</h3><p>Collect anonymous feedback from students to inform your teaching.</p></div>
+  </div>
+  <hr class="section-divider">
+  <div class="section-hd"><h2>Why Faculty Use EchoPoll</h2></div>
+  <div class="why-grid">
+    <div class="why-card"><div class="icon-circle ic-md ic-scarlet" style="margin-bottom:12px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><h3>Included with Canvas</h3><p>No additional licensing cost. Available to all RU-N and RBS instructors through Canvas — no extra setup required.</p></div>
+    <div class="why-card"><div class="icon-circle ic-md ic-teal" style="margin-bottom:12px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div><h3>No Additional Student Cost</h3><p>Students respond using any web-enabled device. No app download or account required.</p></div>
+    <div class="why-card"><div class="icon-circle ic-md ic-navy" style="margin-bottom:12px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h3>Supported by ATS</h3><p>Training, consultations, and implementation support available through Academic Technology Services.</p></div>
+  </div>
+  <hr class="section-divider">
+  <div class="section-hd"><h2>Getting Started with EchoPoll</h2><p>Four steps to your first poll.</p></div>
+  <div class="steps-row">
+    <div class="step"><div class="step-bubble">1</div><h4>Access EchoPoll through Canvas</h4><p>Go to your Canvas course and open EchoPoll from the course navigation menu.</p></div>
+    <div class="step"><div class="step-bubble">2</div><h4>Create Your First Activity</h4><p>Choose a question type and set up your first poll or engagement activity.</p></div>
+    <div class="step"><div class="step-bubble">3</div><h4>Run Your Poll in Class</h4><p>Launch the poll during class and display results in real time for students to see.</p></div>
+    <div class="step"><div class="step-bubble">4</div><h4>Review Results &amp; Participation</h4><p>View participation data and optionally sync grades to the Canvas Gradebook.</p></div>
+  </div>
+  <hr class="section-divider">
+  <div class="section-hd"><h2>Explore EchoPoll Resources</h2><p>Step-by-step guides for every stage of using EchoPoll.</p></div>
+  <div class="kba-grid">
+    <div class="kba-card"><div class="icon-circle ic-sm ic-scarlet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div><h4>Getting Started</h4><a href="https://account577280.wixsite.com/mytechnewark/kb/echopoll-getting-started" target="_top" class="clr-link clr-scarlet">Read guide →</a></div>
+    <div class="kba-card"><div class="icon-circle ic-sm ic-teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><h4>Increase Engagement</h4><a href="https://account577280.wixsite.com/mytechnewark/kb/echopoll-engage-students" target="_top" class="clr-link clr-teal">Read guide →</a></div>
+    <div class="kba-card"><div class="icon-circle ic-sm ic-gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><h4>Attendance Tracking</h4><a href="https://account577280.wixsite.com/mytechnewark/kb/echopoll-attendance" target="_top" class="clr-link clr-gold">Read guide →</a></div>
+    <div class="kba-card"><div class="icon-circle ic-sm ic-navy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><h4>Knowledge Checks</h4><a href="https://account577280.wixsite.com/mytechnewark/kb/echopoll-knowledge-checks" target="_top" class="clr-link clr-navy">Read guide →</a></div>
+    <div class="kba-card"><div class="icon-circle ic-sm ic-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><h4>Activity Ideas</h4><a href="https://account577280.wixsite.com/mytechnewark/kb/echopoll-activity-ideas" target="_top" class="clr-link clr-green">Read guide →</a></div>
+    <div class="kba-card"><div class="icon-circle ic-sm ic-purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z"/></svg></div><h4>Troubleshooting</h4><a href="https://account577280.wixsite.com/mytechnewark/kb/echopoll-troubleshooting" target="_top" class="clr-link clr-purple">Read guide →</a></div>
+  </div>
+</div>
+<div class="help-bar">
+  <div class="help-bar-inner">
+    <div class="hb-item"><div class="hb-icon hb-scarlet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.16 6.16l1.89-1.89a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div class="hb-text"><strong>Need Help?</strong><p>Contact Academic Technology Services for support.</p><a href="https://account577280.wixsite.com/mytechnewark/getting-support" target="_top" class="hb-link clr-scarlet">Get Support →</a></div></div>
+    <div class="hb-item"><div class="hb-icon hb-navy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div class="hb-text"><strong>Email ATS</strong><a href="mailto:atshelp@newark.rutgers.edu">atshelp@newark.rutgers.edu</a><a href="tel:9733535083">973-353-5083</a></div></div>
+    <div class="hb-item"><div class="hb-icon hb-teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><div class="hb-text"><strong>Schedule a Consultation</strong><p>Work one-on-one with an instructional designer.</p><a href="https://go.rutgers.edu/bookats" target="_top" class="hb-link clr-teal">Book a Session →</a></div></div>
+  </div>
+</div>
+</body></html>
