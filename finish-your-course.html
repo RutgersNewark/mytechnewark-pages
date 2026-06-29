@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>End-of-Semester Course Checklist — myTech@Newark</title>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #1B3A6B;
+      --scarlet: #CC0033;
+      --teal:    #00626D;
+      --gold:    #C96A00;
+      --body-bg: #FAFAFA;
+      --card-bg: #FFFFFF;
+      --text:    #1A1A1A;
+      --muted:   #555555;
+      --border:  #E0E0E0;
+      --soft-navy: #EEF2F8;
+      --soft-scarlet: #FFF0F3;
+      --soft-teal: #E3F3F0;
+      --soft-gold: #FFF4E6;
+    }
+
+    body {
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--text);
+      background: var(--body-bg);
+    }
+
+    .page-wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 40px 32px 72px;
+    }
+
+    .audience-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: #FDF5F1;
+      border: 1.5px solid #D14124;
+      color: #D14124;
+      border-radius: 999px;
+      padding: 5px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(280px, .8fr);
+      gap: 28px;
+      align-items: stretch;
+      margin-bottom: 32px;
+    }
+
+    .hero-main {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-left: 6px solid var(--navy);
+      border-radius: 14px;
+      padding: 30px 32px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.04);
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      color: var(--scarlet);
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-size: 38px;
+      line-height: 1.15;
+      color: var(--navy);
+      margin-bottom: 14px;
+    }
+
+    .hero-main p {
+      max-width: 740px;
+      color: var(--muted);
+      font-size: 17px;
+      margin-bottom: 22px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 10px 18px;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      border: 2px solid transparent;
+    }
+
+    .btn.primary { background: var(--scarlet); color: #fff; }
+    .btn.secondary { background: #fff; color: var(--navy); border-color: var(--navy); }
+    .btn.primary:hover { background: #a3002a; }
+    .btn.secondary:hover { background: var(--soft-navy); }
+
+    .deadline-card {
+      background: var(--soft-scarlet);
+      border: 1px solid #f5c6d0;
+      border-top: 5px solid var(--scarlet);
+      border-radius: 14px;
+      padding: 24px;
+    }
+
+    .deadline-card .label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--scarlet);
+      margin-bottom: 8px;
+    }
+
+    .deadline-card strong {
+      display: block;
+      font-size: 18px;
+      color: #5a0015;
+      margin-bottom: 8px;
+    }
+
+    .deadline-card p {
+      font-size: 14px;
+      color: #5a0015;
+      margin-bottom: 12px;
+    }
+
+    .deadline-card a {
+      color: var(--scarlet);
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .deadline-card a:hover { text-decoration: underline; }
+
+    .section {
+      margin-top: 38px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 18px;
+    }
+
+    h2 {
+      color: var(--navy);
+      font-size: 24px;
+      line-height: 1.25;
+      margin-bottom: 5px;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 720px;
+    }
+
+    .pathway-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .pathway-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 18px;
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .pathway-card.navy { border-top: 4px solid var(--navy); }
+    .pathway-card.scarlet { border-top: 4px solid var(--scarlet); }
+    .pathway-card.teal { border-top: 4px solid var(--teal); }
+    .pathway-card.gold { border-top: 4px solid var(--gold); }
+
+    .card-icon { font-size: 28px; margin-bottom: 10px; }
+    .pathway-card h3 {
+      font-size: 17px;
+      line-height: 1.3;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+    .pathway-card p { color: var(--muted); font-size: 13.5px; line-height: 1.55; }
+    .pathway-card a, .resource-card a, .support-card a {
+      color: var(--scarlet);
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 13px;
+      margin-top: 14px;
+      display: inline-block;
+    }
+    .pathway-card a:hover, .resource-card a:hover, .support-card a:hover { text-decoration: underline; }
+
+    .workflow {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px;
+    }
+
+    .workflow-row {
+      display: grid;
+      grid-template-columns: 160px minmax(0, 1fr) 220px;
+      gap: 18px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+    .workflow-row:last-child { border-bottom: 0; }
+
+    .phase-label {
+      display: inline-block;
+      width: fit-content;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+    .phase-label.scarlet { background: var(--soft-scarlet); color: var(--scarlet); }
+    .phase-label.navy { background: var(--soft-navy); color: var(--navy); }
+    .phase-label.teal { background: var(--soft-teal); color: var(--teal); }
+    .phase-label.gold { background: var(--soft-gold); color: var(--gold); }
+
+    .workflow ul {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+    .workflow li {
+      position: relative;
+      padding-left: 20px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .workflow li::before {
+      content: '✓';
+      color: var(--teal);
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-weight: 700;
+    }
+    .workflow .note {
+      background: #F7F8FA;
+      border-left: 3px solid var(--navy);
+      padding: 12px 14px;
+      border-radius: 8px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .resource-card, .support-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 18px;
+    }
+    .resource-card h3, .support-card h3 {
+      font-size: 16px;
+      line-height: 1.3;
+      color: var(--text);
+      margin-bottom: 7px;
+    }
+    .resource-card p, .support-card p {
+      color: var(--muted);
+      font-size: 13.5px;
+      line-height: 1.55;
+    }
+    .resource-card .type {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .coming-soon {
+      display: inline-block;
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .support-band {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .support-card.ats { border-top: 4px solid var(--scarlet); }
+    .support-card.registrar { border-top: 4px solid var(--navy); }
+
+    @media (max-width: 960px) {
+      .hero, .support-band { grid-template-columns: 1fr; }
+      .pathway-grid, .resource-grid { grid-template-columns: repeat(2, 1fr); }
+      .workflow-row { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .page-wrap { padding: 28px 20px 54px; }
+      h1 { font-size: 31px; }
+      .pathway-grid, .resource-grid { grid-template-columns: 1fr; }
+      .hero-actions { flex-direction: column; align-items: stretch; }
+      .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page-wrap">
+    <div class="audience-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+      For Faculty
+    </div>
+
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-main">
+        <div class="eyebrow">Semester wrap-up guide</div>
+        <h1 id="page-title">End-of-Semester Course Checklist</h1>
+        <p>Use this page as your end-of-term command center. Review final grades, submit grades through REGIS or GradeSync, save important course records, clean up Canvas, and capture updates for the next time you teach the course.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="https://prodregis.rutgers.edu">Submit Grades in REGIS</a>
+          <a class="btn secondary" href="mailto:atshelp@newark.rutgers.edu">Contact ATS</a>
+        </div>
+      </div>
+
+      <aside class="deadline-card" aria-label="Grade submission deadline reminder">
+        <div class="label">Grade deadline reminder</div>
+        <strong>Final grades must be submitted by the posted Registrar deadline.</strong>
+        <p>Grades in Canvas are not official until they are submitted through REGIS or through GradeSync when GradeSync is available. GradeSync also requires REGIS access; if you do not have access to your course in REGIS, GradeSync will not work and you should contact your department for assistance.</p>
+        <a href="https://prodregis.rutgers.edu">Open REGIS →</a>
+      </aside>
+    </section>
+
+    <section class="section" aria-labelledby="quick-pathways">
+      <div class="section-header">
+        <div>
+          <h2 id="quick-pathways">Choose what you need to do</h2>
+          <p class="section-sub">Start with the task that matches where you are in the end-of-semester process.</p>
+        </div>
+      </div>
+
+      <div class="pathway-grid">
+        <article class="pathway-card scarlet">
+          <div>
+            <div class="card-icon" aria-hidden="true">🎓</div>
+            <h3>Submit final grades</h3>
+            <p>Use REGIS as the official system of record. GradeSync in RU Faculty Tools is an alternative when the grading window is open and your Canvas final grades are ready to send.</p>
+          </div>
+          <a href="https://prodregis.rutgers.edu">Open REGIS →</a>
+        </article>
+
+        <article class="pathway-card navy">
+          <div>
+            <div class="card-icon" aria-hidden="true">📊</div>
+            <h3>Check your Canvas gradebook</h3>
+            <p>Confirm assignment weights, missing grades, grading schemes, hidden grades, and final letter grades before submitting official grades.</p>
+          </div>
+          <span class="coming-soon">Guide coming soon</span>
+        </article>
+
+        <article class="pathway-card teal">
+          <div>
+            <div class="card-icon" aria-hidden="true">📦</div>
+            <h3>Save course records</h3>
+            <p>Export your gradebook and course content before you make major changes or prepare the course for reuse.</p>
+          </div>
+          <span class="coming-soon">Guide coming soon</span>
+        </article>
+
+        <article class="pathway-card gold">
+          <div>
+            <div class="card-icon" aria-hidden="true">🔁</div>
+            <h3>Prepare for next term</h3>
+            <p>Copy the course, clean up outdated content, update due dates, revise the syllabus, and submit course materials early.</p>
+          </div>
+          <span class="coming-soon">Guide coming soon</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="semester-workflow">
+      <div class="section-header">
+        <div>
+          <h2 id="semester-workflow">End-of-semester workflow</h2>
+          <p class="section-sub">Use this checklist to move from the last class meeting to a clean, reusable course shell.</p>
+        </div>
+      </div>
+
+      <div class="workflow">
+        <div class="workflow-row">
+          <div><span class="phase-label scarlet">Before last class</span></div>
+          <ul>
+            <li>Confirm final assignment due dates and exam expectations.</li>
+            <li>Post a Canvas announcement with end-of-semester instructions.</li>
+            <li>Remind students how to ask final questions or request help.</li>
+            <li>Review missing, excused, or unresolved work before final grading begins.</li>
+          </ul>
+          <div class="note">Goal: reduce last-minute confusion before final work is due.</div>
+        </div>
+
+        <div class="workflow-row">
+          <div><span class="phase-label navy">After last class</span></div>
+          <ul>
+            <li>Grade remaining submissions and review SpeedGrader comments.</li>
+            <li>Check the Canvas gradebook for missing grades, hidden grades, and calculation issues.</li>
+            <li>Confirm final letter grades before using GradeSync or entering grades in REGIS.</li>
+          </ul>
+          <div class="note">Goal: make sure your grade records match the final grades you intend to submit.</div>
+        </div>
+
+        <div class="workflow-row">
+          <div><span class="phase-label teal">Submit grades</span></div>
+          <ul>
+            <li>Submit grades directly in REGIS, or use GradeSync from RU Faculty Tools when available and you have REGIS access.</li>
+            <li>If you do not have access to your course in REGIS, GradeSync will not work; contact your department for assistance.</li>
+            <li>Follow Registrar or departmental guidance for incompletes, pass/no credit, withdrawals, or other special grade situations.</li>
+            <li>Verify submitted grades before closing your records.</li>
+          </ul>
+          <div class="note">REGIS is the official system of record. Canvas grades are not official until submitted.</div>
+        </div>
+
+        <div class="workflow-row">
+          <div><span class="phase-label gold">Archive and reuse</span></div>
+          <ul>
+            <li>Export your Canvas gradebook and save any course records you need.</li>
+            <li>Export course content if you need a local backup.</li>
+            <li>Clean up outdated files, announcements, dates, links, and copied content.</li>
+            <li>Copy the course into the next term shell when it is available.</li>
+          </ul>
+          <div class="note">Most Canvas courses conclude automatically based on term settings. Check with ATS before manually concluding a course.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="focused-guides">
+      <div class="section-header">
+        <div>
+          <h2 id="focused-guides">Focused guides and resources</h2>
+          <p class="section-sub">Use this page as the hub, then move into the specific guide for the task you are completing.</p>
+        </div>
+      </div>
+
+      <div class="resource-grid">
+        <article class="resource-card">
+          <span class="type">Grades</span>
+          <h3>Submit Grades in REGIS</h3>
+          <p>Use REGIS to enter official final grades, upload a grade roster, or review submitted grades. If your course is missing or you do not have REGIS access, contact your department.</p>
+          <a href="https://prodregis.rutgers.edu">Open REGIS →</a>
+        </article>
+
+        <article class="resource-card">
+          <span class="type">Canvas</span>
+          <h3>Use GradeSync in Canvas</h3>
+          <p>Send final grades from Canvas to REGIS through RU Faculty Tools when the grading window is open and your Canvas final grades are ready.</p>
+          <span class="coming-soon">Guide coming soon</span>
+        </article>
+
+        <article class="resource-card">
+          <span class="type">Canvas</span>
+          <h3>Prepare Your Gradebook for Final Grades</h3>
+          <p>Check assignment groups, missing work, grading schemes, grade posting, and final letter grade calculations.</p>
+          <span class="coming-soon">Guide coming soon</span>
+        </article>
+
+        <article class="resource-card">
+          <span class="type">Records</span>
+          <h3>Export Your Canvas Gradebook</h3>
+          <p>Download a final CSV copy of your Canvas gradebook for local recordkeeping before making course changes.</p>
+          <span class="coming-soon">Guide coming soon</span>
+        </article>
+
+        <article class="resource-card">
+          <span class="type">Course reuse</span>
+          <h3>Copy a Canvas Course</h3>
+          <p>Bring modules, assignments, pages, files, quizzes, and settings into a new course shell for the next term.</p>
+          <span class="coming-soon">Guide coming soon</span>
+        </article>
+
+        <article class="resource-card">
+          <span class="type">Course materials</span>
+          <h3>Submit Course Materials Early</h3>
+          <p>Submit textbooks, First Day materials, OER, or publisher content early so students have access on day one.</p>
+          <span class="coming-soon">Guide coming soon</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="support">
+      <div class="section-header">
+        <div>
+          <h2 id="support">Get help</h2>
+          <p class="section-sub">For the fastest support, contact the group that owns the system or process you are working in.</p>
+        </div>
+      </div>
+
+      <div class="support-band">
+        <article class="support-card ats">
+          <h3>Academic Technology Services</h3>
+          <p>For help with Canvas, GradeSync, course copy, exporting course materials, or end-of-semester course cleanup, contact ATS.</p>
+          <a href="mailto:atshelp@newark.rutgers.edu">atshelp@newark.rutgers.edu →</a>
+        </article>
+
+        <article class="support-card registrar">
+          <h3>Registrar or department support</h3>
+          <p>For REGIS access issues, missing courses in REGIS, GradeSync access issues related to REGIS permissions, official grading policy, grade deadlines, grade changes, incompletes, withdrawals, or special grade situations, contact your department or follow Registrar guidance.</p>
+          <a href="https://prodregis.rutgers.edu">Open REGIS →</a>
+        </article>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>
