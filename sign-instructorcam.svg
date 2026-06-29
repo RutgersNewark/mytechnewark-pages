@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108.11 108.11">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #231f20;
+        font-family: Tahoma-Bold, Tahoma;
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .cls-2 {
+        fill: #fff;
+        stroke: #ed1c24;
+        stroke-miterlimit: 10;
+        stroke-width: 3px;
+      }
+
+      .cls-3 {
+        fill: #010101;
+      }
+    </style>
+  </defs>
+  <rect class="cls-2" x="1.5" y="1.5" width="105.11" height="105.11" rx="12" ry="12"/>
+  <g>
+    <path class="cls-3" d="M71.88,30.6l19.18-11.02c1.6-.79,3.54-.13,4.33,1.47.23.46.34.95.34,1.43v33.61c0,1.79-1.44,3.24-3.23,3.24-.6,0-1.16-.16-1.64-.45l-19.18-11.02c-1.14-.56-1.8-1.71-1.8-2.9v-11.36c0-1.36.83-2.52,2.01-3h0Z"/>
+    <path class="cls-3" d="M15.18,19.24h48.8c1.79,0,3.24,1.45,3.24,3.24v33.61c0,1.79-1.45,3.24-3.24,3.24H15.18c-1.79,0-3.24-1.45-3.24-3.24V22.48c0-1.79,1.45-3.24,3.24-3.24h0Z"/>
+  </g>
+  <text class="cls-1" transform="translate(10.74 85.12)"><tspan x="0" y="0">InstructorCam</tspan></text>
+</svg>
