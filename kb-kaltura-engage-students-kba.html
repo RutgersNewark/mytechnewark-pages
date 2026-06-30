@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Using Kaltura to Engage Students in Canvas — myTech@Newark</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy:    #1B3A6B;
+      --scarlet: #CC0033;
+      --teal:    #00626D;
+      --gold:    #C96A00;
+      --text:    #1a1a1a;
+      --muted:   #555;
+      --border:  #e2e2e2;
+      --card-bg: #ffffff;
+      --soft-bg: #F7F8FA;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Libre Franklin', -apple-system, 'Helvetica Neue', Arial, sans-serif;
+      background: #fff;
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    .article-wrap {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 36px 28px 64px;
+    }
+
+    /* ── Audience Badge (F1) ──────────────────────────── */
+    .audience-badge {
+      display: inline-block;
+      background: #FDF2F4;
+      border: 1px solid #CC0033;
+      color: #CC0033;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 4px;
+      margin-bottom: 18px;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── Article Header ───────────────────────────────── */
+    .article-header { margin-bottom: 28px; }
+    .article-header h1 {
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+    }
+    .meta-tag {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 3px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .meta-tag.type-how    { background: #EEF2F8; color: var(--navy); }
+    .meta-tag.type-engage { background: #EAF7F5; color: var(--teal); }
+    .meta-tag.type-system { background: #F5F5F5; color: #555; }
+
+    /* ── Section Headings ─────────────────────────────── */
+    .article-wrap h2 {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--navy);
+      margin: 36px 0 12px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid var(--border);
+    }
+    .article-wrap h3 {
+      font-size: 14.5px;
+      font-weight: 800;
+      color: var(--navy);
+      margin: 22px 0 8px;
+    }
+
+    .article-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 36px 0;
+    }
+
+    /* ── Intro ────────────────────────────────────────── */
+    .intro-text {
+      font-size: 15.5px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    /* ── Inline Callout ───────────────────────────────── */
+    .inline-callout {
+      background: var(--soft-bg);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--teal);
+      border-radius: 6px;
+      padding: 14px 16px;
+      margin: 16px 0;
+      font-size: 13.5px;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .inline-callout strong {
+      display: block;
+      font-size: 12.5px;
+      font-weight: 800;
+      color: var(--teal);
+      margin-bottom: 4px;
+    }
+
+    /* ── Prose ────────────────────────────────────────── */
+    .prose {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 12px;
+    }
+
+    /* ── Numbered Steps ───────────────────────────────── */
+    .step-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin: 14px 0;
+    }
+    .step-list li {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .step-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--teal);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .step-body {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text);
+    }
+    .step-body strong { color: var(--navy); }
+    .step-body .step-note {
+      font-size: 12.5px;
+      color: var(--muted);
+      margin-top: 3px;
+      font-style: italic;
+    }
+
+    /* ── Bullet List ──────────────────────────────────── */
+    .content-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin: 10px 0;
+      padding-left: 4px;
+    }
+    .content-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .content-list li::before {
+      content: "•";
+      color: var(--teal);
+      font-weight: 900;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── Common Uses Cards ────────────────────────────── */
+    .uses-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin: 14px 0;
+    }
+    .use-card {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      background: var(--soft-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 14px 16px;
+    }
+    .use-card .use-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+    .use-card-body strong {
+      display: block;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .use-card-body p { font-size: 13px; color: var(--muted); line-height: 1.5; }
+    .use-card-body .sub-list {
+      list-style: none;
+      margin: 6px 0 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .use-card-body .sub-list li {
+      font-size: 12.5px;
+      color: var(--muted);
+      line-height: 1.5;
+      display: flex;
+      gap: 7px;
+    }
+    .use-card-body .sub-list li::before {
+      content: "–";
+      color: var(--teal);
+      flex-shrink: 0;
+    }
+
+    /* ── Tool Cards Grid ──────────────────────────────── */
+    .tool-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin: 14px 0;
+    }
+    .tool-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--teal);
+      border-radius: 6px;
+      padding: 14px 16px;
+    }
+    .tool-card strong {
+      display: block;
+      font-size: 13.5px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 5px;
+    }
+    .tool-card p { font-size: 12.5px; color: var(--muted); line-height: 1.5; }
+
+    /* ── Example Box ──────────────────────────────────── */
+    .example-box {
+      background: #EAF7F5;
+      border: 1px solid #b2dfe3;
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin: 12px 0;
+    }
+    .example-box .ex-label {
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 6px;
+    }
+    .example-box p { font-size: 13.5px; color: #003f44; line-height: 1.6; font-style: italic; }
+
+    /* ── ATS Callout ──────────────────────────────────── */
+    .ats-callout {
+      background: #EAF7F5;
+      border-left: 4px solid var(--teal);
+      border-radius: 6px;
+      padding: 16px 18px;
+      margin: 16px 0;
+      font-size: 14px;
+      color: #003f44;
+      line-height: 1.65;
+    }
+    .ats-callout strong {
+      display: block;
+      font-size: 13.5px;
+      font-weight: 800;
+      color: var(--teal);
+      margin-bottom: 6px;
+    }
+
+    /* ── Best Practices Grid ──────────────────────────── */
+    .bp-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 14px 0;
+    }
+    .bp-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 13px 16px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .bp-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+    .bp-body strong {
+      display: block;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 3px;
+    }
+    .bp-body p { font-size: 13px; color: var(--muted); line-height: 1.5; }
+    .bp-body .sub-list {
+      list-style: none;
+      margin: 5px 0 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .bp-body .sub-list li {
+      font-size: 12.5px;
+      color: var(--muted);
+      line-height: 1.5;
+      display: flex;
+      gap: 7px;
+    }
+    .bp-body .sub-list li::before {
+      content: "–";
+      color: var(--teal);
+      flex-shrink: 0;
+    }
+
+
+    /* ── Support Block (sb2 — F2 three-campus standard) ── */
+    .sb1{font-family:'Libre Franklin',-apple-system,'Helvetica Neue',Arial,sans-serif;font-size:13.5px;line-height:1.6;}
+    .sb1 *{box-sizing:border-box;}
+    .sb1-section{margin:28px 0 8px;padding-bottom:8px;border-bottom:2px solid #1a1a1a;}
+    .sb1-section-label{font-size:9.5px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:#1a1a1a;}
+    .sb1-cards-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px;}
+    .sb1-card{border-radius:6px;padding:16px;flex:1;min-width:220px;}
+    .sb1-card.scarlet{background:#FDF2F4;border:1px solid #f5c6d0;border-top:3px solid #CC0033;}
+    .sb1-card.gold{background:#FFFBF0;border:1px solid #f0d88a;border-top:3px solid #C96A00;}
+    .sb1-card.navy{background:#EEF2F8;border:1px solid #b0c4de;border-top:3px solid #1B3A6B;}
+    .sb1-card-header{display:flex;align-items:center;gap:8px;margin-bottom:12px;}
+    .sb1-card-icon{width:28px;height:28px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
+    .sb1-card.scarlet .sb1-card-icon{background:#f5c6d0;}
+    .sb1-card.gold    .sb1-card-icon{background:#f0d88a;}
+    .sb1-card.navy    .sb1-card-icon{background:#b0c4de;}
+    .sb1-card-name{font-size:11.5px;font-weight:900;line-height:1.2;}
+    .sb1-card.scarlet .sb1-card-name{color:#9e0025;}
+    .sb1-card.gold    .sb1-card-name{color:#7a4000;}
+    .sb1-card.navy    .sb1-card-name{color:#1B3A6B;}
+    .sb1-card-role{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;opacity:.7;margin-top:1px;}
+    .sb1-card.scarlet .sb1-card-role{color:#b3002c;}
+    .sb1-card.gold    .sb1-card-role{color:#7a4000;}
+    .sb1-card.navy    .sb1-card-role{color:#1B3A6B;}
+    .sb1-contact-list{list-style:none;margin:0 0 14px;padding:0;display:flex;flex-direction:column;gap:6px;}
+    .sb1-contact-list li{display:flex;align-items:flex-start;gap:8px;font-size:12px;}
+    .sb1-contact-label{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;min-width:52px;padding-top:1px;}
+    .sb1-card.scarlet .sb1-contact-label{color:#CC0033;}
+    .sb1-card.gold    .sb1-contact-label{color:#C96A00;}
+    .sb1-card.navy    .sb1-contact-label{color:#1B3A6B;}
+    .sb1-contact-value{color:#333;line-height:1.45;}
+    .sb1-contact-value a{font-weight:700;text-decoration:none;}
+    .sb1-card.scarlet .sb1-contact-value a{color:#CC0033;}
+    .sb1-card.gold    .sb1-contact-value a{color:#C96A00;}
+    .sb1-card.navy    .sb1-contact-value a{color:#1B3A6B;}
+    .sb1-contact-value a:hover{text-decoration:underline;}
+    .sb1-cta{display:inline-flex;align-items:center;font-size:11.5px;font-weight:800;padding:8px 14px;border-radius:5px;text-decoration:none;color:#fff;}
+    .sb1-card.scarlet .sb1-cta{background:#CC0033;}
+    .sb1-card.scarlet .sb1-cta:hover{background:#a3002a;}
+    .sb1-card.gold    .sb1-cta{background:#C96A00;}
+    .sb1-card.gold    .sb1-cta:hover{background:#9e5200;}
+    .sb1-card.navy    .sb1-cta{background:#1B3A6B;}
+    .sb1-card.navy    .sb1-cta:hover{background:#102447;}
+    .sb1-audience-note{font-size:10px;color:#888;margin-top:10px;font-style:italic;}
+
+    /* ── Responsive ───────────────────────────────────── */
+    @media (max-width: 680px) {
+      .tool-cards { grid-template-columns: 1fr; }
+      .article-header h1 { font-size: 22px; }
+      .article-wrap { padding: 24px 18px 48px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="article-wrap">
+
+    <!-- Audience Badge (F2) -->
+    <div class="audience-badge" style="background:#F8F0F2;border-color:#A1002A;color:#A1002A;">🎓 All Rutgers Faculty</div>
+
+    <!-- Article Header -->
+    <div class="article-header">
+      <h1>Using Kaltura to Engage Students in Canvas</h1>
+      <div class="article-meta">
+        <span class="meta-tag type-how">How To</span>
+        <span class="meta-tag type-engage">Engage Your Students</span>
+        <span class="meta-tag type-system">Rutgers Canvas · Kaltura · MediaSpace</span>
+      </div>
+    </div>
+
+    <!-- Overview -->
+    <p class="intro-text">
+      Kaltura is Rutgers' enterprise video platform and is integrated with Rutgers Canvas. Because Kaltura is site licensed at Rutgers, it is available for use by Rutgers faculty and instructors without a separate departmental purchase or individual license.
+    </p>
+    <p class="prose">
+      At Rutgers–Newark, instructors can use Kaltura to create, upload, caption, and share videos directly inside a Canvas course. Kaltura can support active and flexible learning through short lectures, course introductions, demonstrations, narrated presentations, and student-created media assignments.
+    </p>
+
+
+    <!-- Common Uses -->
+    <h2>Common Uses for Kaltura</h2>
+    <div class="uses-grid">
+
+      <div class="use-card">
+        <span class="use-icon">🎬</span>
+        <div class="use-card-body">
+          <strong>Welcome and Course Orientation Videos</strong>
+          <p>A short welcome video helps students understand the structure of the course, where to begin, and how to get help. These videos work well on a Canvas Home Page or in a "Start Here" module.</p>
+          <ul class="sub-list">
+            <li>Introduce yourself and the course</li>
+            <li>Explain how the Canvas course is organized</li>
+            <li>Highlight key expectations and deadlines</li>
+            <li>Help students feel connected before the first class meeting</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="use-card">
+        <span class="use-icon">📖</span>
+        <div class="use-card-body">
+          <strong>Short Lectures and Concept Reviews</strong>
+          <p>Kaltura works best when videos are short, focused, and placed where students need them in Canvas. Instead of posting one long recording, consider creating several shorter videos — one concept, process, or example at a time.</p>
+          <ul class="sub-list">
+            <li>A 5-minute explanation of a difficult concept</li>
+            <li>A narrated PowerPoint overview</li>
+            <li>A worked problem or demonstration</li>
+            <li>A review before an exam or assignment</li>
+            <li>A follow-up explanation after class</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="use-card">
+        <span class="use-icon">🎥</span>
+        <div class="use-card-body">
+          <strong>Student Video Assignments</strong>
+          <p>Students can use Kaltura to record or upload video assignments in Canvas, giving them another way to demonstrate learning beyond written work.</p>
+          <ul class="sub-list">
+            <li>Presentations and project pitches</li>
+            <li>Introductions and reflections</li>
+            <li>Group reports and demonstrations</li>
+            <li>Performances or creative work</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="use-card">
+        <span class="use-icon">💬</span>
+        <div class="use-card-body">
+          <strong>Media-Rich Discussions</strong>
+          <p>Instructors and students can embed Kaltura videos in Canvas discussions to make activities more personal, visual, and interactive. Students might post a short video response, comment on a case study, or respond to a prompt using audio or video instead of text.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Kaltura Tools in Canvas -->
+    <h2>Kaltura Tools in Canvas</h2>
+    <p class="prose">Kaltura appears in several places in Rutgers Canvas.</p>
+
+    <div class="tool-cards">
+
+      <div class="tool-card">
+        <strong>My Kaltura Media</strong>
+        <p>Your personal video library. Recordings and uploaded videos are stored here and associated with your Rutgers NetID. Use it to upload videos, record new videos, manage captions, edit video details, and choose where videos should be shared.</p>
+      </div>
+
+      <div class="tool-card">
+        <strong>Kaltura Course Gallery</strong>
+        <p>The course-level video gallery. Videos in your personal library are not automatically visible to students — you must publish or embed them in the course. Use the Course Gallery when you want students to browse course videos from one place.</p>
+      </div>
+
+      <div class="tool-card">
+        <strong>Kaltura in the Rich Content Editor</strong>
+        <p>Embed Kaltura videos directly into Canvas pages, assignments, discussions, quizzes, and announcements. Embedding videos in a module or assignment usually creates a clearer student experience than sending students to a separate gallery.</p>
+      </div>
+
+      <div class="tool-card">
+        <strong>Kaltura Personal Capture</strong>
+        <p>Record your screen, webcam, microphone, or narrated presentation from your own computer. Use it for screen recordings, narrated slides, webcam introductions, software demonstrations, and short instructional videos.</p>
+      </div>
+
+    </div>
+
+    <!-- Workflow 1: Share a Video -->
+    <h2>Share a Video with Students</h2>
+    <p class="prose">Use this workflow when you want to record, upload, and share a video in Canvas.</p>
+
+    <ol class="step-list">
+      <li>
+        <span class="step-num">1</span>
+        <div class="step-body">
+          <strong>Record or Upload Your Video</strong><br>
+          Record a new video using Kaltura Personal Capture or upload an existing video file to My Kaltura Media. You can use Kaltura to share narrated PowerPoint presentations, screen recordings, webcam videos, demonstrations, short lecture clips, and existing video files you have permission to use.
+        </div>
+      </li>
+      <li>
+        <span class="step-num">2</span>
+        <div class="step-body">
+          <strong>Review the Video Details</strong><br>
+          Before sharing, review the title, description, and publishing settings. Use clear titles so students can understand what the video is and where it belongs in the course.
+          <div class="step-note">Examples: "Week 3: Introduction to Research Methods" · "Module 4: Solving Linear Equations" · "Exam 1 Review: Key Concepts"</div>
+        </div>
+      </li>
+      <li>
+        <span class="step-num">3</span>
+        <div class="step-body">
+          <strong>Review and Edit Captions</strong><br>
+          Kaltura can generate machine captions for videos. Captions should be reviewed and corrected — especially for required course content, technical terms, names, and discipline-specific vocabulary.
+        </div>
+      </li>
+      <li>
+        <span class="step-num">4</span>
+        <div class="step-body">
+          <strong>Add the Video to Canvas</strong><br>
+          You can share a video in Canvas in two common ways: embed the video in a Canvas page, assignment, discussion, quiz, or announcement; or publish the video to the Kaltura Course Gallery. For most instructional videos, embedding directly in the relevant Canvas module or assignment gives students the clearest path.
+        </div>
+      </li>
+      <li>
+        <span class="step-num">5</span>
+        <div class="step-body">
+          <strong>Check Student Access</strong><br>
+          After adding the video, use Student View or ask a colleague to verify that students can access the video from the intended location in Canvas.
+        </div>
+      </li>
+    </ol>
+
+    <!-- Workflow 2: Student Video Assignment -->
+    <h2>Create a Student Video Assignment</h2>
+    <p class="prose">Use this workflow when students need to submit a video as part of an assignment.</p>
+
+    <ol class="step-list">
+      <li>
+        <span class="step-num">1</span>
+        <div class="step-body">
+          <strong>Create the Assignment in Canvas</strong><br>
+          Create a Canvas assignment with clear instructions, due date, points, and grading criteria. Include what students should record, expected length, whether students should appear on camera, whether captions or transcripts are required, how students should submit the video, and how the assignment will be graded.
+        </div>
+      </li>
+      <li>
+        <span class="step-num">2</span>
+        <div class="step-body">
+          <strong>Tell Students to Use Kaltura</strong><br>
+          Students can record or upload videos through Kaltura/My Media in Canvas and then submit the video to the Canvas assignment. Add a short instruction note such as:
+          <div class="example-box" style="margin-top:10px;">
+            <div class="ex-label">Example Note for Students</div>
+            <p>Record or upload your video using Kaltura/My Media in Canvas. Submit your video through this Canvas assignment by the due date.</p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <span class="step-num">3</span>
+        <div class="step-body">
+          <strong>Provide a Low-Stakes Practice Option</strong><br>
+          For major video assignments, consider creating a short practice submission so students can test Kaltura before the graded assignment is due. This reduces last-minute technical issues and gives students time to ask for help.
+        </div>
+      </li>
+      <li>
+        <span class="step-num">4</span>
+        <div class="step-body">
+          <strong>Review Submissions in Canvas</strong><br>
+          Once students submit their videos, review and grade the assignment through Canvas. Use SpeedGrader if the videos are submitted through a Canvas assignment.
+        </div>
+      </li>
+    </ol>
+
+    <!-- Accessibility and Captions -->
+    <h2>Accessibility and Captions</h2>
+    <p class="prose">Accessible video helps all students, not only students with documented accommodations.</p>
+    <ul class="content-list">
+      <li>Review and correct machine-generated captions.</li>
+      <li>Use a clear microphone whenever possible.</li>
+      <li>Record in a quiet location.</li>
+      <li>Avoid relying only on visuals shown in the video.</li>
+      <li>Provide slides, handouts, or key materials in Canvas when appropriate.</li>
+      <li>Use descriptive titles so videos are easy to find.</li>
+    </ul>
+
+    <div class="ats-callout">
+      <strong>📝 A Note on Machine Captions</strong>
+      Machine captions are a helpful starting point, but they may not accurately capture names, technical terms, formulas, or discipline-specific language. Required instructional videos should be reviewed for caption accuracy before being shared with students.
+    </div>
+
+    <!-- Best Practices -->
+    <h2>Best Practices for Engaging Students with Video</h2>
+    <div class="bp-grid">
+
+      <div class="bp-card">
+        <span class="bp-icon">✂️</span>
+        <div class="bp-body">
+          <strong>Keep Videos Short and Focused</strong>
+          <p>Short videos are easier for students to watch, review, and use while studying. Aim for one purpose per video.</p>
+        </div>
+      </div>
+
+      <div class="bp-card">
+        <span class="bp-icon">📍</span>
+        <div class="bp-body">
+          <strong>Place Videos Where Students Need Them</strong>
+          <p>Embed videos directly in the Canvas module, page, assignment, or discussion where students are expected to use them.</p>
+        </div>
+      </div>
+
+      <div class="bp-card">
+        <span class="bp-icon">💬</span>
+        <div class="bp-body">
+          <strong>Tell Students What to Do While Watching</strong>
+          <p>Add a prompt before or after the video so students know how to engage with it.</p>
+          <ul class="sub-list">
+            <li>"As you watch, identify one concept that is still unclear."</li>
+            <li>"Pause after the example and try the next problem on your own."</li>
+            <li>"Post one question in the discussion after viewing."</li>
+            <li>"Complete the quiz after watching the video."</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="bp-card">
+        <span class="bp-icon">🔗</span>
+        <div class="bp-body">
+          <strong>Pair Video with an Activity</strong>
+          <p>Video works best when connected to an action. Consider pairing videos with a Canvas discussion, a short quiz, a knowledge check, a reflection prompt, a group activity, or a follow-up assignment.</p>
+        </div>
+      </div>
+
+      <div class="bp-card">
+        <span class="bp-icon">🎯</span>
+        <div class="bp-body">
+          <strong>Use Video Strategically</strong>
+          <p>Not every course activity needs a video. Use Kaltura when video adds clarity, presence, demonstration, or flexibility that other formats cannot provide.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <hr class="article-divider" />
+
+    <!-- Support Block (F2 — sb2 three-campus standard) -->
+    <div class="sb1">
+      <div class="sb1-section"><div class="sb1-section-label">Still Need Help?</div></div>
+      <div class="sb1-cards-row">
+
+        <!-- RU-N & RBS — ATS (Scarlet) -->
+        <div class="sb1-card scarlet">
+          <div class="sb1-card-header">
+            <div class="sb1-card-icon">🎓</div>
+            <div>
+              <div class="sb1-card-name">Academic Technology Services</div>
+              <div class="sb1-card-role">Rutgers–Newark &amp; Rutgers Business School</div>
+            </div>
+          </div>
+          <ul class="sb1-contact-list">
+            <li><span class="sb1-contact-label">Phone</span><span class="sb1-contact-value"><a href="tel:9733531713">973-353-1713</a></span></li>
+            <li><span class="sb1-contact-label">Email</span><span class="sb1-contact-value"><a href="mailto:atshelp@newark.rutgers.edu">atshelp@newark.rutgers.edu</a></span></li>
+            <li><span class="sb1-contact-label">Location</span><span class="sb1-contact-value">Blumenthal Hall, Room 100</span></li>
+          </ul>
+          <a href="mailto:atshelp@newark.rutgers.edu" class="sb1-cta">Contact ATS →</a>
+        </div>
+
+        <!-- Rutgers–Camden — IDT (Gold) -->
+        <div class="sb1-card gold">
+          <div class="sb1-card-header">
+            <div class="sb1-card-icon">🎓</div>
+            <div>
+              <div class="sb1-card-name">Instructional Design &amp; Technology</div>
+              <div class="sb1-card-role">Rutgers–Camden</div>
+            </div>
+          </div>
+          <ul class="sb1-contact-list">
+            <li><span class="sb1-contact-label">Phone</span><span class="sb1-contact-value"><a href="tel:8562256090">856-225-6090</a></span></li>
+            <li><span class="sb1-contact-label">Email</span><span class="sb1-contact-value"><a href="mailto:idt@camden.rutgers.edu">idt@camden.rutgers.edu</a></span></li>
+          </ul>
+          <a href="mailto:idt@camden.rutgers.edu" class="sb1-cta">Contact IDT →</a>
+        </div>
+
+        <!-- RU-NB & Rutgers Health — LMS Support (Navy) -->
+        <div class="sb1-card navy">
+          <div class="sb1-card-header">
+            <div class="sb1-card-icon">🎓</div>
+            <div>
+              <div class="sb1-card-name">LMS Support</div>
+              <div class="sb1-card-role">Rutgers–New Brunswick &amp; Rutgers Health</div>
+            </div>
+          </div>
+          <ul class="sb1-contact-list">
+            <li><span class="sb1-contact-label">Phone</span><span class="sb1-contact-value"><a href="tel:8336484357">833-648-4357</a></span></li>
+            <li><span class="sb1-contact-label">Email</span><span class="sb1-contact-value"><a href="mailto:help@canvas.rutgers.edu">help@canvas.rutgers.edu</a></span></li>
+          </ul>
+          <a href="mailto:help@canvas.rutgers.edu" class="sb1-cta">Contact LMS Support →</a>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+</body>
+</html>
