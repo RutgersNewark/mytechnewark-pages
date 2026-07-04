@@ -1,0 +1,417 @@
+<!--
+=================================================================
+RUTGERS UNIVERSITY–NEWARK | myTech@Newark
+ServiceNow KB Article
+"Using the InstructorCam for Zoom and Web Conferencing"
+Scope: All Rutgers faculty — building callout
+Applies to: Auditoriums and Lecture Halls
+Tier: How To
+Category: Teach in the Classroom
+Academic Technology Services (ATS)
+=================================================================
+-->
+
+<style>
+.kb-article *, .kb-article *::before, .kb-article *::after { box-sizing: border-box; }
+.kb-article { font-family: 'Libre Franklin', -apple-system, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; line-height: 1.7; color: #2a2a2a; max-width: 760px; }
+.kb-article a { color: #CC0033; }
+.kb-article a:hover { text-decoration: underline; }
+.kb-identity { border-top: 3px solid #CC0033; padding: 14px 0 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+.kb-identity-left { display: flex; align-items: center; gap: 14px; }
+.kb-identity-logo { height: 36px; width: auto; display: block; }
+.kb-identity-name { font-size: 11px; font-weight: 700; color: #1a1a1a; line-height: 1.2; border-left: 1px solid #e0e0e0; padding-left: 14px; }
+.kb-identity-name span { display: block; font-size: 9px; font-weight: 600; color: #999; letter-spacing: .07em; text-transform: uppercase; margin-top: 1px; }
+.kb-identity-right { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.kb-scope-badge-sm { display: inline-flex; align-items: center; font-size: 9px; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; padding: 3px 8px; border-radius: 20px; }
+.kb-scope-badge-sm.ats { background: #f0f0f0; color: #666; }
+.kb-article-header { padding-bottom: 18px; border-bottom: 1px solid #e8e8e8; margin-bottom: 24px; }
+.kb-tier-row { display: flex; align-items: center; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
+.kb-tier { display: inline-flex; align-items: center; font-size: 9px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; padding: 3px 9px; border-radius: 20px; }
+.kb-tier.howto { background: #E3F3F0; color: #00626D; }
+.kb-scope-badge { display: inline-flex; align-items: center; gap: 4px; font-size: 9px; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; padding: 3px 9px; border-radius: 20px; }
+.kb-scope-badge.all-rutgers { background: #EEF2F8; color: #1B3A6B; border: 1px solid #c4cfe0; }
+.kb-scope-badge.f3 { background: #FDF5F1; color: #D14124; border: 1px solid #D14124; }
+.kb-h1 { font-size: 26px; font-weight: 900; color: #1a1a1a; line-height: 1.15; letter-spacing: -.02em; margin-bottom: 10px; }
+.kb-summary { font-size: 14px; color: #555; line-height: 1.65; margin-bottom: 14px; max-width: 620px; }
+.kb-meta-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; font-size: 11px; color: #aaa; margin-bottom: 12px; }
+.kb-meta-item { display: flex; align-items: center; gap: 4px; font-weight: 600; }
+.kb-meta-item strong { color: #666; font-weight: 700; }
+.kb-meta-sep { color: #ddd; }
+.kb-tag-row { display: flex; flex-wrap: wrap; gap: 5px; }
+.kb-tag { font-size: 10px; font-weight: 700; color: #1B3A6B; background: #EEF2F8; padding: 2px 8px; border-radius: 20px; }
+.kb-h2 { font-size: 15px; font-weight: 800; color: #1a1a1a; margin: 32px 0 12px; padding-bottom: 7px; border-bottom: 1.5px solid #e0e0e0; letter-spacing: -.01em; }
+.kb-h2:first-child { margin-top: 0; }
+.kb-h3 { font-size: 13px; font-weight: 800; color: #1a1a1a; margin: 22px 0 8px; }
+.kb-p { font-size: 13.5px; color: #444; line-height: 1.75; margin-bottom: 12px; }
+.kb-steps { list-style: none; counter-reset: kb-steps; margin: 0 0 16px; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.kb-steps li { counter-increment: kb-steps; display: flex; align-items: flex-start; gap: 12px; font-size: 13px; color: #333; line-height: 1.6; padding: 11px 14px; background: #fafafa; border: 1px solid #ebebeb; border-radius: 5px; }
+.kb-steps li::before { content: counter(kb-steps); background: #1a1a1a; color: #fff; font-size: 10px; font-weight: 900; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+.kb-steps li strong { font-weight: 800; color: #1a1a1a; }
+.kb-ul { list-style: none; margin: 0 0 14px; padding: 0; display: flex; flex-direction: column; gap: 5px; }
+.kb-ul li { font-size: 13px; color: #444; line-height: 1.55; padding-left: 14px; position: relative; }
+.kb-ul li::before { content: '–'; position: absolute; left: 0; color: #aaa; }
+
+/* Sticker callout */
+.kb-sticker-callout { background: #f6f8fc; border: 1px solid #c4cfe0; border-left: 3px solid #1B3A6B; border-radius: 5px; padding: 13px 15px; margin: 18px 0; display: flex; align-items: center; gap: 16px; }
+.kb-sticker-wrap { flex-shrink: 0; width: 64px; height: 64px; }
+.kb-sticker-wrap svg { width: 64px; height: 64px; }
+.kb-sticker-text { flex: 1; }
+.kb-sticker-label { font-size: 8.5px; font-weight: 900; letter-spacing: .13em; text-transform: uppercase; color: #1B3A6B; margin-bottom: 4px; display: flex; align-items: center; gap: 5px; }
+.kb-sticker-label::after { content: '· Rutgers–Newark'; font-size: 8px; font-weight: 600; opacity: .55; }
+.kb-sticker-body { font-size: 12.5px; color: #0d2040; line-height: 1.6; }
+.kb-sticker-body strong { font-weight: 700; }
+
+/* Callouts */
+.kb-callout { border-radius: 5px; padding: 13px 15px; margin: 18px 0; display: flex; align-items: flex-start; gap: 12px; }
+.kb-callout-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; line-height: 1; }
+.kb-callout-body { flex: 1; min-width: 0; }
+.kb-callout-label { font-size: 8.5px; font-weight: 900; letter-spacing: .13em; text-transform: uppercase; margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }
+.kb-callout-label::after { content: '· Rutgers–Newark'; font-size: 8px; font-weight: 600; opacity: .55; }
+.kb-callout-text { font-size: 12.5px; line-height: 1.65; }
+.kb-callout-text strong { font-weight: 700; }
+.kb-callout-text a { font-weight: 600; }
+.kb-callout.building { background: #fefaf3; border: 1px solid #f0d9a8; border-left: 3px solid #C96A00; }
+.kb-callout.building .kb-callout-label { color: #C96A00; }
+.kb-callout.building .kb-callout-text { color: #6b3800; }
+.kb-callout.building .kb-callout-text a { color: #C96A00; }
+.kb-callout.software { background: #f0faf8; border: 1px solid #c8e6e2; border-left: 3px solid #00626D; }
+.kb-callout.software .kb-callout-label { color: #00626D; }
+.kb-callout.software .kb-callout-text { color: #004d55; }
+.kb-callout.software .kb-callout-text a { color: #00626D; }
+.kb-tip { background: #fff; border: 1px solid #e8e8e8; border-left: 3px solid #CC0033; border-radius: 4px; padding: 12px 15px; margin: 14px 0; font-size: 13px; color: #444; line-height: 1.65; }
+.kb-tip-label { font-size: 8.5px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; color: #CC0033; margin-bottom: 5px; }
+
+/* Trouble table */
+.kb-trouble-table { width: 100%; border: 1px solid #e8e8e8; border-radius: 5px; overflow: hidden; margin: 14px 0; }
+.kb-trouble-row { display: grid; grid-template-columns: 2fr 3fr; border-bottom: 1px solid #f0f0f0; }
+.kb-trouble-row:last-child { border-bottom: none; }
+.kb-trouble-row:first-child { background: #1a1a1a; }
+.kb-trouble-cell { padding: 10px 14px; font-size: 12.5px; line-height: 1.5; border-right: 1px solid #f0f0f0; }
+.kb-trouble-cell:last-child { border-right: none; }
+.kb-trouble-row:first-child .kb-trouble-cell { font-size: 10px; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.7); }
+.kb-trouble-problem { color: #333; font-weight: 600; }
+.kb-trouble-fix { color: #555; }
+
+/* Help */
+.kb-help-section { margin-top: 32px; padding-top: 20px; border-top: 2px solid #1a1a1a; }
+.kb-help-section-label { font-size: 10px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; color: #1a1a1a; margin-bottom: 12px; }
+.kb-help-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.kb-help-card { border-radius: 5px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
+.kb-help-run { background: #f4faf6; border: 1px solid #c0dfc9; border-top: 3px solid #1A7A4A; }
+.kb-help-gen { background: #f6f8fc; border: 1px solid #c4cfe0; border-top: 3px solid #1B3A6B; }
+.kb-help-card-header { display: flex; align-items: flex-start; gap: 10px; }
+.kb-help-card-icon { font-size: 18px; flex-shrink: 0; line-height: 1; margin-top: 1px; }
+.kb-help-card-title { font-size: 12px; font-weight: 900; margin-bottom: 4px; }
+.kb-help-run .kb-help-card-title { color: #1A7A4A; }
+.kb-help-gen .kb-help-card-title { color: #1B3A6B; }
+.kb-help-card-who { font-size: 10.5px; font-weight: 700; display: inline-flex; align-items: center; padding: 2px 8px; border-radius: 20px; }
+.kb-help-run .kb-help-card-who { background: #E6F4ED; color: #1A7A4A; }
+.kb-help-gen .kb-help-card-who { background: #EEF2F8; color: #1B3A6B; }
+.kb-help-card-contacts { display: flex; flex-direction: column; gap: 5px; }
+.kb-help-contact-item { display: flex; align-items: flex-start; gap: 7px; font-size: 12px; line-height: 1.45; }
+.kb-help-contact-item-icon { flex-shrink: 0; font-size: 13px; line-height: 1.3; }
+.kb-help-run .kb-help-contact-item { color: #0d3d24; }
+.kb-help-gen .kb-help-contact-item { color: #0d2040; }
+.kb-help-contact-item strong { font-weight: 700; }
+.kb-help-run .kb-help-contact-item a { color: #1A7A4A; font-weight: 600; }
+.kb-help-gen .kb-help-contact-item a { color: #1B3A6B; font-weight: 600; }
+.kb-help-card-cta { display: inline-flex; align-items: center; gap: 5px; font-size: 11.5px; font-weight: 700; padding: 7px 12px; border-radius: 4px; text-decoration: none; align-self: flex-start; }
+.kb-help-run .kb-help-card-cta { background: #1A7A4A; color: #fff; }
+.kb-help-gen .kb-help-card-cta { background: #1B3A6B; color: #fff; }
+
+/* Related */
+.kb-tasks-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+.kb-task-link { display: flex; align-items: center; gap: 10px; padding: 10px 13px; border: 1px solid #e8e8e8; border-radius: 5px; text-decoration: none; background: #fff; }
+.kb-task-link:hover { background: #fafafa; text-decoration: none; }
+.kb-task-link-icon { width: 28px; height: 28px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+.kb-task-link-icon.teal   { background: #E3F3F0; }
+.kb-task-link-icon.navy   { background: #EEF2F8; }
+.kb-task-link-icon.gold   { background: #FFF4E6; }
+.kb-task-link-icon.scarlet { background: #fdf2f4; }
+.kb-task-link-text { flex: 1; }
+.kb-task-link-title { font-size: 12.5px; font-weight: 700; color: #1a1a1a; margin-bottom: 1px; }
+.kb-task-link-meta  { font-size: 11px; color: #aaa; }
+.kb-task-link-arrow { color: #ccc; font-size: 14px; }
+
+/* Print */
+.kb-print-bar { display: flex; align-items: center; justify-content: flex-end; margin-bottom: 16px; }
+.kb-print-btn { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 700; color: #888; cursor: pointer; background: none; border: 1px solid #e0e0e0; border-radius: 4px; padding: 5px 11px; font-family: inherit; }
+.kb-print-btn svg { width: 12px; height: 12px; }
+
+/* Screenshots */
+.kb-screenshot { margin: 12px 0 4px; border: 1px solid #e0e0e0; border-radius: 5px; overflow: hidden; }
+.kb-screenshot img { width: 100%; height: auto; display: block; }
+.kb-screenshot-caption { background: #f5f5f5; border-top: 1px solid #e0e0e0; padding: 6px 12px; font-size: 11px; color: #888; font-style: italic; }
+
+@media print {
+  .kb-print-bar { display: none; }
+  .kb-article { font-size: 11pt; max-width: 100%; color: #000; }
+  .kb-h2 { page-break-after: avoid; }
+  .kb-steps li, .kb-callout, .kb-tip, .kb-sticker-callout { page-break-inside: avoid; }
+  .kb-help-section, .kb-tasks-grid, .kb-trouble-table { page-break-inside: avoid; }
+  .kb-callout, .kb-help-card, .kb-sticker-callout { border: 1pt solid #ccc !important; background: none !important; }
+  .kb-callout-text a::after, .kb-help-contact-item a::after { content: " (" attr(href) ")"; font-size: 9pt; color: #666; }
+  .kb-article::after { content: "Rutgers University–Newark · Academic Technology Services · myTech@Newark"; display: block; margin-top: 24pt; padding-top: 8pt; border-top: 1pt solid #ccc; font-size: 8pt; color: #999; }
+}
+</style>
+
+
+<div class="kb-article">
+
+  <div class="kb-print-bar">
+    <button class="kb-print-btn" onclick="window.print()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      Print / Save PDF
+    </button>
+  </div>
+
+  <div class="kb-identity">
+    <div class="kb-identity-left">
+      <img src="/mnt/user-data/uploads/RNATS_H_RED_BLACK_RGB.png" alt="Rutgers University–Newark" class="kb-identity-logo">
+      <div class="kb-identity-name">
+        myTech@Newark Knowledge Base
+        <span>Academic Technology Services</span>
+      </div>
+    </div>
+    <div class="kb-identity-right">
+      <span class="kb-scope-badge-sm ats">Academic Technology Services</span>
+    </div>
+  </div>
+
+  <div class="kb-article-header">
+    <div class="kb-tier-row">
+      <span class="kb-tier howto">How To</span>
+      <span class="kb-scope-badge f3">🏫 Faculty Teaching in Rutgers–Newark Classrooms</span>
+    </div>
+    <h1 class="kb-h1">Using the InstructorCam for Zoom and Web Conferencing</h1>
+    <p class="kb-summary">The InstructorCam is a built-in ceiling or podium-mounted camera available in Rutgers–Newark auditoriums and most lecture halls. It connects directly to the classroom computer for use with Zoom, Webex, Teams, or any web conferencing application — no extra hardware required. On the touch panel it is labeled <em>Presenter Camera</em>.</p>
+    <div class="kb-meta-row">
+      <span class="kb-meta-item"><strong>Category:</strong>&nbsp;Teach in the Classroom</span>
+      <span class="kb-meta-sep">·</span>
+      <span class="kb-meta-item"><strong>Applies to:</strong>&nbsp;Auditoriums &amp; Lecture Halls</span>
+      <span class="kb-meta-sep">·</span>
+      <span class="kb-meta-item"><strong>Last reviewed:</strong>&nbsp;July 2026</span>
+      <span class="kb-meta-sep">·</span>
+      <span class="kb-meta-item"><strong>Reviewed by:</strong>&nbsp;ATS, Rutgers–Newark</span>
+    </div>
+    <div class="kb-tag-row">
+      <span class="kb-tag">InstructorCam</span>
+      <span class="kb-tag">Zoom</span>
+      <span class="kb-tag">Zoom Recording</span>
+      <span class="kb-tag">Hybrid Teaching</span>
+      <span class="kb-tag">Web Conferencing</span>
+      <span class="kb-tag">Auditorium</span>
+      <span class="kb-tag">Lecture Hall</span>
+      <span class="kb-tag">Classroom Technology</span>
+    </div>
+  </div>
+
+  <div class="kb-body">
+
+    <h2 class="kb-h2">Before You Start</h2>
+
+    <p class="kb-p">The InstructorCam is only available in rooms that have one installed. Look for this sticker on the podium to confirm your room has an InstructorCam.</p>
+
+    <div class="kb-sticker-callout">
+      <div class="kb-sticker-wrap">
+        <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108.11 108.11">
+          <defs><style>.ic1{fill:#231f20;font-family:Tahoma-Bold,Tahoma;font-size:12px;font-weight:700;}.ic2{fill:#fff;stroke:#ed1c24;stroke-miterlimit:10;stroke-width:3px;}.ic3{fill:#010101;}</style></defs>
+          <rect class="ic2" x="1.5" y="1.5" width="105.11" height="105.11" rx="12" ry="12"/>
+          <g>
+            <path class="ic3" d="M71.88,30.6l19.18-11.02c1.6-.79,3.54-.13,4.33,1.47.23.46.34.95.34,1.43v33.61c0,1.79-1.44,3.24-3.23,3.24-.6,0-1.16-.16-1.64-.45l-19.18-11.02c-1.14-.56-1.8-1.71-1.8-2.9v-11.36c0-1.36.83-2.52,2.01-3h0Z"/>
+            <path class="ic3" d="M15.18,19.24h48.8c1.79,0,3.24,1.45,3.24,3.24v33.61c0,1.79-1.45,3.24-3.24,3.24H15.18c-1.79,0-3.24-1.45-3.24-3.24V22.48c0-1.79,1.45-3.24,3.24-3.24h0Z"/>
+          </g>
+          <text class="ic1" transform="translate(10.74 85.12)"><tspan x="0" y="0">InstructorCam</tspan></text>
+        </svg>
+      </div>
+      <div class="kb-sticker-text">
+        <div class="kb-sticker-label">InstructorCam Sticker</div>
+        <div class="kb-sticker-body"><strong>Look for this sticker on the podium.</strong> It confirms the room has an InstructorCam available. All RU-N auditoriums have one. Most lecture halls have one — check the sticker to be sure before class.</div>
+      </div>
+    </div>
+
+    <p class="kb-p">The AV system must be running before you use the InstructorCam. If you have not yet started up the room, follow the startup steps in the room-specific article first:</p>
+
+    <ul class="kb-ul">
+      <li>Teaching in an auditorium? See: <a href="#">Using Technology in Rutgers–Newark Auditoriums</a></li>
+      <li>Teaching in a lecture hall? See: <a href="#">Using Technology in Rutgers–Newark Lecture Halls</a></li>
+    </ul>
+
+    <div class="kb-callout building">
+      <div class="kb-callout-icon">🏛️</div>
+      <div class="kb-callout-body">
+        <div class="kb-callout-label">RU-N Classrooms &amp; AV</div>
+        <div class="kb-callout-text">
+          InstructorCam equipment is installed and maintained by <strong>ATS at Rutgers–Newark</strong>. If you are using these rooms as a visiting instructor from another campus, the workflow is the same — but for technical support, contact ATS at <strong>973-353-1713</strong> or <a href="mailto:atshelp@newark.rutgers.edu">atshelp@newark.rutgers.edu</a> rather than your home campus IT.
+        </div>
+      </div>
+    </div>
+
+    <h2 class="kb-h2">When to Use the InstructorCam</h2>
+    <ul class="kb-ul">
+      <li>You teach a <strong>hybrid course</strong> where some students attend in person and others join via Zoom</li>
+      <li>You are holding <strong>virtual office hours</strong> from a classroom</li>
+      <li>You want to <strong>live-stream</strong> a lecture, guest speaker, or event</li>
+      <li>You need a <strong>high-quality camera angle</strong> for a video conference beyond what your laptop webcam provides</li>
+      <li>You want to <strong>record your session</strong> using Zoom cloud recording</li>
+    </ul>
+
+    <h2 class="kb-h2">Setting Up the InstructorCam</h2>
+
+    <ol class="kb-steps">
+      <li><strong>On the touch panel, tap <em>Presenter Camera</em></strong> — This is the InstructorCam button on the main source selection screen. Tapping it powers on the camera and makes its feed available to the podium computer.
+        <div class="kb-screenshot">
+          <img src="/mnt/user-data/uploads/Source_Select.png" alt="Touch panel source selection screen — tap Presenter Camera to activate the InstructorCam">
+          <div class="kb-screenshot-caption">Tap <em>Presenter Camera</em> on the source selection screen to activate the InstructorCam</div>
+        </div>
+      </li>
+      <li><strong>Select a camera angle</strong> — Choose from preset angles using the touch panel controls:
+        <br>• <em>Wide room view</em> — shows the full classroom, good for hybrid teaching
+        <br>• <em>Podium close-up</em> — frames you at the podium, good for presentations
+        <br>• <em>Whiteboard / board view</em> — points at the board, good for writing-intensive sessions
+        <br>Or use the manual pan, tilt, and zoom controls to set a custom angle.</li>
+      <li><strong>Press Go Back</strong> — Return to the main touch panel screen. The InstructorCam stays active.</li>
+    </ol>
+
+    <div class="kb-tip">
+      <div class="kb-tip-label">💡 Setup Tip</div>
+      Set your camera angle and test it before students arrive. You can also tap <em>Video Conference</em> on the touch panel as an alternative mode for conferencing — it activates the same Presenter Camera but may offer different preset configurations depending on the room.
+    </div>
+
+    <h2 class="kb-h2">Using the InstructorCam with Zoom</h2>
+
+    <ol class="kb-steps">
+      <li><strong>Open Zoom on the podium computer</strong> — Zoom is installed on all RU-N classroom computers. Sign in with your Rutgers NetID via SSO.</li>
+      <li><strong>Start or join your meeting</strong> — Click your scheduled meeting or start a new one.</li>
+      <li><strong>Select the Presenter Camera as your video source</strong> — Click the arrow next to the camera icon in Zoom's toolbar → <em>Select a Camera</em> → choose <em>Presenter Camera</em> or <em>InstructorCam</em> (the device may appear under either name depending on the room). The camera feed replaces your webcam in the meeting.</li>
+      <li><strong>Select the room microphone as your audio source</strong> — Click the arrow next to the microphone icon → <em>Select a Microphone</em> → choose the room microphone. For auditoriums, a lavalier mic is also available — clip it on if you plan to move away from the podium.</li>
+      <li><strong>Confirm remote participants can see and hear you</strong> — Ask a remote student or colleague to confirm your video and audio before class begins.</li>
+    </ol>
+
+    <div class="kb-callout software">
+      <div class="kb-callout-icon">🔧</div>
+      <div class="kb-callout-body">
+        <div class="kb-callout-label">Software &amp; Integrations</div>
+        <div class="kb-callout-text">
+          <strong>Zoom is pre-installed on all RU-N classroom computers</strong> and configured with Rutgers NetID SSO — you do not need to install anything or enter a password beyond your NetID login. If Zoom is not on the desktop, search for it in the Start menu. If it is missing entirely, call ATS before class at <strong>973-353-1713</strong> or email <a href="mailto:atshelp@newark.rutgers.edu">atshelp@newark.rutgers.edu</a>.
+        </div>
+      </div>
+    </div>
+
+    <h2 class="kb-h2">Recording Your Session in Zoom</h2>
+
+    <p class="kb-p">You can record directly in Zoom using the room's Presenter Camera and microphone. The recording saves to your Zoom cloud account and can be shared with students via a link.</p>
+
+    <ol class="kb-steps">
+      <li><strong>Confirm the Presenter Camera and room microphone are selected</strong> — Complete the setup steps above before starting your recording. The recording captures whatever camera and audio source Zoom is currently using.</li>
+      <li><strong>Click Record in Zoom</strong> — In the Zoom toolbar, click <em>Record</em> → <em>Record to the Cloud</em>. A recording indicator appears. Cloud recording is recommended over local recording so the file is accessible from any device after class.</li>
+      <li><strong>Teach your class</strong> — Zoom records continuously in the background. You can pause and resume using the recording controls in the toolbar.</li>
+      <li><strong>Click Stop Recording when finished</strong> — Or end the meeting — Zoom stops the recording automatically. The file processes and uploads to your Zoom cloud account, which may take a few minutes.</li>
+      <li><strong>Share the recording link with students</strong> — Log in to <a href="https://rutgers.zoom.us">rutgers.zoom.us</a>, go to <em>Recordings</em>, and copy the shareable link. Paste it into a Canvas Announcement or Page so students can access it.</li>
+    </ol>
+
+
+
+    <div class="kb-callout software">
+      <div class="kb-callout-icon">🔧</div>
+      <div class="kb-callout-body">
+        <div class="kb-callout-label">Software &amp; Integrations</div>
+        <div class="kb-callout-text">
+          Zoom cloud recording is available to all Rutgers faculty via <a href="https://rutgers.zoom.us">rutgers.zoom.us</a>. Log in with your NetID to access your recordings. Cloud recordings are retained for <strong>180 days</strong> by default — download the file or save it to Kaltura before it expires if you want to keep it longer.
+        </div>
+      </div>
+    </div>
+
+    <h2 class="kb-h2">Tips for Hybrid Teaching</h2>
+
+    <div class="kb-tip">
+      <div class="kb-tip-label">💡 Camera Angle</div>
+      Use a wide preset angle for most of your hybrid class so remote students can see the full room environment. Switch to a tighter podium angle when presenting slides, and a board-facing angle when writing. Camera presets are labeled on the touch panel and vary slightly by room — explore them before your first class. Tell remote students when you switch angles.
+    </div>
+
+    <div class="kb-tip">
+      <div class="kb-tip-label">💡 Audio</div>
+      Repeat questions from in-person students before answering — remote participants cannot always hear audience questions, even with room microphones. This improves the experience for everyone and is good pedagogical practice regardless of technology.
+    </div>
+
+    <div class="kb-tip">
+      <div class="kb-tip-label">💡 Before First Class</div>
+      Run a full test session — camera, audio, Zoom — before your first hybrid class with actual students. ATS can join your test session remotely to confirm everything is working from the student side. <a href="https://account577280.wixsite.com/mytechnewark/getting-support">Request a test session here.</a>
+    </div>
+
+    <h2 class="kb-h2">Troubleshooting</h2>
+
+    <div class="kb-trouble-table">
+      <div class="kb-trouble-row">
+        <div class="kb-trouble-cell">Problem</div>
+        <div class="kb-trouble-cell">What to do</div>
+      </div>
+      <div class="kb-trouble-row">
+        <div class="kb-trouble-cell kb-trouble-problem">Presenter Camera does not appear in Zoom's camera list</div>
+        <div class="kb-trouble-cell kb-trouble-fix">Confirm you tapped <em>Presenter Camera</em> on the touch panel first — the camera must be activated there before it appears as a device in Zoom. Then in Zoom, click the camera arrow and refresh the device list. If still missing, close and reopen Zoom.</div>
+      </div>
+      <div class="kb-trouble-row">
+        <div class="kb-trouble-cell kb-trouble-problem">Remote participants can't hear you</div>
+        <div class="kb-trouble-cell kb-trouble-fix">In Zoom's audio settings, confirm the room microphone is selected as the input — not the computer's built-in mic. Check the touch panel to ensure the room mic is not muted. For auditoriums, try the lavalier mic as an alternative.</div>
+      </div>
+      <div class="kb-trouble-row">
+        <div class="kb-trouble-cell kb-trouble-problem">Camera image is dark or out of focus</div>
+        <div class="kb-trouble-cell kb-trouble-fix">Use the touch panel to switch camera presets or manually adjust. If the image is very dark, the room lighting may be too low — raise the lights using the room controls. If the camera image looks wrong after adjustments, call ATS at 973-353-1713.</div>
+      </div>
+      <div class="kb-trouble-row">
+        <div class="kb-trouble-cell kb-trouble-problem">Zoom shows your laptop webcam instead of InstructorCam</div>
+        <div class="kb-trouble-cell kb-trouble-fix">You may have joined Zoom from your laptop instead of the podium computer. Use the podium computer for InstructorCam access — it cannot be shared to a laptop over the display connection.</div>
+      </div>
+      <div class="kb-trouble-row">
+        <div class="kb-trouble-cell kb-trouble-problem">InstructorCam sticker is on the podium but camera is not working</div>
+        <div class="kb-trouble-cell kb-trouble-fix">Call ATS immediately at <strong>973-353-1713</strong> with your building and room number. Do not attempt to reconnect or adjust physical camera hardware yourself.</div>
+      </div>
+    </div>
+
+  </div><!-- end kb-body -->
+<!-- Support Block -->
+
+<style>
+  .sb4{font-family:'Libre Franklin',-apple-system,'Helvetica Neue',Arial,sans-serif;font-size:13.5px;line-height:1.6;max-width:820px;}
+  .sb4 *{box-sizing:border-box;}
+  .sb4-section{margin:28px 0 8px;padding-bottom:8px;border-bottom:2px solid #1a1a1a;}
+  .sb4-section-label{font-size:9.5px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:#1a1a1a;}
+  .sb4-card{border-radius:6px;padding:16px;background:#FDF5F1;border:1px solid #f0c9b3;border-top:3px solid #D14124;margin:14px 0 4px;max-width:420px;}
+  .sb4-card-header{display:flex;align-items:center;gap:8px;margin-bottom:12px;}
+  .sb4-card-icon{width:28px;height:28px;border-radius:5px;background:#f0c9b3;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
+  .sb4-card-name{font-size:11.5px;font-weight:900;color:#8b2210;line-height:1.2;}
+  .sb4-card-role{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#D14124;opacity:.75;margin-top:1px;}
+  .sb4-contact-list{list-style:none;margin:0 0 14px;padding:0;display:flex;flex-direction:column;gap:6px;}
+  .sb4-contact-list li{display:flex;align-items:flex-start;gap:8px;font-size:12px;}
+  .sb4-contact-label{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#D14124;min-width:52px;padding-top:1px;}
+  .sb4-contact-value{color:#333;line-height:1.45;}
+  .sb4-contact-value a{font-weight:700;color:#D14124;text-decoration:none;}
+  .sb4-cta{display:inline-flex;align-items:center;font-size:11.5px;font-weight:800;padding:8px 14px;border-radius:5px;text-decoration:none;background:#D14124;color:#fff;}
+  .sb4-note{font-size:10.5px;color:#666;margin-top:14px;padding:10px 14px;background:#fff;border:1px solid #e0e0e0;border-left:3px solid #D14124;border-radius:4px;line-height:1.55;}
+  .sb4-note strong{color:#D14124;font-weight:800;}
+</style>
+<div class="sb4">
+  <div class="sb4-section"><div class="sb4-section-label">Getting Help</div></div>
+
+  <div class="sb4-card">
+    <div class="sb4-card-header">
+      <div class="sb4-card-icon">🏫</div>
+      <div>
+        <div class="sb4-card-name">RU-N Academic Technology Services</div>
+        <div class="sb4-card-role">RU-N Academic Technology Services · Classroom Technology &amp; Instructional Spaces</div>
+      </div>
+    </div>
+    <ul class="sb4-contact-list">
+      <li><span class="sb4-contact-label">Phone</span><span class="sb4-contact-value"><a href="tel:9733531713">973-353-1713</a></span></li>
+      <li><span class="sb4-contact-label">Email</span><span class="sb4-contact-value"><a href="mailto:atshelp@newark.rutgers.edu">atshelp@newark.rutgers.edu</a></span></li>
+      <li><span class="sb4-contact-label">Location</span><span class="sb4-contact-value">Blumenthal Hall, Room 100</span></li>
+    </ul>
+    <a href="mailto:atshelp@newark.rutgers.edu" class="sb4-cta">Request Classroom Assistance →</a>
+  </div>
+
+  <div class="sb4-note">
+    <strong>In-room emergency?</strong> If technology fails during class, call ATS directly at <a href="tel:9733531713" style="color:#D14124;font-weight:700;">973-353-1713</a> for immediate assistance. For after-hours support, contact the RUN IT Service Center at <a href="tel:9733535083" style="color:#D14124;font-weight:700;">973-353-5083</a>.
+  </div>
+</div>
+
+</div>

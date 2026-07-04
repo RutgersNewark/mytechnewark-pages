@@ -1,0 +1,542 @@
+<!--
+=================================================================
+RUTGERS UNIVERSITY–NEWARK | myTech@Newark
+ServiceNow KB Article
+"Using Ally to Improve Course Accessibility"
+Academic Technology Services (ATS)
+=================================================================
+-->
+
+<style>
+  .kb-article * { box-sizing: border-box; }
+  .kb-article {
+    font-family: 'Libre Franklin', -apple-system, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.65;
+    color: #333;
+    max-width: 820px;
+  }
+  .kb-inst-header { background: #1a1a1a; border-radius: 6px 6px 0 0; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .kb-inst-left { display: flex; align-items: center; gap: 10px; }
+  .kb-r-mark { background: #CC0033; color: #fff; font-size: 15px; font-weight: 900; width: 30px; height: 30px; display: inline-flex; align-items: center; justify-content: center; border-radius: 2px; font-family: Georgia, serif; flex-shrink: 0; }
+  .kb-inst-name { color: #fff; font-size: 12px; font-weight: 700; line-height: 1.2; }
+  .kb-inst-name span { display: block; font-size: 9px; font-weight: 600; color: rgba(255,255,255,.4); letter-spacing: .08em; text-transform: uppercase; margin-top: 1px; }
+  .kb-inst-right { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .kb-scope-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 9.5px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; }
+  .kb-scope-badge.run { background: #CC0033; color: #fff; }
+  .kb-scope-badge.f2 { background: #F8F0F2; color: #A1002A; border: 1px solid #A1002A; }
+  .kb-scope-badge.tls { background: rgba(255,255,255,.1); color: rgba(255,255,255,.65); }
+  .kb-article-header { background: #fff; border: 1px solid #e0e0e0; border-top: none; padding: 22px 24px 18px; border-bottom: 1px solid #e0e0e0; }
+  .kb-tier-row { display: flex; align-items: center; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; }
+  .kb-tier { display: inline-flex; align-items: center; font-size: 9px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; padding: 3px 9px; border-radius: 20px; }
+  .kb-tier.howto { background: #E3F3F0; color: #00626D; }
+  .kb-tier.practice { background: #FFF4E6; color: #C96A00; }
+  .kb-run-specific { display: inline-flex; align-items: center; gap: 4px; font-size: 9px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; padding: 3px 9px; border-radius: 20px; background: #fdf2f4; color: #CC0033; border: 1px solid #f5c6d0; }
+  .kb-h1 { font-size: 24px; font-weight: 900; color: #1a1a1a; line-height: 1.15; letter-spacing: -.02em; margin-bottom: 8px; }
+  .kb-summary { font-size: 13.5px; color: #555; line-height: 1.65; margin-bottom: 14px; max-width: 640px; }
+  .kb-meta-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; font-size: 11px; color: #999; }
+  .kb-meta-item { display: flex; align-items: center; gap: 4px; font-weight: 600; }
+  .kb-meta-item strong { color: #555; font-weight: 700; }
+  .kb-tag-row { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 12px; }
+  .kb-tag { font-size: 10px; font-weight: 700; color: #1B3A6B; background: #EEF2F8; padding: 2px 8px; border-radius: 20px; }
+  .kb-body { background: #fff; border: 1px solid #e0e0e0; border-top: none; padding: 24px 24px 8px; border-radius: 0 0 6px 6px; }
+  .kb-h2 { font-size: 16px; font-weight: 800; color: #1a1a1a; margin: 28px 0 12px; padding-bottom: 8px; border-bottom: 2px solid #1a1a1a; letter-spacing: -.01em; }
+  .kb-h2:first-child { margin-top: 0; }
+  .kb-h3 { font-size: 12.5px; font-weight: 800; color: #1a1a1a; margin: 20px 0 8px; text-transform: uppercase; letter-spacing: .07em; }
+  .kb-p { font-size: 13.5px; color: #444; line-height: 1.7; margin-bottom: 12px; }
+  .kb-steps { list-style: none; counter-reset: steps; margin: 0 0 16px; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+  .kb-steps li { counter-increment: steps; display: flex; align-items: flex-start; gap: 12px; font-size: 13px; color: #333; line-height: 1.55; padding: 10px 14px; background: #fafafa; border: 1px solid #ebebeb; border-radius: 5px; }
+  .kb-steps li::before { content: counter(steps); background: #CC0033; color: #fff; font-size: 10px; font-weight: 900; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+  .kb-steps li strong { font-weight: 800; color: #1a1a1a; }
+  .kb-ul { list-style: none; margin: 0 0 14px; padding: 0; display: flex; flex-direction: column; gap: 5px; }
+  .kb-ul li { font-size: 13px; color: #444; line-height: 1.5; padding-left: 14px; position: relative; }
+  .kb-ul li::before { content: '–'; position: absolute; left: 0; color: #CC0033; font-weight: 700; }
+  .kb-callout { border-radius: 6px; padding: 14px 16px; margin: 16px 0; display: flex; align-items: flex-start; gap: 12px; }
+  .kb-callout-icon { width: 30px; height: 30px; border-radius: 5px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 15px; margin-top: 1px; }
+  .kb-callout-body { flex: 1; min-width: 0; }
+  .kb-callout-label { font-size: 8.5px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 3px; display: flex; align-items: center; gap: 5px; }
+  .kb-callout-label::after { content: ''; }
+  .kb-callout-text { font-size: 12.5px; line-height: 1.6; font-weight: 500; }
+  .kb-callout-text strong { font-weight: 800; }
+  .kb-callout-text a { font-weight: 700; }
+  .kb-callout.software { background: #E3F3F0; border: 1px solid #a8d5ce; border-left: 4px solid #00626D; }
+  .kb-callout.software .kb-callout-icon { background: #c2e8e3; color: #00626D; }
+  .kb-callout.software .kb-callout-label { color: #00626D; }
+  .kb-callout.software .kb-callout-text { color: #004d55; }
+  .kb-callout.software .kb-callout-text a { color: #00626D; }
+  .kb-callout.policy { background: #fdf2f4; border: 1px solid #f5c6d0; border-left: 4px solid #CC0033; }
+  .kb-callout.policy .kb-callout-icon { background: #f9d0d9; color: #CC0033; }
+  .kb-callout.policy .kb-callout-label { color: #CC0033; }
+  .kb-callout.policy .kb-callout-text { color: #7a001f; }
+  .kb-callout.policy .kb-callout-text a { color: #CC0033; }
+  .kb-callout.building { background: #FFF4E6; border: 1px solid #f5d9a8; border-left: 4px solid #C96A00; }
+  .kb-callout.building .kb-callout-icon { background: #f9e2bd; color: #C96A00; }
+  .kb-callout.building .kb-callout-label { color: #C96A00; }
+  .kb-callout.building .kb-callout-text { color: #7a3f00; }
+  .kb-callout.support { background: #E6F4ED; border: 1px solid #a8d5b8; border-left: 4px solid #1A7A4A; }
+  .kb-callout.support .kb-callout-icon { background: #c2e5cf; color: #1A7A4A; }
+  .kb-callout.support .kb-callout-label { color: #1A7A4A; }
+  .kb-callout.support .kb-callout-text { color: #0f4a2b; }
+  .kb-callout.support .kb-callout-text a { color: #1A7A4A; }
+  .kb-callout.workflow { background: #EEF2F8; border: 1px solid #b3c4dd; border-left: 4px solid #1B3A6B; }
+  .kb-callout.workflow .kb-callout-icon { background: #c5d3e8; color: #1B3A6B; }
+  .kb-callout.workflow .kb-callout-label { color: #1B3A6B; }
+  .kb-callout.workflow .kb-callout-text { color: #0f2447; }
+  .kb-callout.workflow .kb-callout-text a { color: #1B3A6B; }
+  .kb-tip { background: #fafafa; border: 1px solid #e0e0e0; border-left: 3px solid #CC0033; border-radius: 4px; padding: 12px 16px; margin: 16px 0; font-size: 12.5px; color: #444; line-height: 1.6; }
+  .kb-tip-label { font-size: 8.5px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; color: #CC0033; margin-bottom: 4px; }
+  /* Score indicator pills */
+  .kb-score-grid { display: flex; flex-direction: column; gap: 8px; margin: 12px 0 20px; }
+  .kb-score-row { display: flex; align-items: flex-start; gap: 12px; padding: 11px 14px; border-radius: 5px; border: 1px solid; }
+  .kb-score-row.red    { background: #fdf2f4; border-color: #f5c6d0; }
+  .kb-score-row.amber  { background: #FFF4E6; border-color: #f5d9a8; }
+  .kb-score-row.green  { background: #E6F4ED; border-color: #a8d5b8; }
+  .kb-score-dot { width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0; margin-top: 3px; }
+  .kb-score-dot.red   { background: #CC0033; }
+  .kb-score-dot.amber { background: #C96A00; }
+  .kb-score-dot.green { background: #1A7A4A; }
+  .kb-score-body { flex: 1; font-size: 12.5px; line-height: 1.5; }
+  .kb-score-body strong { display: block; font-size: 11px; font-weight: 900; letter-spacing: .04em; margin-bottom: 2px; }
+  .kb-score-row.red   .kb-score-body strong { color: #7a001f; }
+  .kb-score-row.amber .kb-score-body strong { color: #7a3f00; }
+  .kb-score-row.green .kb-score-body strong { color: #0f4a2b; }
+  .kb-score-row.red   .kb-score-body { color: #7a001f; }
+  .kb-score-row.amber .kb-score-body { color: #7a3f00; }
+  .kb-score-row.green .kb-score-body { color: #0f4a2b; }
+  /* Issues table */
+  .kb-table { width: 100%; border-collapse: collapse; font-size: 12.5px; margin: 12px 0 16px; }
+  .kb-table th { background: #1a1a1a; color: #fff; font-size: 9.5px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; padding: 8px 12px; text-align: left; }
+  .kb-table td { padding: 9px 12px; border-bottom: 1px solid #ebebeb; color: #444; vertical-align: top; line-height: 1.5; }
+  .kb-table tr:last-child td { border-bottom: none; }
+  .kb-table tr:nth-child(even) td { background: #fafafa; }
+  .kb-table td:first-child { font-weight: 700; color: #1a1a1a; white-space: nowrap; }
+  /* Do/Don't */
+  .kb-dodont { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 12px 0 20px; }
+  .kb-dodont-col { border-radius: 5px; padding: 14px 16px; }
+  .kb-dodont-col.do { background: #E6F4ED; border: 1px solid #a8d5b8; }
+  .kb-dodont-col.dont { background: #fdf2f4; border: 1px solid #f5c6d0; }
+  .kb-dodont-label { font-size: 9px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 8px; }
+  .kb-dodont-col.do .kb-dodont-label { color: #1A7A4A; }
+  .kb-dodont-col.dont .kb-dodont-label { color: #CC0033; }
+  .kb-dodont-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 5px; }
+  .kb-dodont-col ul li { font-size: 12px; color: #444; line-height: 1.45; padding-left: 16px; position: relative; }
+  .kb-dodont-col.do ul li::before { content: '✓'; position: absolute; left: 0; color: #1A7A4A; font-weight: 900; }
+  .kb-dodont-col.dont ul li::before { content: '✕'; position: absolute; left: 0; color: #CC0033; font-weight: 900; }
+  @media (max-width: 540px) { .kb-dodont { grid-template-columns: 1fr; } }
+  /* Checklist */
+  .kb-checklist { background: #fafafa; border: 1px solid #e0e0e0; border-radius: 6px; padding: 16px 20px; margin: 16px 0; }
+  .kb-checklist-title { font-size: 10px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; color: #1a1a1a; margin-bottom: 10px; }
+  .kb-checklist table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  .kb-checklist table th { background: #1a1a1a; color: #fff; font-size: 9px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; padding: 7px 12px; text-align: left; }
+  .kb-checklist table td { padding: 8px 12px; border-bottom: 1px solid #e8e8e8; color: #444; vertical-align: top; line-height: 1.5; }
+  .kb-checklist table tr:last-child td { border-bottom: none; }
+  .kb-checklist table tr:nth-child(even) td { background: #f3f3f3; }
+  .kb-checklist table td:first-child { font-size: 13px; }
+  /* Priority order cards */
+  .kb-priority { display: flex; flex-direction: column; gap: 8px; margin: 12px 0 20px; }
+  .kb-priority-row { display: flex; align-items: flex-start; gap: 12px; padding: 11px 14px; border: 1px solid #ebebeb; border-radius: 5px; background: #fafafa; }
+  .kb-priority-badge { font-size: 9px; font-weight: 900; letter-spacing: .06em; text-transform: uppercase; padding: 3px 9px; border-radius: 20px; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
+  .kb-priority-badge.first { background: #fdf2f4; color: #CC0033; border: 1px solid #f5c6d0; }
+  .kb-priority-badge.next  { background: #FFF4E6; color: #C96A00; border: 1px solid #f5d9a8; }
+  .kb-priority-badge.ongoing { background: #E6F4ED; color: #1A7A4A; border: 1px solid #a8d5b8; }
+  .kb-priority-content { flex: 1; font-size: 12.5px; color: #444; line-height: 1.5; }
+  .kb-priority-content strong { font-weight: 800; color: #1a1a1a; display: block; margin-bottom: 3px; }
+  .kb-related { border-top: 2px solid #1a1a1a; margin-top: 28px; padding-top: 16px; }
+  .kb-related-label { font-size: 9.5px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; color: #1a1a1a; margin-bottom: 12px; }
+  .kb-related-grid { display: flex; flex-direction: column; gap: 0; border: 1px solid #e0e0e0; border-radius: 5px; overflow: hidden; margin-bottom: 20px; }
+  .kb-related-item { display: flex; align-items: center; gap: 11px; padding: 11px 14px; border-bottom: 1px solid #f0f0f0; text-decoration: none; }
+  .kb-related-item:last-child { border-bottom: none; }
+  .kb-related-dot { width: 8px; height: 8px; border-radius: 50%; background: #CC0033; flex-shrink: 0; }
+  .kb-related-dot.teal { background: #00626D; }
+  .kb-related-dot.navy { background: #1B3A6B; }
+  .kb-related-dot.gold { background: #C96A00; }
+  .kb-related-text { flex: 1; }
+  .kb-related-title { font-size: 12.5px; font-weight: 700; color: #1a1a1a; margin-bottom: 1px; }
+  .kb-related-meta { font-size: 10.5px; color: #999; }
+  .kb-related-arrow { color: #ccc; font-size: 13px; }
+  .kb-footer { background: #1a1a1a; border-radius: 0 0 6px 6px; padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .kb-footer-left { display: flex; align-items: center; gap: 8px; }
+  .kb-footer-r { background: #CC0033; color: #fff; font-size: 11px; font-weight: 900; width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; border-radius: 2px; font-family: Georgia, serif; flex-shrink: 0; }
+  .kb-footer-info { font-size: 10px; color: rgba(255,255,255,.35); line-height: 1.4; }
+  .kb-footer-info strong { color: rgba(255,255,255,.65); font-weight: 700; }
+  .kb-footer-links { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+  .kb-footer-links a { font-size: 10.5px; font-weight: 700; color: rgba(255,255,255,.4); text-decoration: none; }
+</style>
+
+<div class="kb-article">
+
+  <div class="kb-inst-header">
+    <div class="kb-inst-left">
+      <div class="kb-r-mark">R</div>
+      <div class="kb-inst-name">
+        Rutgers University–Newark
+        <span>myTech@Newark Knowledge Base</span>
+      </div>
+    </div>
+    <div class="kb-inst-right">
+      <span class="kb-scope-badge f2">🎓 All Rutgers Faculty</span>
+      <span class="kb-scope-badge tls">Academic Technology Services</span>
+    </div>
+  </div>
+
+  <div class="kb-article-header">
+    <div class="kb-tier-row">
+      <span class="kb-tier practice">Best Practice</span>
+    </div>
+    <h1 class="kb-h1">Using Ally to Improve Course Accessibility</h1>
+    <p class="kb-summary">Ally is built into your Canvas course and identifies accessibility issues in your files, provides step-by-step remediation guidance, and automatically generates alternative formats for students — so you can make meaningful improvements without starting from scratch.</p>
+    <div class="kb-meta-row">
+      <div class="kb-meta-item"><strong>Category:</strong>&nbsp; Accessibility &amp; Inclusion</div>
+      <div class="kb-meta-item"><strong>Last reviewed:</strong>&nbsp; May 2026</div>
+      <div class="kb-meta-item"><strong>Reviewed by:</strong>&nbsp; ATS, Rutgers–Newark</div>
+    </div>
+    <div class="kb-tag-row">
+      <span class="kb-tag">Ally</span>
+      <span class="kb-tag">Accessibility</span>
+      <span class="kb-tag">Canvas</span>
+      <span class="kb-tag">UDL</span>
+      <span class="kb-tag">Course Design</span>
+      <span class="kb-tag">Inclusive Teaching</span>
+      <span class="kb-tag">All Rutgers Faculty</span>
+    </div>
+  </div>
+
+  <div class="kb-body">
+
+    <h2 class="kb-h2">What Ally Does</h2>
+    <p class="kb-p">Ally reviews every file and piece of content in your Canvas course and displays a colored accessibility score next to each item. Clicking that score opens a guided feedback panel that explains what the issue is, why it matters, and exactly how to fix it. Ally also automatically generates alternative formats — audio, HTML, ePub, tagged PDF, and electronic braille — that students can download from any course file at any time.</p>
+    <p class="kb-p">Ally works best as an <strong>ongoing course improvement tool</strong>, not a one-time checklist. Small, consistent improvements each semester add up to a significantly more accessible course over time.</p>
+
+    <div class="kb-callout software">
+      <div class="kb-callout-icon">🔧</div>
+      <div class="kb-callout-body">
+        <div class="kb-callout-label">Software &amp; Integrations</div>
+        <div class="kb-callout-text">
+          <strong>Ally is active in all Rutgers Canvas courses</strong> — no installation or setup required. Accessibility score indicators appear automatically next to files and content in your course. Students can already download alternative formats from any course file; you do not need to enable this separately. The full report is available from the <em>Ally Course Accessibility Report</em> link in your Canvas course navigation.
+        </div>
+      </div>
+    </div>
+
+    <h2 class="kb-h2">Understanding Accessibility Scores</h2>
+    <p class="kb-p">Ally displays a colored gauge next to each file and piece of course content. Here's what each level means and how to prioritize your work:</p>
+
+    <div class="kb-score-grid">
+      <div class="kb-score-row red">
+        <div class="kb-score-dot red"></div>
+        <div class="kb-score-body">
+          <strong>Low Score (Red) — Prioritize First</strong>
+          Significant accessibility barriers are present. Students using screen readers or assistive technology may be unable to access this content at all. Address these items before anything else.
+        </div>
+      </div>
+      <div class="kb-score-row amber">
+        <div class="kb-score-dot amber"></div>
+        <div class="kb-score-body">
+          <strong>Medium Score (Orange / Yellow) — Address Next</strong>
+          The content is partially accessible but still creates barriers for some students. These items are worth improving once your red-scored materials are resolved.
+        </div>
+      </div>
+      <div class="kb-score-row green">
+        <div class="kb-score-dot green"></div>
+        <div class="kb-score-body">
+          <strong>High Score (Light / Dark Green) — In Good Shape</strong>
+          The content follows good accessibility practices. No immediate action needed — maintain this standard when updating or replacing files.
+        </div>
+      </div>
+    </div>
+
+    <h2 class="kb-h2">How to Use Ally in Your Course</h2>
+
+    <ol class="kb-steps">
+      <li>
+        <div>
+          <strong>Review accessibility indicators in your course</strong> — Look for the Ally score gauge next to files and content items. Start with the materials that affect the most students: syllabus, major assignment instructions, weekly overview pages, and core readings.
+        </div>
+      </li>
+      <li>
+        <div>
+          <strong>Open the feedback panel</strong> — Click any accessibility score indicator to open the Ally Feedback panel. It explains what the issue is, why it matters to students, and gives step-by-step instructions for fixing it. You do not need to know anything about accessibility standards to follow the guidance.
+        </div>
+      </li>
+      <li>
+        <div>
+          <strong>Fix quick wins first</strong> — You do not need to redesign your entire course. Start with small, high-impact changes that take only a few minutes each.
+        </div>
+      </li>
+      <li>
+        <div>
+          <strong>Open the Course Accessibility Report</strong> — Click <em>Ally</em> in your Canvas course navigation to view the full report. It shows your overall course accessibility score, lists low-scoring content across the entire course, and lets you filter by file type or score range. This is the best starting point for improving an older course with many files.
+        </div>
+      </li>
+      <li>
+        <div>
+          <strong>Update the source file, not just the upload</strong> — When a Word document or PowerPoint has accessibility issues, fix the original file and re-upload it to Canvas rather than trying to edit only the uploaded version. This improves the Ally score, student usability, and the quality of the automatically generated alternative formats.
+        </div>
+      </li>
+      <li>
+        <div>
+          <strong>Review Ally indicators whenever you add new content</strong> — Make it a habit to check scores as you build or update your course each semester. A few minutes of review per new file prevents accessibility debt from accumulating.
+        </div>
+      </li>
+    </ol>
+
+    <h2 class="kb-h2">Common Issues Ally Identifies</h2>
+
+    <table class="kb-table">
+      <thead>
+        <tr>
+          <th>Issue</th>
+          <th>Why it matters</th>
+          <th>Quick fix</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Missing heading structure</td>
+          <td>Screen readers navigate documents by headings — without them, the document is a single undifferentiated block of text</td>
+          <td>Apply real Heading styles (H1, H2, H3) in Word or Google Docs, not bold text</td>
+        </tr>
+        <tr>
+          <td>Images without alt text</td>
+          <td>Students using screen readers cannot access any information conveyed by images without a text description</td>
+          <td>Add a meaningful alt text description to each image; mark decorative images as decorative</td>
+        </tr>
+        <tr>
+          <td>Poor color contrast</td>
+          <td>Low contrast text is difficult or impossible to read for students with low vision or color blindness</td>
+          <td>Increase contrast between text and background colors; avoid light gray text on white</td>
+        </tr>
+        <tr>
+          <td>Non-descriptive links</td>
+          <td>"Click here" or "Read more" give screen reader users no context about where a link goes</td>
+          <td>Replace with descriptive text: "Download the Course Syllabus" or "View Week 3 Reading"</td>
+        </tr>
+        <tr>
+          <td>Improper table structure</td>
+          <td>Tables without header rows are disorienting for screen readers — data cells have no column or row labels</td>
+          <td>Add a header row to every table and mark it as a header row in the document formatting</td>
+        </tr>
+        <tr>
+          <td>Scanned (image-only) PDFs</td>
+          <td>A scanned PDF is an image — screen readers cannot read it, and Ally cannot generate useful alternative formats from it</td>
+          <td>Replace with the original accessible document, or run OCR on the scan to create a text layer</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 class="kb-h2">Recommended Order of Improvement</h2>
+
+    <div class="kb-priority">
+      <div class="kb-priority-row">
+        <span class="kb-priority-badge first">Start Here</span>
+        <div class="kb-priority-content">
+          <strong>High-use, high-impact materials</strong>
+          Syllabus, major assignment instructions, weekly overview pages, and core required readings. These affect every student in the course and should be accessible from day one.
+        </div>
+      </div>
+      <div class="kb-priority-row">
+        <span class="kb-priority-badge next">Next</span>
+        <div class="kb-priority-content">
+          <strong>Module content and handouts</strong>
+          Lecture slides, in-class handouts, supplemental readings, and older course files that students access regularly throughout the semester.
+        </div>
+      </div>
+      <div class="kb-priority-row">
+        <span class="kb-priority-badge ongoing">Ongoing</span>
+        <div class="kb-priority-content">
+          <strong>New content as you add it</strong>
+          Check Ally scores whenever you upload a new file or create a new Canvas page. Catching issues early is faster than fixing a backlog at the end of the semester.
+        </div>
+      </div>
+    </div>
+
+    <div class="kb-callout workflow">
+      <div class="kb-callout-icon">🔄</div>
+      <div class="kb-callout-body">
+        <div class="kb-callout-label">Rutgers–Newark Workflow</div>
+        <div class="kb-callout-text">
+          At Rutgers–Newark, ATS recommends opening the <strong>Course Accessibility Report</strong> at the start of each semester — especially for courses you've taught before — and addressing your top three to five lowest-scoring items before the first day of class. This takes less time than it sounds: most high-impact fixes (adding headings, writing alt text, replacing a scanned PDF) take under five minutes each in the original source document. ATS can review your course with you during a pre-semester consultation.
+        </div>
+      </div>
+    </div>
+
+    <h2 class="kb-h2">Alternative Formats for Students</h2>
+    <p class="kb-p">Ally automatically generates alternative formats for every file in your course. Students can download these directly from any course file without requesting them from you. Available formats include audio (MP3), HTML, ePub, tagged PDF, and electronic braille. Translated formats may also be available depending on the file.</p>
+    <p class="kb-p">These formats benefit students using assistive technology, students reading on mobile devices, students who prefer audio while commuting or exercising, and students with varying learning preferences. <strong>Remind students in your syllabus or course overview that these formats are available</strong> — many students don't know to look for them.</p>
+
+    <div class="kb-tip">
+      <div class="kb-tip-label">💡 What Ally Does Not Replace</div>
+      Ally is a powerful diagnostic and generation tool, but it does not automatically fix your documents or replace good authoring practices. Real headings, descriptive links, captioned videos, and logical document structure still need to come from you. Some issues — particularly complex PDFs or scanned documents — may require additional remediation support beyond what Ally's feedback panel covers.
+    </div>
+
+    <h2 class="kb-h2">Do's and Don'ts</h2>
+
+    <div class="kb-dodont">
+      <div class="kb-dodont-col do">
+        <div class="kb-dodont-label">✓ Do</div>
+        <ul>
+          <li>Improve accessibility incrementally — a few fixes per semester add up</li>
+          <li>Start with high-use materials: syllabus, assignments, core readings</li>
+          <li>Update the original source file, not just the Canvas upload</li>
+          <li>Use the Course Accessibility Report to find patterns across the whole course</li>
+          <li>Caption media and use descriptive headings and links</li>
+          <li>Remind students that alternative formats are available</li>
+          <li>Check Ally scores whenever you add new content</li>
+        </ul>
+      </div>
+      <div class="kb-dodont-col dont">
+        <div class="kb-dodont-label">✕ Don't</div>
+        <ul>
+          <li>Treat Ally as a one-time compliance checklist</li>
+          <li>Ignore red-scored items on core course materials</li>
+          <li>Upload image-only scanned PDFs without an accessible source</li>
+          <li>Use bold text as a substitute for real document headings</li>
+          <li>Assume Ally automatically fixes the issues it identifies</li>
+          <li>Wait until the end of the semester to review accessibility</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="kb-checklist">
+      <div class="kb-checklist-title">📋 Faculty Accessibility Checklist</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Task</th>
+            <th>Why It Matters</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Review Ally scores for syllabus and key course files</td>
+            <td>Prioritizes the most-used content first</td>
+          </tr>
+          <tr>
+            <td>Open the feedback panel for any red- or amber-scored items</td>
+            <td>Provides step-by-step remediation you can act on immediately</td>
+          </tr>
+          <tr>
+            <td>Fix quick wins: headings, alt text, link text, table headers</td>
+            <td>High-impact improvements that take minutes each</td>
+          </tr>
+          <tr>
+            <td>Replace scanned PDFs with accessible source documents</td>
+            <td>Makes content readable by screen readers and Ally alternative format generators</td>
+          </tr>
+          <tr>
+            <td>Open the Course Accessibility Report at the start of each semester</td>
+            <td>Reveals course-wide patterns and helps prioritize older content</td>
+          </tr>
+          <tr>
+            <td>Mention alternative formats in your syllabus or course overview</td>
+            <td>Ensures students know the option exists and can use it independently</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="kb-callout support">
+      <div class="kb-callout-icon">🎧</div>
+      <div class="kb-callout-body">
+        <div class="kb-callout-label">Need Help?</div>
+        <div class="kb-callout-text">
+          For help interpreting Ally feedback, remediating complex documents, or discussing accessible course design, contact your campus's academic technology support team — see <strong>Getting Help</strong> below for contact details at Rutgers–Newark, Camden, and New Brunswick.
+        </div>
+      </div>
+    </div>
+
+  </div>
+<!-- Support Block -->
+
+<style>
+  .sb2{font-family:'Libre Franklin',-apple-system,'Helvetica Neue',Arial,sans-serif;font-size:13.5px;line-height:1.6;max-width:820px;}
+  .sb2 *{box-sizing:border-box;}
+  .sb2-section{margin:28px 0 8px;padding-bottom:8px;border-bottom:2px solid #1a1a1a;}
+  .sb2-section-label{font-size:9.5px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:#1a1a1a;}
+  .sb2-subsection-label{font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#666;margin:14px 0 8px;}
+  .sb2-campus-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px;}
+  .sb2-card{border-radius:6px;padding:14px;border:1px solid;}
+  .sb2-card.newark{background:#FDF2F4;border-color:#f5c6d0;border-top:3px solid #CC0033;}
+  .sb2-card.camden{background:#FFF9EE;border-color:#f5d9a8;border-top:3px solid #F0B323;}
+  .sb2-card.nb{background:#EEF2F8;border-color:#b3c4dd;border-top:3px solid #1B3A6B;}
+  .sb2-card.oit{background:#EEF2F8;border-color:#b3c4dd;border-top:3px solid #1B3A6B;}
+  .sb2-card-campus{font-size:8.5px;font-weight:900;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px;}
+  .sb2-card.newark .sb2-card-campus{color:#CC0033;}
+  .sb2-card.camden .sb2-card-campus{color:#C96A00;}
+  .sb2-card.nb .sb2-card-campus{color:#1B3A6B;}
+  .sb2-card.oit .sb2-card-campus{color:#1B3A6B;}
+  .sb2-card-name{font-size:11px;font-weight:900;line-height:1.3;margin-bottom:10px;}
+  .sb2-card.newark .sb2-card-name{color:#9e0025;}
+  .sb2-card.camden .sb2-card-name{color:#7a3f00;}
+  .sb2-card.nb .sb2-card-name{color:#0f2447;}
+  .sb2-card.oit .sb2-card-name{color:#0f2447;}
+  .sb2-contact-list{list-style:none;margin:0 0 12px;padding:0;display:flex;flex-direction:column;gap:5px;}
+  .sb2-contact-list li{display:flex;align-items:flex-start;gap:6px;font-size:11.5px;}
+  .sb2-contact-label{font-size:8.5px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;min-width:44px;padding-top:1px;}
+  .sb2-card.newark .sb2-contact-label{color:#CC0033;}
+  .sb2-card.camden .sb2-contact-label{color:#C96A00;}
+  .sb2-card.nb .sb2-contact-label,.sb2-card.oit .sb2-contact-label{color:#1B3A6B;}
+  .sb2-contact-value{color:#333;line-height:1.4;}
+  .sb2-contact-value a{font-weight:700;text-decoration:none;}
+  .sb2-card.newark .sb2-contact-value a{color:#CC0033;}
+  .sb2-card.camden .sb2-contact-value a{color:#C96A00;}
+  .sb2-card.nb .sb2-contact-value a,.sb2-card.oit .sb2-contact-value a{color:#1B3A6B;}
+  .sb2-cta{display:inline-flex;align-items:center;font-size:11px;font-weight:800;padding:7px 12px;border-radius:5px;text-decoration:none;}
+  .sb2-card.newark .sb2-cta{background:#CC0033;color:#fff;}
+  .sb2-card.camden .sb2-cta{background:#F0B323;color:#fff;}
+  .sb2-card.nb .sb2-cta,.sb2-card.oit .sb2-cta{background:#1B3A6B;color:#fff;}
+  .sb2-oit-row{margin-top:4px;}
+  @media(max-width:620px){.sb2-campus-grid{grid-template-columns:1fr;}}
+</style>
+<div class="sb2">
+  <div class="sb2-section"><div class="sb2-section-label">Getting Help</div></div>
+
+  <div class="sb2-subsection-label">Academic Technology Support — Contact your campus</div>
+  <div class="sb2-campus-grid">
+    <div class="sb2-card newark">
+      <div class="sb2-card-campus">Rutgers–Newark &amp; RBS</div>
+      <div class="sb2-card-name">RU-N Academic Technology Services</div>
+      <ul class="sb2-contact-list">
+        <li><span class="sb2-contact-label">Phone</span><span class="sb2-contact-value"><a href="tel:9733531713">973-353-1713</a></span></li>
+        <li><span class="sb2-contact-label">Email</span><span class="sb2-contact-value"><a href="mailto:atshelp@newark.rutgers.edu">atshelp@newark.rutgers.edu</a></span></li>
+      </ul>
+      <a href="mailto:atshelp@newark.rutgers.edu" class="sb2-cta">Contact ATS →</a>
+    </div>
+    <div class="sb2-card camden">
+      <div class="sb2-card-campus">Rutgers–Camden</div>
+      <div class="sb2-card-name">Instructional Design &amp; Technology (IDT)</div>
+      <ul class="sb2-contact-list">
+        <li><span class="sb2-contact-label">Phone</span><span class="sb2-contact-value"><a href="tel:8562256090">856-225-6090</a></span></li>
+        <li><span class="sb2-contact-label">Email</span><span class="sb2-contact-value"><a href="mailto:idt@camden.rutgers.edu">idt@camden.rutgers.edu</a></span></li>
+      </ul>
+      <a href="mailto:idt@camden.rutgers.edu" class="sb2-cta">Contact IDT →</a>
+    </div>
+    <div class="sb2-card nb">
+      <div class="sb2-card-campus">Rutgers–New Brunswick &amp; Rutgers Health</div>
+      <div class="sb2-card-name">Learning Management System (LMS) Support</div>
+      <ul class="sb2-contact-list">
+        <li><span class="sb2-contact-label">Phone</span><span class="sb2-contact-value"><a href="tel:8336484357">833-OIT-HELP (833-648-4357)</a></span></li>
+        <li><span class="sb2-contact-label">Email</span><span class="sb2-contact-value"><a href="mailto:help@canvas.rutgers.edu">help@canvas.rutgers.edu</a></span></li>
+      </ul>
+      <a href="mailto:help@canvas.rutgers.edu" class="sb2-cta">Contact LMS →</a>
+    </div>
+  </div>
+</div>
+
+
+
+  <div class="kb-footer">
+    <div class="kb-footer-left">
+      <div class="kb-footer-r">R</div>
+      <div class="kb-footer-info">
+        <strong>Rutgers University–Newark</strong><br>
+        Academic Technology Services · myTech@Newark
+      </div>
+    </div>
+    <div class="kb-footer-links">
+      <a href="https://account577280.wixsite.com/mytechnewark">myTech@Newark</a>
+      <a href="https://rutgers.instructure.com/login/saml/">Canvas</a>
+      <a href="https://account577280.wixsite.com/mytechnewark/getting-support">Get Support</a>
+    </div>
+  </div>
+
+</div>
