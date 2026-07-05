@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Using Akindi for Paper-Based Assessments in Canvas — myTech@Newark</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy:    #1B3A6B;
+      --scarlet: #CC0033;
+      --teal:    #00626D;
+      --gold:    #C96A00;
+      --text:    #1a1a1a;
+      --muted:   #555;
+      --border:  #e2e2e2;
+      --card-bg: #ffffff;
+      --soft-bg: #F7F8FA;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Libre Franklin', -apple-system, 'Helvetica Neue', Arial, sans-serif;
+      background: #fff;
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    .article-wrap {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 36px 28px 64px;
+    }
+
+    /* ── Audience Badge (F2 — All Rutgers Faculty) ── */
+    .audience-badge {
+      display: inline-block;
+      background: #F8F0F2;
+      border: 1px solid #A1002A;
+      color: #A1002A;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 4px;
+      margin-bottom: 18px;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── Article Header ── */
+    .article-header { margin-bottom: 28px; }
+    .article-header h1 {
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+    }
+    .meta-tag {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 3px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .meta-tag.type-how    { background: #EEF2F8; color: var(--navy); }
+    .meta-tag.type-assess { background: #EEF2F8; color: var(--navy); }
+    .meta-tag.type-system { background: #F5F5F5; color: #555; }
+
+    /* ── Section Headings ── */
+    .article-wrap h2 {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--navy);
+      margin: 36px 0 12px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid var(--border);
+    }
+    .article-wrap h3 {
+      font-size: 14.5px;
+      font-weight: 800;
+      color: var(--navy);
+      margin: 22px 0 8px;
+    }
+
+    .article-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 36px 0;
+    }
+
+    /* ── Intro ── */
+    .intro-text {
+      font-size: 15.5px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    /* ── Prose ── */
+    .prose {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 12px;
+    }
+
+    /* ── Inline Callout ── */
+    .inline-callout {
+      background: var(--soft-bg);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--navy);
+      border-radius: 6px;
+      padding: 14px 16px;
+      margin: 16px 0;
+      font-size: 13.5px;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .inline-callout strong {
+      display: block;
+      font-size: 12.5px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    /* ── Tip Callout ── */
+    .tip-callout {
+      background: #EEF4FB;
+      border: 1px solid #c5d5ec;
+      border-left: 4px solid var(--navy);
+      border-radius: 6px;
+      padding: 14px 16px;
+      margin: 16px 0;
+      font-size: 13.5px;
+      color: #0e2040;
+      line-height: 1.6;
+    }
+    .tip-callout strong {
+      display: block;
+      font-size: 12.5px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    /* ── Quick Facts Table ── */
+    .quick-facts {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      margin: 14px 0 20px;
+    }
+    .quick-facts td {
+      padding: 9px 14px;
+      border: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+    .quick-facts td:first-child {
+      font-weight: 700;
+      color: var(--navy);
+      background: #EEF2F8;
+      width: 160px;
+      white-space: nowrap;
+    }
+    .quick-facts td:last-child { color: var(--muted); }
+
+    /* ── Workflow Steps (Print/Scan/Upload) ── */
+    .workflow-steps {
+      display: flex;
+      gap: 0;
+      margin: 16px 0;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .workflow-step {
+      flex: 1;
+      padding: 16px 14px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+    }
+    .workflow-step:last-child { border-right: none; }
+    .workflow-step .ws-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 8px;
+    }
+    .workflow-step .ws-label {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .workflow-step .ws-desc {
+      font-size: 11.5px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* ── Numbered Steps ── */
+    .step-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin: 14px 0;
+    }
+    .step-list li {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .step-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .step-body {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text);
+    }
+    .step-body strong { color: var(--navy); }
+    .step-body .step-note {
+      font-size: 12.5px;
+      color: var(--muted);
+      margin-top: 3px;
+      font-style: italic;
+    }
+
+    /* ── Bullet List ── */
+    .content-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin: 10px 0;
+      padding-left: 4px;
+    }
+    .content-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .content-list li::before {
+      content: "•";
+      color: var(--navy);
+      font-weight: 900;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── Troubleshooting Table ── */
+    .trouble-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin: 14px 0;
+    }
+    .trouble-table th {
+      background: #EEF2F8;
+      color: var(--navy);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 9px 14px;
+      border: 1px solid var(--border);
+      text-align: left;
+    }
+    .trouble-table td {
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+    .trouble-table td:first-child {
+      font-weight: 700;
+      color: var(--text);
+      width: 36%;
+    }
+    .trouble-table tr:nth-child(even) td { background: #FAFBFC; }
+
+    /* ── Best Practices ── */
+    .bp-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 14px 0;
+    }
+    .bp-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 13px 16px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .bp-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+    .bp-card strong {
+      display: block;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 3px;
+    }
+    .bp-card p { font-size: 12.5px; color: var(--muted); line-height: 1.5; }
+
+    /* ── Related Resources ── */
+    .related-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin: 14px 0;
+    }
+    .related-list li a {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+      background: var(--soft-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      text-decoration: none;
+      color: var(--navy);
+      font-size: 13.5px;
+      font-weight: 700;
+      transition: border-color 0.15s;
+    }
+    .related-list li a:hover { border-color: var(--navy); }
+    .related-list li a span { font-size: 11px; color: var(--muted); font-weight: 400; }
+
+    /* ── Support Block (Type 2 — Three Campus) ── */
+    .support-block {
+      background: var(--soft-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px;
+      margin-top: 40px;
+    }
+    .sb1-section { margin-bottom: 16px; }
+    .sb1-section-label {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .sb1-cards-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .sb1-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .sb1-card-header {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+    .sb1-card-icon { font-size: 20px; flex-shrink: 0; }
+    .sb1-card-name { font-size: 13px; font-weight: 800; color: var(--text); }
+    .sb1-card-role { font-size: 11px; color: var(--muted); margin-top: 1px; }
+    .sb1-contact-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-bottom: 12px;
+      font-size: 12px;
+    }
+    .sb1-contact-list li { display: flex; gap: 6px; align-items: baseline; }
+    .sb1-contact-label { font-weight: 700; color: var(--muted); flex-shrink: 0; min-width: 52px; }
+    .sb1-contact-value { color: var(--text); }
+    .sb1-card.scarlet .sb1-contact-value a { color: var(--scarlet); text-decoration: none; }
+    .sb1-card.gold    .sb1-contact-value a { color: var(--gold); text-decoration: none; }
+    .sb1-card.navy    .sb1-contact-value a { color: var(--navy); text-decoration: none; }
+    .sb1-contact-value a:hover { text-decoration: underline; }
+    .sb1-cta {
+      display: inline-flex;
+      align-items: center;
+      font-size: 11.5px;
+      font-weight: 800;
+      padding: 8px 14px;
+      border-radius: 5px;
+      text-decoration: none;
+      color: #fff;
+    }
+    .sb1-card.scarlet .sb1-cta { background: #CC0033; }
+    .sb1-card.scarlet .sb1-cta:hover { background: #a3002a; }
+    .sb1-card.gold    .sb1-cta { background: #C96A00; }
+    .sb1-card.gold    .sb1-cta:hover { background: #9e5200; }
+    .sb1-card.navy    .sb1-cta { background: var(--navy); }
+    .sb1-card.navy    .sb1-cta:hover { background: #102447; }
+  </style>
+</head>
+<body>
+  <main class="article-wrap">
+
+    <!-- Audience Badge -->
+    <div class="audience-badge">🎓 All Rutgers Faculty</div>
+
+    <!-- Article Header -->
+    <header class="article-header">
+      <h1>Using Akindi for Paper-Based Assessments in Canvas</h1>
+      <div class="article-meta">
+        <span class="meta-tag type-how">How To</span>
+        <span class="meta-tag type-assess">Assess &amp; Grade</span>
+        <span class="meta-tag type-system">Akindi</span>
+        <span class="meta-tag type-system">Canvas</span>
+        <span class="meta-tag type-system">Multiple Choice</span>
+        <span class="meta-tag type-system">Bubble Sheet</span>
+        <span class="meta-tag type-system">Grading</span>
+      </div>
+    </header>
+
+    <p class="intro-text">Akindi is a web-based assessment tool that grades multiple-choice tests using regular paper and any scanner — no Scantron machine required. It is available to all Rutgers faculty through Canvas and syncs grades directly to the Canvas Gradebook.</p>
+
+    <!-- Quick Facts -->
+    <h2>Quick Facts</h2>
+    <table class="quick-facts">
+      <tr><td>Tool</td><td>Akindi</td></tr>
+      <tr><td>Best for</td><td>Paper multiple-choice quizzes and exams</td></tr>
+      <tr><td>Works with</td><td>Canvas — grades sync automatically</td></tr>
+      <tr><td>You need</td><td>A printer, a scanner or copier with document feeder, PDF upload access</td></tr>
+      <tr><td>Workflow</td><td>Print → Scan → Upload</td></tr>
+    </table>
+
+    <!-- Overview -->
+    <h2>Overview</h2>
+    <p class="prose">Akindi replaces the traditional Scantron system with a more flexible, fully digital workflow. Instead of proprietary answer sheets and expensive scanning machines, Akindi uses regular 8.5" × 11" paper and any printer or scanner — including departmental copiers.</p>
+    <p class="prose">It is well suited for:</p>
+    <ul class="content-list">
+      <li>In-person quizzes and exams with multiple-choice questions</li>
+      <li>Large enrollment courses where hand-grading is not practical</li>
+      <li>Instructors who want instant grade analytics after an exam</li>
+      <li>Courses where up to six different exam versions are needed</li>
+    </ul>
+
+    <!-- What Akindi Does -->
+    <h2>What Akindi Does</h2>
+    <ul class="content-list">
+      <li>Creates paper assessments with custom multiple-choice questions</li>
+      <li>Prints custom bubble sheets — including pre-filled student names and RU IDs</li>
+      <li>Grades completed sheets automatically after scanning</li>
+      <li>Flags unclear or incomplete bubbles for manual review</li>
+      <li>Sends grades directly to the Canvas Gradebook</li>
+      <li>Emails individual corrected sheets to students</li>
+      <li>Provides item analysis — showing which questions were hardest and how well each question discriminated between high and low performers</li>
+      <li>Archives scanned sheet images digitally so paper copies do not need to be retained</li>
+    </ul>
+
+    <!-- Quick Start -->
+    <h2>Quick Start</h2>
+    <p class="prose">Akindi follows a three-step workflow from assessment to grades in Canvas.</p>
+    <div class="workflow-steps">
+      <div class="workflow-step">
+        <div class="ws-num">1</div>
+        <div class="ws-label">Print</div>
+        <div class="ws-desc">Create assessment in Akindi. Set your answer key and print bubble sheets for your class.</div>
+      </div>
+      <div class="workflow-step">
+        <div class="ws-num">2</div>
+        <div class="ws-label">Scan</div>
+        <div class="ws-desc">Collect and scan completed sheets into a single PDF using any scanner or copier.</div>
+      </div>
+      <div class="workflow-step">
+        <div class="ws-num">3</div>
+        <div class="ws-label">Upload</div>
+        <div class="ws-desc">Upload PDF to Akindi. Sheets are graded instantly. Review exceptions and send grades to Canvas.</div>
+      </div>
+    </div>
+
+    <!-- Before You Begin -->
+    <h2>Before You Begin</h2>
+    <p class="prose">Confirm you have the following before your first Akindi assessment:</p>
+    <ul class="content-list">
+      <li>An active Rutgers Canvas course with your students enrolled</li>
+      <li>Akindi enabled in your course navigation (see next section)</li>
+      <li>Access to a printer to print bubble sheets</li>
+      <li>Access to a scanner or copier with a document feeder that can produce a PDF</li>
+      <li>Your answer key finalized before or shortly after administering the assessment</li>
+    </ul>
+
+    <div class="inline-callout">
+      <strong>Pre-Print Tip</strong>
+      Akindi pre-prints bubble sheets with student names and RU IDs from your Canvas roster. This prevents matching errors at grade time and is strongly recommended — especially for courses where multiple student ID systems are in use at Rutgers.
+    </div>
+
+    <!-- Enable Akindi in Canvas -->
+    <h2>Enable Akindi in Canvas</h2>
+    <p class="prose">Akindi must be added to your course navigation before you can use it. This is a one-time setup per course.</p>
+    <ol class="step-list">
+      <li>
+        <div class="step-num">1</div>
+        <div class="step-body"><strong>Open your Canvas course</strong> — Log in at rutgers.instructure.com and navigate to your course.</div>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <div class="step-body"><strong>Go to Settings</strong> — Select Settings in the course navigation menu.</div>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <div class="step-body"><strong>Open the Navigation tab</strong> — At the top of the Settings page, select the Navigation tab.</div>
+      </li>
+      <li>
+        <div class="step-num">4</div>
+        <div class="step-body"><strong>Enable Akindi</strong> — Find Akindi in the list of hidden items at the bottom of the page. Drag it into the visible navigation section, or select the options menu and choose Enable.</div>
+      </li>
+      <li>
+        <div class="step-num">5</div>
+        <div class="step-body"><strong>Save</strong> — Select Save at the bottom of the Navigation tab.</div>
+      </li>
+      <li>
+        <div class="step-num">6</div>
+        <div class="step-body"><strong>Launch Akindi</strong> — Select Akindi in your course navigation. Akindi opens in a new tab and automatically syncs your Canvas course roster.</div>
+      </li>
+    </ol>
+
+    <!-- How to Use Akindi -->
+    <h2>How to Use Akindi</h2>
+
+    <h3>Create an Assessment</h3>
+    <ol class="step-list">
+      <li>
+        <div class="step-num">1</div>
+        <div class="step-body"><strong>Select "Create Assessment"</strong> — In the Akindi dashboard, select Create Assessment in the upper right.</div>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <div class="step-body"><strong>Name the assessment</strong> — Enter a clear name that includes the course and date (e.g., PSYCH 101 — Midterm — Oct 14).</div>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <div class="step-body"><strong>Select paper-based assessment</strong> — Choose the Question &amp; Bubble Sheet workflow for a standard paper exam.</div>
+      </li>
+      <li>
+        <div class="step-num">4</div>
+        <div class="step-body"><strong>Add questions and set the answer key</strong> — Enter questions manually or import from a Word (.docx) file. In the Word file, bold the correct answer and Akindi sets the key automatically. The answer key can be edited at any time — even after sheets have been scanned.</div>
+      </li>
+      <li>
+        <div class="step-num">5</div>
+        <div class="step-body"><strong>Choose whether to prefill student information</strong> — Enable pre-printing of student names and RU IDs. Strongly recommended to prevent grade matching errors.</div>
+      </li>
+    </ol>
+
+    <h3>Print Answer Sheets</h3>
+    <ol class="step-list">
+      <li>
+        <div class="step-num">1</div>
+        <div class="step-body"><strong>Select "Print Bubble Sheets"</strong> — Akindi generates a PDF of answer sheets ready to print.</div>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <div class="step-body"><strong>Print enough copies for your class</strong> — Print one sheet per student. If running multiple exam versions, Akindi includes version bubbles on each sheet.</div>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <div class="step-body"><strong>Print an extra copy for your answer key</strong> — Alternatively, set your answer key digitally in Akindi before the exam.</div>
+      </li>
+    </ol>
+
+    <div class="tip-callout">
+      <strong>Print Quality Tip</strong>
+      Make sure QR codes and the corners of each bubble sheet print clearly — Akindi uses these to orient and identify sheets during scanning. Print a single test sheet first and confirm it is legible before printing the full class set.
+    </div>
+
+    <h3>Administer the Assessment</h3>
+    <ol class="step-list">
+      <li>
+        <div class="step-num">1</div>
+        <div class="step-body"><strong>Distribute the answer sheets</strong> — Hand out one sheet per student just like a traditional Scantron sheet.</div>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <div class="step-body"><strong>Students complete responses</strong> — Students can use any writing utensil — pencil or pen of any color. Remind them to fill bubbles clearly and fully.</div>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <div class="step-body"><strong>Collect sheets carefully</strong> — Keep completed sheets flat and avoid folding or creasing. Damaged corners or obscured QR codes can cause scanning exceptions.</div>
+      </li>
+    </ol>
+
+    <h3>Scan the Answer Sheets</h3>
+    <ol class="step-list">
+      <li>
+        <div class="step-num">1</div>
+        <div class="step-body"><strong>Load sheets into the document feeder</strong> — Use any scanner or departmental copier with a document feeder. Scan all completed sheets for one assessment into a single PDF file.</div>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <div class="step-body"><strong>Scan in the same orientation</strong> — Keep all sheets face-up and aligned in the same direction. Akindi can correct upside-down sheets automatically, but consistent orientation produces the cleanest results.</div>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <div class="step-body"><strong>Save the PDF</strong> — Save or email the PDF to yourself before uploading. Do not upload directly from the copier without saving a copy first.</div>
+      </li>
+    </ol>
+
+    <div class="inline-callout">
+      <strong>iOS Option</strong>
+      The Akindi iOS app lets you scan answer sheets using your phone camera if a scanner is not available. This is useful for small classes or urgent situations — though a document-feeder scanner produces the most reliable results for large batches.
+    </div>
+
+    <h3>Upload and Review</h3>
+    <ol class="step-list">
+      <li>
+        <div class="step-num">1</div>
+        <div class="step-body"><strong>Upload the PDF to Akindi</strong> — In your Akindi assessment, select Upload Sheets and choose your PDF. Alternatively, email the PDF to your unique Akindi assessment email address — each assessment has one listed in its settings.</div>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <div class="step-body"><strong>Wait for processing</strong> — Akindi grades all sheets immediately after upload. A notification confirms when processing is complete.</div>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <div class="step-body"><strong>Review the "Review &amp; Fix" tab</strong> — Any sheets with missing, unclear, or ambiguous bubbles appear here. Akindi shows you a cropped image of the problematic area and lets you correct it manually without rescanning.</div>
+      </li>
+      <li>
+        <div class="step-num">4</div>
+        <div class="step-body"><strong>Confirm scoring</strong> — Check the Overview tab for average scores, question difficulty, and discriminatory scores. Adjust the answer key if needed — Akindi will regrade automatically.</div>
+      </li>
+    </ol>
+
+    <h3>Send Grades to Canvas</h3>
+    <ol class="step-list">
+      <li>
+        <div class="step-num">1</div>
+        <div class="step-body"><strong>Select "Send Grades to LMS"</strong> — When satisfied with the results, select Send Grades to Canvas.</div>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <div class="step-body"><strong>Select the correct Gradebook item</strong> — Choose the Canvas assignment you want the grades applied to. If no assignment exists yet, create it in Canvas first.</div>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <div class="step-body"><strong>Confirm</strong> — Grades appear in the Canvas Gradebook within a few minutes.</div>
+      </li>
+    </ol>
+
+    <p class="prose">Additional export options available after grading:</p>
+    <ul class="content-list">
+      <li>Download a responses CSV with all student grades</li>
+      <li>Download a question breakdown CSV for item analysis</li>
+      <li>Email students a secure link to their individual corrected sheet</li>
+      <li>Download a PDF of all corrected student reports</li>
+    </ul>
+
+    <!-- RU-N Scanning Workflow -->
+    <h2>RU-N &amp; RBS Scanning Workflow</h2>
+    <div class="inline-callout">
+      <strong>Using Departmental Copiers at Rutgers–Newark and RBS</strong>
+      Most buildings have departmental copiers with scan-to-email capability. Recommended workflow:
+      <ol style="margin:10px 0 0 18px; display:flex; flex-direction:column; gap:5px; font-size:13px; color:var(--muted);">
+        <li>Load your completed answer sheets into the copier document feeder</li>
+        <li>Use the copier's Scan to Email function to send the PDF to your Rutgers email address</li>
+        <li>Save the PDF from your email to your computer before uploading to Akindi</li>
+        <li>Keep the saved PDF as a backup until grades are confirmed in Canvas</li>
+      </ol>
+      <p style="margin-top:10px; font-size:12.5px; color:var(--muted);">If you are unsure which copier to use or need help with scan-to-email setup, contact ATS or visit Blumenthal Hall, Room 100.</p>
+    </div>
+
+    <!-- Best Practices -->
+    <h2>Best Practices</h2>
+    <div class="bp-grid">
+      <div class="bp-card">
+        <div class="bp-icon">🖨️</div>
+        <div>
+          <strong>Test print one sheet first</strong>
+          <p>Print and scan a single sample before your exam day to confirm print quality, QR code clarity, and that Akindi reads it correctly.</p>
+        </div>
+      </div>
+      <div class="bp-card">
+        <div class="bp-icon">🎓</div>
+        <div>
+          <strong>Pre-print with student names and IDs</strong>
+          <p>Eliminates manual matching and prevents grade sync errors, especially in courses with large rosters.</p>
+        </div>
+      </div>
+      <div class="bp-card">
+        <div class="bp-icon">📄</div>
+        <div>
+          <strong>Scan all sheets in the same orientation</strong>
+          <p>Face-up, same direction. Akindi handles upside-down sheets but consistency reduces exceptions.</p>
+        </div>
+      </div>
+      <div class="bp-card">
+        <div class="bp-icon">📁</div>
+        <div>
+          <strong>Use one combined PDF per assessment</strong>
+          <p>Do not upload multiple partial PDFs for the same exam — combine all sheets into a single file before uploading.</p>
+        </div>
+      </div>
+      <div class="bp-card">
+        <div class="bp-icon">✅</div>
+        <div>
+          <strong>Review exceptions before sending grades</strong>
+          <p>Always check the Review &amp; Fix tab and confirm scores look correct before pushing grades to Canvas.</p>
+        </div>
+      </div>
+      <div class="bp-card">
+        <div class="bp-icon">🔑</div>
+        <div>
+          <strong>Adjust the answer key before sending grades</strong>
+          <p>If you need to drop a question or accept multiple correct answers, do it in Akindi first — it will regrade automatically.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Troubleshooting -->
+    <h2>Troubleshooting</h2>
+    <table class="trouble-table">
+      <thead>
+        <tr>
+          <th>Problem</th>
+          <th>What to Do</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Akindi is not visible in Canvas navigation</td>
+          <td>Go to Course Settings → Navigation tab and enable Akindi from the hidden items list. If Akindi does not appear at all, contact your campus support — it may need to be enabled at the course or account level.</td>
+        </tr>
+        <tr>
+          <td>Students are missing from the Akindi roster</td>
+          <td>Akindi syncs from Canvas on launch. Close and reopen Akindi from your Canvas course to trigger a fresh sync. If students are still missing, confirm they are fully enrolled — pending or inactive enrollments will not sync.</td>
+        </tr>
+        <tr>
+          <td>PDF upload fails or times out</td>
+          <td>Check the file size — very large PDFs (100+ pages) may time out on slower connections. Try the email upload method instead: email the PDF to your unique Akindi assessment address. Confirm the PDF is not password-protected.</td>
+        </tr>
+        <tr>
+          <td>Sheets are not recognized or show many exceptions</td>
+          <td>Check print quality — QR codes and sheet corners must be clean and unobstructed. Sheets that were folded, wet, or scanned at very low resolution (below 200 DPI) may not process correctly. Re-scan at a higher resolution if possible.</td>
+        </tr>
+        <tr>
+          <td>Grades do not appear in Canvas after sending</td>
+          <td>Confirm you selected the correct Canvas assignment in the grade sync step. If the assignment does not exist in Canvas yet, create it first then return to Akindi and send grades again. Grades can take a few minutes to appear — refresh the Canvas Gradebook before troubleshooting further.</td>
+        </tr>
+        <tr>
+          <td>Grades sent to the wrong Canvas course</td>
+          <td>Always confirm you are in the correct Akindi assessment before sending grades. Contact ATS if grades need to be moved between courses.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="support-block">
+      <div class="sb1-section"><div class="sb1-section-label">Still Need Help?</div></div>
+      <div class="sb1-cards-row">
+
+        <div class="sb1-card scarlet">
+          <div class="sb1-card-header">
+            <div class="sb1-card-icon">🎓</div>
+            <div>
+              <div class="sb1-card-name">Academic Technology Services</div>
+              <div class="sb1-card-role">Rutgers–Newark &amp; Rutgers Business School</div>
+            </div>
+          </div>
+          <ul class="sb1-contact-list">
+            <li><span class="sb1-contact-label">Phone</span><span class="sb1-contact-value"><a href="tel:9733531713">973-353-1713</a></span></li>
+            <li><span class="sb1-contact-label">Email</span><span class="sb1-contact-value"><a href="mailto:atshelp@newark.rutgers.edu">atshelp@newark.rutgers.edu</a></span></li>
+            <li><span class="sb1-contact-label">Location</span><span class="sb1-contact-value">Blumenthal Hall, Room 100</span></li>
+          </ul>
+          <a href="mailto:atshelp@newark.rutgers.edu" class="sb1-cta">Contact ATS →</a>
+        </div>
+
+        <div class="sb1-card gold">
+          <div class="sb1-card-header">
+            <div class="sb1-card-icon">🎓</div>
+            <div>
+              <div class="sb1-card-name">Instructional Design &amp; Technology</div>
+              <div class="sb1-card-role">Rutgers–Camden</div>
+            </div>
+          </div>
+          <ul class="sb1-contact-list">
+            <li><span class="sb1-contact-label">Phone</span><span class="sb1-contact-value"><a href="tel:8562256090">856-225-6090</a></span></li>
+            <li><span class="sb1-contact-label">Email</span><span class="sb1-contact-value"><a href="mailto:idt@camden.rutgers.edu">idt@camden.rutgers.edu</a></span></li>
+          </ul>
+          <a href="mailto:idt@camden.rutgers.edu" class="sb1-cta">Contact IDT →</a>
+        </div>
+
+        <div class="sb1-card navy">
+          <div class="sb1-card-header">
+            <div class="sb1-card-icon">🎓</div>
+            <div>
+              <div class="sb1-card-name">LMS Support</div>
+              <div class="sb1-card-role">Rutgers–New Brunswick &amp; Rutgers Health</div>
+            </div>
+          </div>
+          <ul class="sb1-contact-list">
+            <li><span class="sb1-contact-label">Phone</span><span class="sb1-contact-value"><a href="tel:8336484357">833-648-4357</a></span></li>
+            <li><span class="sb1-contact-label">Email</span><span class="sb1-contact-value"><a href="mailto:help@canvas.rutgers.edu">help@canvas.rutgers.edu</a></span></li>
+          </ul>
+          <a href="mailto:help@canvas.rutgers.edu" class="sb1-cta">Contact LMS Support →</a>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+</body>
+</html>

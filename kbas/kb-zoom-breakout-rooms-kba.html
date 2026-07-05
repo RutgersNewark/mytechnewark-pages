@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Using Zoom Breakout Rooms to Improve Student Engagement — myTech@Newark</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy:    #1B3A6B;
+      --scarlet: #CC0033;
+      --teal:    #00626D;
+      --gold:    #C96A00;
+      --text:    #1a1a1a;
+      --muted:   #555;
+      --border:  #e2e2e2;
+      --card-bg: #ffffff;
+      --soft-bg: #F7F8FA;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Libre Franklin', -apple-system, 'Helvetica Neue', Arial, sans-serif;
+      background: #fff;
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    .article-wrap {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 36px 28px 64px;
+    }
+
+    /* ── Audience Badge (F2) ──────────────────────────── */
+    .audience-badge {
+      display: inline-block;
+      background: #F8F0F2;
+      border: 1px solid #A1002A;
+      color: #A1002A;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 4px;
+      margin-bottom: 18px;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── Article Header ───────────────────────────────── */
+    .article-header { margin-bottom: 28px; }
+    .article-header h1 {
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+    }
+    .meta-tag {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 3px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .meta-tag.type-how    { background: #EEF2F8; color: var(--navy); }
+    .meta-tag.type-engage { background: #EAF7F5; color: var(--teal); }
+    .meta-tag.type-system { background: #F5F5F5; color: #555; }
+
+    /* ── Section Headings ─────────────────────────────── */
+    .article-wrap h2 {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--navy);
+      margin: 36px 0 12px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid var(--border);
+    }
+    .article-wrap h3 {
+      font-size: 14.5px;
+      font-weight: 800;
+      color: var(--navy);
+      margin: 22px 0 8px;
+    }
+
+    .article-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 36px 0;
+    }
+
+    /* ── Intro ────────────────────────────────────────── */
+    .intro-text {
+      font-size: 15.5px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    /* ── Inline Callout ───────────────────────────────── */
+    .inline-callout {
+      background: var(--soft-bg);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--teal);
+      border-radius: 6px;
+      padding: 14px 16px;
+      margin: 16px 0;
+      font-size: 13.5px;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .inline-callout strong {
+      display: block;
+      font-size: 12.5px;
+      font-weight: 800;
+      color: var(--teal);
+      margin-bottom: 4px;
+    }
+
+    /* ── Prose ────────────────────────────────────────── */
+    .prose {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 12px;
+    }
+
+    /* ── Numbered Steps ───────────────────────────────── */
+    .step-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin: 14px 0;
+    }
+    .step-list li {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .step-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--teal);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .step-body {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text);
+    }
+    .step-body strong { color: var(--navy); }
+    .step-body .step-note {
+      font-size: 12.5px;
+      color: var(--muted);
+      margin-top: 3px;
+      font-style: italic;
+    }
+
+    /* ── Bullet List ──────────────────────────────────── */
+    .content-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin: 10px 0;
+      padding-left: 4px;
+    }
+    .content-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .content-list li::before {
+      content: "•";
+      color: var(--teal);
+      font-weight: 900;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── Use Cards ────────────────────────────────────── */
+    .uses-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin: 14px 0;
+    }
+    .use-card {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      background: var(--soft-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 14px 16px;
+    }
+    .use-card .use-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+    .use-card-body strong {
+      display: block;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .use-card-body p { font-size: 13px; color: var(--muted); line-height: 1.5; }
+    .use-card-body .sub-list {
+      list-style: none;
+      margin: 6px 0 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .use-card-body .sub-list li {
+      font-size: 12.5px;
+      color: var(--muted);
+      line-height: 1.5;
+      display: flex;
+      gap: 7px;
+    }
+    .use-card-body .sub-list li::before {
+      content: "–";
+      color: var(--teal);
+      flex-shrink: 0;
+    }
+
+    /* ── Activity Cards Grid ──────────────────────────── */
+    .activity-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin: 14px 0;
+    }
+    .activity-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--teal);
+      border-radius: 6px;
+      padding: 14px 16px;
+    }
+    .activity-card strong {
+      display: block;
+      font-size: 13.5px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 5px;
+    }
+    .activity-card p { font-size: 12.5px; color: var(--muted); line-height: 1.5; margin-bottom: 6px; }
+    .activity-card .sub-list {
+      list-style: none;
+      margin: 4px 0 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .activity-card .sub-list li {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.45;
+      display: flex;
+      gap: 7px;
+    }
+    .activity-card .sub-list li::before {
+      content: "–";
+      color: var(--teal);
+      flex-shrink: 0;
+    }
+
+    /* ── Example Box ──────────────────────────────────── */
+    .example-box {
+      background: #EAF7F5;
+      border: 1px solid #b2dfe3;
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin: 12px 0;
+    }
+    .example-box .ex-label {
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 6px;
+    }
+    .example-box p { font-size: 13.5px; color: #003f44; line-height: 1.6; font-style: italic; }
+    .example-box ul {
+      list-style: none;
+      padding: 0;
+      margin: 4px 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .example-box ul li {
+      font-size: 13px;
+      color: #003f44;
+      font-style: italic;
+      display: flex;
+      gap: 8px;
+      line-height: 1.5;
+    }
+    .example-box ul li::before {
+      content: "›";
+      font-style: normal;
+      font-weight: 700;
+      color: var(--teal);
+      flex-shrink: 0;
+    }
+
+    /* ── Troubleshooting Cards ────────────────────────── */
+    .trouble-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 14px 0;
+    }
+    .trouble-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 14px 16px;
+    }
+    .trouble-card .trouble-q {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .trouble-card p { font-size: 13px; color: var(--muted); line-height: 1.55; }
+    .trouble-card .sub-list {
+      list-style: none;
+      margin: 6px 0 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .trouble-card .sub-list li {
+      font-size: 12.5px;
+      color: var(--muted);
+      line-height: 1.5;
+      display: flex;
+      gap: 7px;
+    }
+    .trouble-card .sub-list li::before {
+      content: "–";
+      color: var(--teal);
+      flex-shrink: 0;
+    }
+
+    /* ── Best Practices Grid ──────────────────────────── */
+    .bp-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 14px 0;
+    }
+    .bp-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 13px 16px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .bp-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+    .bp-body strong {
+      display: block;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 3px;
+    }
+    .bp-body p { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+    /* ── Related Resources ────────────────────────────── */
+    .related-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin: 10px 0;
+    }
+    .related-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .related-list li::before {
+      content: "→";
+      color: var(--teal);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .related-list a {
+      color: var(--navy);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .related-list a:hover { text-decoration: underline; }
+
+    /* ── Support Block (sb1 — F2 three-campus) ────────── */
+    .sb1 { font-family: 'Libre Franklin', -apple-system, 'Helvetica Neue', Arial, sans-serif; font-size: 13.5px; line-height: 1.6; }
+    .sb1 * { box-sizing: border-box; }
+    .sb1-section { margin: 28px 0 8px; padding-bottom: 8px; border-bottom: 2px solid #1a1a1a; }
+    .sb1-section-label { font-size: 9.5px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; color: #1a1a1a; }
+    .sb1-cards-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .sb1-card { border-radius: 6px; padding: 16px; flex: 1; min-width: 220px; }
+    .sb1-card.scarlet { background: #FDF2F4; border: 1px solid #f5c6d0; border-top: 3px solid #CC0033; }
+    .sb1-card.gold    { background: #FFFBF0; border: 1px solid #f0d88a; border-top: 3px solid #C96A00; }
+    .sb1-card.navy    { background: #EEF2F8; border: 1px solid #b0c4de; border-top: 3px solid #1B3A6B; }
+    .sb1-card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+    .sb1-card-icon { width: 28px; height: 28px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; }
+    .sb1-card.scarlet .sb1-card-icon { background: #f5c6d0; }
+    .sb1-card.gold    .sb1-card-icon { background: #f0d88a; }
+    .sb1-card.navy    .sb1-card-icon { background: #b0c4de; }
+    .sb1-card-name { font-size: 11.5px; font-weight: 900; line-height: 1.2; }
+    .sb1-card.scarlet .sb1-card-name { color: #9e0025; }
+    .sb1-card.gold    .sb1-card-name { color: #7a4000; }
+    .sb1-card.navy    .sb1-card-name { color: #1B3A6B; }
+    .sb1-card-role { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; opacity: .7; margin-top: 1px; }
+    .sb1-card.scarlet .sb1-card-role { color: #b3002c; }
+    .sb1-card.gold    .sb1-card-role { color: #7a4000; }
+    .sb1-card.navy    .sb1-card-role { color: #1B3A6B; }
+    .sb1-contact-list { list-style: none; margin: 0 0 14px; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+    .sb1-contact-list li { display: flex; align-items: flex-start; gap: 8px; font-size: 12px; }
+    .sb1-contact-label { font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; min-width: 52px; padding-top: 1px; }
+    .sb1-card.scarlet .sb1-contact-label { color: #CC0033; }
+    .sb1-card.gold    .sb1-contact-label { color: #C96A00; }
+    .sb1-card.navy    .sb1-contact-label { color: #1B3A6B; }
+    .sb1-contact-value { color: #333; line-height: 1.45; }
+    .sb1-contact-value a { font-weight: 700; text-decoration: none; }
+    .sb1-card.scarlet .sb1-contact-value a { color: #CC0033; }
+    .sb1-card.gold    .sb1-contact-value a { color: #C96A00; }
+    .sb1-card.navy    .sb1-contact-value a { color: #1B3A6B; }
+    .sb1-contact-value a:hover { text-decoration: underline; }
+    .sb1-cta { display: inline-flex; align-items: center; font-size: 11.5px; font-weight: 800; padding: 8px 14px; border-radius: 5px; text-decoration: none; color: #fff; }
+    .sb1-card.scarlet .sb1-cta { background: #CC0033; }
+    .sb1-card.scarlet .sb1-cta:hover { background: #a3002a; }
+    .sb1-card.gold    .sb1-cta { background: #C96A00; }
+    .sb1-card.gold    .sb1-cta:hover { background: #9e5200; }
+    .sb1-card.navy    .sb1-cta { background: #1B3A6B; }
+    .sb1-card.navy    .sb1-cta:hover { background: #102447; }
+
+    /* ── Responsive ───────────────────────────────────── */
+    @media (max-width: 680px) {
+      .activity-grid { grid-template-columns: 1fr; }
+      .article-header h1 { font-size: 22px; }
+      .article-wrap { padding: 24px 18px 48px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="article-wrap">
+
+    <!-- Audience Badge (F2) -->
+    <div class="audience-badge" style="background:#F8F0F2;border-color:#A1002A;color:#A1002A;">🎓 All Rutgers Faculty</div>
+
+    <!-- Article Header -->
+    <div class="article-header">
+      <h1>Using Zoom Breakout Rooms to Improve Student Engagement</h1>
+      <div class="article-meta">
+        <span class="meta-tag type-how">How To</span>
+        <span class="meta-tag type-engage">Engage Your Students</span>
+        <span class="meta-tag type-system">Zoom · Rutgers Canvas</span>
+      </div>
+    </div>
+
+    <!-- Overview -->
+    <p class="intro-text">
+      Zoom breakout rooms allow instructors to divide a class meeting into smaller groups so students can discuss ideas, solve problems, collaborate on activities, or work through course material together.
+    </p>
+    <p class="prose">
+      Breakout rooms work best when they are designed as structured learning activities rather than informal discussion spaces. Clear instructions, short time limits, group roles, and a specific task help students stay focused and make the activity more productive.
+    </p>
+
+    <div class="inline-callout">
+      <strong>When to Use Each Tool</strong>
+      Use Zoom breakout rooms when students need to talk, compare, collaborate, practice, or produce something together. Use tools such as EchoPoll when you need real-time polling or quick checks for understanding, and use Canvas Discussions when students need more time for asynchronous reflection.
+    </div>
+
+    <!-- When to Use -->
+    <h2>When to Use Breakout Rooms</h2>
+    <p class="prose">Use breakout rooms when students need to work together in smaller groups during a live class session. Breakout rooms are most effective when students have a clear task, a short time limit, and something specific to bring back to the main room.</p>
+
+    <div class="uses-grid">
+
+      <div class="use-card">
+        <span class="use-icon">💬</span>
+        <div class="use-card-body">
+          <strong>Discussion and Comparison</strong>
+          <p>Send students to small groups to discuss a reading, case, problem, or prompt before returning to full-class conversation.</p>
+          <ul class="sub-list">
+            <li>Discussing a reading, case, problem, or prompt</li>
+            <li>Comparing answers before a full-class discussion</li>
+            <li>Building community in an online or hybrid course</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="use-card">
+        <span class="use-icon">🤝</span>
+        <div class="use-card-body">
+          <strong>Collaboration and Production</strong>
+          <p>Use breakout rooms when groups need to solve problems together, create something, or prepare a response to share with the class.</p>
+          <ul class="sub-list">
+            <li>Solving problems collaboratively</li>
+            <li>Working on a shared document, slide, or worksheet</li>
+            <li>Preparing a short report-out to the full class</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="use-card">
+        <span class="use-icon">✍️</span>
+        <div class="use-card-body">
+          <strong>Peer Feedback and Review</strong>
+          <p>Breakout rooms give students a structured space to share and respond to each other's work before submitting assignments or preparing presentations.</p>
+          <ul class="sub-list">
+            <li>Giving peer feedback on drafts or presentations</li>
+            <li>Reviewing and comparing each other's work</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Before You Open Breakout Rooms -->
+    <h2>Before You Open Breakout Rooms</h2>
+    <p class="prose">Before sending students into breakout rooms, take a few minutes to prepare the activity. A small amount of structure before opening rooms can prevent confusion once students are separated from the main meeting.</p>
+
+    <h3>Planning Checklist</h3>
+    <ul class="content-list">
+      <li>Decide the purpose of the activity.</li>
+      <li>Choose the group size.</li>
+      <li>Prepare written instructions.</li>
+      <li>Decide whether groups will be assigned automatically, manually, or by student choice.</li>
+      <li>Create or share any documents, slides, worksheets, or links students will need.</li>
+      <li>Decide whether students will have roles — facilitator, note-taker, timekeeper, or reporter.</li>
+      <li>Tell students how long they will have.</li>
+      <li>Explain what groups should produce or report back.</li>
+      <li>Tell students how to ask for help while they are in rooms.</li>
+    </ul>
+
+    <!-- Design for Engagement -->
+    <h2>Design Breakout Rooms for Engagement</h2>
+
+    <h3>Start with a Clear Purpose</h3>
+    <p class="prose">Tell students why they are going into breakout rooms and how the activity connects to the course goals.</p>
+    <div class="example-box">
+      <div class="ex-label">Examples</div>
+      <ul>
+        <li>"Use this time to compare your answers before we discuss the problem as a class."</li>
+        <li>"Each group will analyze one part of the case and report back with one recommendation."</li>
+        <li>"Use the shared document to identify two questions you still have about the reading."</li>
+      </ul>
+    </div>
+
+    <h3>Give Specific Tasks and Time Limits</h3>
+    <p class="prose">Avoid sending students into breakout rooms with only a general instruction such as "discuss this." Instead, give a focused prompt and a clear deliverable. For most activities, 5–15 minutes is enough time. Shorter time limits often keep groups more focused.</p>
+    <div class="example-box">
+      <div class="ex-label">Examples</div>
+      <ul>
+        <li>Identify three key points from the reading.</li>
+        <li>Solve problem two and be ready to explain your process.</li>
+        <li>Add one question and one example to the shared document.</li>
+        <li>Choose one spokesperson to summarize your group's recommendation.</li>
+      </ul>
+    </div>
+
+    <h3>Assign Roles When Helpful</h3>
+    <p class="prose">Group roles can make participation more equitable and reduce confusion. Roles are especially helpful for longer activities, larger groups, or groups that need to produce something together.</p>
+    <ul class="content-list">
+      <li><strong>Facilitator</strong> — Keeps the group focused on the task.</li>
+      <li><strong>Note-taker</strong> — Records the group's ideas.</li>
+      <li><strong>Timekeeper</strong> — Watches the clock and helps the group finish.</li>
+      <li><strong>Reporter</strong> — Shares the group's response when everyone returns.</li>
+    </ul>
+
+    <h3>Make Instructions Available Inside the Rooms</h3>
+    <p class="prose">Students may not be able to see your shared screen once they enter breakout rooms. Put instructions somewhere they can access while working. Good options include Zoom chat, a Canvas page, a shared Google Doc, a shared slide deck, or a downloadable worksheet. Written instructions help students stay on task and reduce repeated questions.</p>
+
+    <h3>Ask Groups to Produce Something</h3>
+    <p class="prose">Breakout rooms are more effective when students create a small artifact or prepare a response. Visible outputs make the activity easier to debrief and give students a reason to participate.</p>
+    <ul class="content-list">
+      <li>Notes in a shared document</li>
+      <li>One slide per group</li>
+      <li>A list of questions</li>
+      <li>A short solution or recommendation</li>
+      <li>A report-out statement</li>
+    </ul>
+
+    <h3>Debrief After Rooms Close</h3>
+    <p class="prose">After students return to the main room, connect the breakout activity back to the larger class. The debrief is where the activity becomes part of the learning arc, not just a side activity.</p>
+    <div class="example-box">
+      <div class="ex-label">Debrief Questions</div>
+      <ul>
+        <li>"What did your group notice?"</li>
+        <li>"What was difficult or unclear?"</li>
+        <li>"Which solution did your group choose and why?"</li>
+        <li>"What question should we discuss as a class?"</li>
+        <li>"What pattern did you see across the examples?"</li>
+      </ul>
+    </div>
+
+    <!-- Create Breakout Rooms in Zoom -->
+    <h2>Create Breakout Rooms in Zoom</h2>
+    <p class="prose">Use these basic steps to create breakout rooms during a Zoom meeting.</p>
+
+    <ol class="step-list">
+      <li>
+        <span class="step-num">1</span>
+        <div class="step-body">
+          <strong>Start your Zoom meeting.</strong>
+        </div>
+      </li>
+      <li>
+        <span class="step-num">2</span>
+        <div class="step-body">
+          <strong>Click Breakout Rooms</strong> in the meeting toolbar.
+        </div>
+      </li>
+      <li>
+        <span class="step-num">3</span>
+        <div class="step-body">
+          <strong>Choose the number of rooms.</strong>
+        </div>
+      </li>
+      <li>
+        <span class="step-num">4</span>
+        <div class="step-body">
+          <strong>Choose how students will be assigned:</strong><br>
+          <span style="font-size:13px;color:var(--muted);">Automatically (Zoom assigns students), Manually (you choose), or Let participants choose room (students self-select).</span>
+        </div>
+      </li>
+      <li>
+        <span class="step-num">5</span>
+        <div class="step-body">
+          <strong>Click Create</strong> and review the room assignments.
+        </div>
+      </li>
+      <li>
+        <span class="step-num">6</span>
+        <div class="step-body">
+          <strong>Click Open All Rooms</strong> when you are ready to begin.
+        </div>
+      </li>
+      <li>
+        <span class="step-num">7</span>
+        <div class="step-body">
+          <strong>Use Broadcast Message</strong> to send reminders, clarifications, or time warnings to all groups.
+        </div>
+      </li>
+      <li>
+        <span class="step-num">8</span>
+        <div class="step-body">
+          <strong>Visit rooms as needed</strong> to answer questions or observe progress.
+        </div>
+      </li>
+      <li>
+        <span class="step-num">9</span>
+        <div class="step-body">
+          <strong>Click Close All Rooms</strong> to bring students back to the main room. Zoom will give students a short countdown before returning them.
+        </div>
+      </li>
+    </ol>
+
+    <!-- Example Activities -->
+    <h2>Example Breakout Room Activities</h2>
+    <p class="prose">These structures work across a wide range of disciplines and course formats. Choose the one that fits your learning objective and available time.</p>
+
+    <div class="activity-grid">
+
+      <div class="activity-card">
+        <strong>Think-Pair-Share</strong>
+        <p>Students think individually, then compare responses in breakout rooms of two or three. Several groups share with the full class when rooms close.</p>
+        <ul class="sub-list">
+          <li>Starting discussion</li>
+          <li>Checking understanding</li>
+          <li>Encouraging broader participation</li>
+        </ul>
+      </div>
+
+      <div class="activity-card">
+        <strong>Case or Scenario Analysis</strong>
+        <p>Each group receives a short case, scenario, or problem. They identify key issues, propose a solution, and report back.</p>
+        <ul class="sub-list">
+          <li>Applied learning</li>
+          <li>Professional programs</li>
+          <li>Policy, ethics, business, law, health, and social science</li>
+        </ul>
+      </div>
+
+      <div class="activity-card">
+        <strong>Jigsaw Activity</strong>
+        <p>Each group is assigned a different reading section, dataset, or concept. Groups become responsible for one piece, then share back with the class.</p>
+        <ul class="sub-list">
+          <li>Longer readings or complex topics</li>
+          <li>Comparative analysis</li>
+          <li>Student-led explanation</li>
+        </ul>
+      </div>
+
+      <div class="activity-card">
+        <strong>Peer Feedback</strong>
+        <p>Students share draft ideas, outlines, or project plans in small groups using a simple feedback structure: one strength, one question, one suggestion.</p>
+        <ul class="sub-list">
+          <li>Writing assignments</li>
+          <li>Presentations and research projects</li>
+          <li>Design or project-based work</li>
+        </ul>
+      </div>
+
+      <div class="activity-card">
+        <strong>Collaborative Problem-Solving</strong>
+        <p>Each group solves a problem and records their steps or reasoning in a shared document.</p>
+        <ul class="sub-list">
+          <li>Quantitative and methods courses</li>
+          <li>Lab preparation</li>
+          <li>Exam review</li>
+        </ul>
+      </div>
+
+      <div class="activity-card">
+        <strong>Concept Mapping</strong>
+        <p>Students map relationships among ideas, terms, theories, or events using a shared document, whiteboard, or slide.</p>
+        <ul class="sub-list">
+          <li>Review sessions</li>
+          <li>Complex frameworks</li>
+          <li>Connecting course themes</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Accessibility and Inclusion -->
+    <h2>Accessibility and Inclusion</h2>
+    <p class="prose">Breakout rooms should give students more ways to participate, not fewer. Plan activities so students can contribute in different ways.</p>
+
+    <ul class="content-list">
+      <li>Provide written instructions before opening rooms.</li>
+      <li>Allow students to participate through voice, chat, or shared documents.</li>
+      <li>Avoid requiring cameras unless there is a clear instructional reason.</li>
+      <li>Keep tasks focused and time-limited.</li>
+      <li>Give students a way to ask for help.</li>
+      <li>Make expectations for respectful participation clear.</li>
+      <li>Use roles to reduce uneven participation.</li>
+      <li>Consider smaller groups for students who may be hesitant to speak in larger discussions.</li>
+    </ul>
+
+    <div class="inline-callout">
+      <strong>Hybrid Sessions</strong>
+      For hybrid sessions, plan carefully so remote and in-room students can hear each other, access the same instructions, and participate equitably.
+    </div>
+
+    <!-- Troubleshooting -->
+    <h2>Troubleshooting Tips</h2>
+
+    <div class="trouble-grid">
+
+      <div class="trouble-card">
+        <div class="trouble-q">Students are quiet in breakout rooms</div>
+        <p>Try smaller groups, clearer prompts, assigned roles, or a shared document where students must record an answer. Students are more likely to participate when the task is specific and the group has something to produce.</p>
+      </div>
+
+      <div class="trouble-card">
+        <div class="trouble-q">Students are confused about what to do</div>
+        <p>Post instructions in Zoom chat, Canvas, or a shared document before opening rooms. Repeat the task verbally and include the time limit.</p>
+      </div>
+
+      <div class="trouble-card">
+        <div class="trouble-q">One student does all the talking</div>
+        <p>Use roles or structured turn-taking. For example, ask each student to share one idea before the group chooses a final response.</p>
+      </div>
+
+      <div class="trouble-card">
+        <div class="trouble-q">Students finish too quickly</div>
+        <p>Have an extension prompt ready.</p>
+        <ul class="sub-list">
+          <li>"What is one counterargument?"</li>
+          <li>"What question would you ask another group?"</li>
+          <li>"How would this change in a different context?"</li>
+          <li>"What evidence supports your answer?"</li>
+        </ul>
+      </div>
+
+      <div class="trouble-card">
+        <div class="trouble-q">Students need help while in rooms</div>
+        <p>Tell students they can use the Ask for Help option in Zoom. You can also visit rooms periodically and use Broadcast Message to send clarifications to all groups.</p>
+      </div>
+
+      <div class="trouble-card">
+        <div class="trouble-q">Breakout rooms are difficult in a hybrid class</div>
+        <p>Hybrid breakout rooms require extra planning. Consider whether remote students should work together in Zoom rooms while in-person students work in physical groups, or whether each group needs a shared device and a clear audio plan.</p>
+      </div>
+
+    </div>
+
+    <!-- Best Practices -->
+    <h2>Best Practices</h2>
+
+    <div class="bp-grid">
+
+      <div class="bp-card">
+        <span class="bp-icon">👥</span>
+        <div class="bp-body">
+          <strong>Keep Groups Small</strong>
+          <p>Groups of three to five students usually work well. Pairs can be useful for quick activities, while larger groups may need stronger roles and structure.</p>
+        </div>
+      </div>
+
+      <div class="bp-card">
+        <span class="bp-icon">⏱️</span>
+        <div class="bp-body">
+          <strong>Keep Activities Short</strong>
+          <p>Short, focused breakout activities often work better than long open-ended sessions. Start with 5–10 minutes and adjust based on the activity.</p>
+        </div>
+      </div>
+
+      <div class="bp-card">
+        <span class="bp-icon">📄</span>
+        <div class="bp-body">
+          <strong>Use Shared Workspaces</strong>
+          <p>Shared documents, slides, or worksheets make group work visible and easier to review. They also give quieter students another way to contribute.</p>
+        </div>
+      </div>
+
+      <div class="bp-card">
+        <span class="bp-icon">👁️</span>
+        <div class="bp-body">
+          <strong>Visit Rooms Strategically</strong>
+          <p>You do not need to visit every room every time. Drop into a few rooms to listen, answer questions, or identify themes to bring back to the full class.</p>
+        </div>
+      </div>
+
+      <div class="bp-card">
+        <span class="bp-icon">🔁</span>
+        <div class="bp-body">
+          <strong>Connect Breakout Work to the Main Discussion</strong>
+          <p>Always bring the activity back to the full class. Ask groups to report out, compare responses, identify questions, or connect their work to the next part of the lesson.</p>
+        </div>
+      </div>
+
+    </div>
+
+      <div class="sb1-cards-row">
+
+        <!-- RU-N & RBS — ATS (Scarlet) -->
+        <div class="sb1-card scarlet">
+          <div class="sb1-card-header">
+            <div class="sb1-card-icon">🎓</div>
+            <div>
+              <div class="sb1-card-name">Academic Technology Services</div>
+              <div class="sb1-card-role">Rutgers–Newark &amp; Rutgers Business School</div>
+            </div>
+          </div>
+          <ul class="sb1-contact-list">
+            <li><span class="sb1-contact-label">Phone</span><span class="sb1-contact-value"><a href="tel:9733531713">973-353-1713</a></span></li>
+            <li><span class="sb1-contact-label">Email</span><span class="sb1-contact-value"><a href="mailto:atshelp@newark.rutgers.edu">atshelp@newark.rutgers.edu</a></span></li>
+            <li><span class="sb1-contact-label">Location</span><span class="sb1-contact-value">Blumenthal Hall, Room 100</span></li>
+          </ul>
+          <a href="mailto:atshelp@newark.rutgers.edu" class="sb1-cta">Contact ATS →</a>
+        </div>
+
+        <!-- Rutgers–Camden — IDT (Gold) -->
+        <div class="sb1-card gold">
+          <div class="sb1-card-header">
+            <div class="sb1-card-icon">🎓</div>
+            <div>
+              <div class="sb1-card-name">Instructional Design &amp; Technology</div>
+              <div class="sb1-card-role">Rutgers–Camden</div>
+            </div>
+          </div>
+          <ul class="sb1-contact-list">
+            <li><span class="sb1-contact-label">Phone</span><span class="sb1-contact-value"><a href="tel:8562256090">856-225-6090</a></span></li>
+            <li><span class="sb1-contact-label">Email</span><span class="sb1-contact-value"><a href="mailto:idt@camden.rutgers.edu">idt@camden.rutgers.edu</a></span></li>
+          </ul>
+          <a href="mailto:idt@camden.rutgers.edu" class="sb1-cta">Contact IDT →</a>
+        </div>
+
+        <!-- RU-NB & Rutgers Health — LMS Support (Navy) -->
+        <div class="sb1-card navy">
+          <div class="sb1-card-header">
+            <div class="sb1-card-icon">🎓</div>
+            <div>
+              <div class="sb1-card-name">LMS Support</div>
+              <div class="sb1-card-role">Rutgers–New Brunswick &amp; Rutgers Health</div>
+            </div>
+          </div>
+          <ul class="sb1-contact-list">
+            <li><span class="sb1-contact-label">Phone</span><span class="sb1-contact-value"><a href="tel:8336484357">833-648-4357</a></span></li>
+            <li><span class="sb1-contact-label">Email</span><span class="sb1-contact-value"><a href="mailto:help@canvas.rutgers.edu">help@canvas.rutgers.edu</a></span></li>
+          </ul>
+          <a href="mailto:help@canvas.rutgers.edu" class="sb1-cta">Contact LMS Support →</a>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+</body>
+</html>
