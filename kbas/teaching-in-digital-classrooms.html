@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teaching in Digital Classrooms | myTech@Newark</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    :root{
+      --scarlet:#CC0033;--scarlet-dk:#9e0025;--scarlet-bg:#fdf2f4;
+      --navy:#1B3A6B;--navy-dk:#1a2d5a;--navy-bg:#EEF2F8;
+      --teal:#00626D;--teal-bg:#E3F3F0;
+      --green:#1A7A4A;--green-bg:#E6F4ED;
+      --black:#1a1a1a;--gray-dark:#333333;--gray-mid:#595959;
+      --gray-light:#f5f5f5;--gray-border:#e0e0e0;--white:#ffffff;
+      --font:'Libre Franklin',Arial,sans-serif;--radius:6px;
+    }
+    body{font-family:var(--font);color:var(--gray-dark);background:var(--white);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+    a{color:var(--scarlet);text-decoration:none;}
+    a:hover{text-decoration:underline;}
+    a:focus-visible,button:focus-visible{outline:3px solid var(--scarlet);outline-offset:2px;border-radius:2px;}
+    img{display:block;width:100%;}
+
+
+    /* ── BUTTONS ── */
+    .btn-primary{display:inline-flex;align-items:center;gap:6px;background:var(--scarlet);color:#fff;padding:10px 20px;border-radius:var(--radius);font-size:13px;font-weight:700;text-decoration:none;transition:background .12s;}
+    .btn-primary:hover{background:var(--scarlet-dk);text-decoration:none;color:#fff;}
+    .btn-outline{display:inline-flex;align-items:center;gap:6px;background:#fff;color:var(--navy);border:2px solid var(--navy);padding:10px 20px;border-radius:var(--radius);font-size:13px;font-weight:700;text-decoration:none;transition:background .12s;}
+    .btn-outline:hover{background:var(--navy-bg);text-decoration:none;color:var(--navy);}
+    .btn-sm{display:inline-flex;align-items:center;justify-content:center;padding:9px 16px;border-radius:var(--radius);font-size:12px;font-weight:700;text-decoration:none;transition:background .12s;}
+    .btn-sm:hover{text-decoration:none;}
+    .btn-sm.red{background:var(--scarlet);color:#fff;}.btn-sm.red:hover{background:var(--scarlet-dk);color:#fff;}
+    .btn-sm.dark{background:var(--navy-dk);color:#fff;}.btn-sm.dark:hover{background:#0f1e3d;color:#fff;}
+    .btn-sm.teal{background:var(--teal);color:#fff;}.btn-sm.teal:hover{background:#004a54;color:#fff;}
+    .btn-sm.navy{background:var(--navy);color:#fff;}.btn-sm.navy:hover{background:#142d58;color:#fff;}
+    .btn-block{display:block;text-align:center;}
+
+    /* ── HERO ── */
+    .hero{display:grid;grid-template-columns:1fr 50%;min-height:280px;}
+    .hero-left{padding:36px 32px 36px 24px;background:#fff;display:flex;flex-direction:column;justify-content:center;}
+    .hero-eyebrow{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--scarlet);margin-bottom:10px;}
+    .hero-left h1{font-size:clamp(26px,3vw,38px);font-weight:800;color:var(--black);line-height:1.1;margin-bottom:12px;letter-spacing:-.02em;}
+    .hero-left p{font-size:13px;color:var(--gray-mid);line-height:1.65;margin-bottom:6px;max-width:420px;}
+    .hero-btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;}
+    .hero-right{position:relative;overflow:hidden;background:#2b4c8c;}
+    .hero-right img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;}
+    .hero-badge{position:absolute;bottom:20px;right:20px;background:rgba(10,20,40,.82);color:#fff;padding:14px 18px;border-radius:var(--radius);font-size:13px;font-weight:700;line-height:1.7;display:flex;align-items:center;gap:12px;}
+    .hero-badge svg{width:30px;height:30px;opacity:.6;flex-shrink:0;}
+
+    /* ── SECTION ── */
+    .section{padding:28px 24px;border-top:1px solid var(--gray-border);}
+    .section-hd{margin-bottom:20px;}
+    .section-hd h2{font-size:20px;font-weight:800;color:var(--black);letter-spacing:-.01em;margin-bottom:4px;}
+    .section-hd p{font-size:13px;color:var(--gray-mid);}
+
+    /* ── STEPS ── */
+    .steps-layout{display:grid;grid-template-columns:1fr 220px;gap:28px;align-items:start;}
+    .steps-row{display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative;}
+    .steps-row::before{content:'';position:absolute;top:18px;left:10%;right:10%;height:1px;background:var(--gray-border);z-index:0;}
+    .step{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 4px;position:relative;z-index:1;}
+    .step-num{width:36px;height:36px;border-radius:50%;background:var(--scarlet);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;margin-bottom:10px;flex-shrink:0;}
+    .step-icon{margin-bottom:8px;color:var(--black);}
+    .step-icon svg{width:26px;height:26px;}
+    .step-label{font-size:11px;color:var(--gray-dark);line-height:1.4;max-width:80px;}
+    .steps-panel{background:var(--gray-light);border-radius:var(--radius);overflow:hidden;border:1px solid var(--gray-border);}
+    .steps-panel-img{height:150px;background:#c8d4e8;overflow:hidden;}
+    .steps-panel-img img{width:100%;height:100%;object-fit:cover;}
+    .steps-panel-cap{padding:12px 14px;font-size:12px;color:var(--gray-mid);line-height:1.55;}
+
+    /* ── FEATURE ICONS ── */
+    .features-row{display:grid;grid-template-columns:repeat(6,1fr);border:1px solid var(--gray-border);border-radius:var(--radius);overflow:hidden;}
+    .feat-item{padding:20px 12px 16px;border-right:1px solid var(--gray-border);text-align:center;}
+    .feat-item:last-child{border-right:none;}
+    .feat-icon{width:60px;height:60px;margin:0 auto 12px;color:var(--navy-dk);}
+    .feat-icon svg{width:100%;height:100%;}
+    .feat-item h4{font-size:12px;font-weight:700;color:var(--black);margin-bottom:6px;line-height:1.3;}
+    .feat-item p{font-size:11px;color:var(--gray-mid);line-height:1.55;margin-bottom:10px;flex:1;}
+    .feat-link{font-size:11px;font-weight:700;color:var(--scarlet);text-decoration:none;display:inline-block;}
+    .feat-link:hover{text-decoration:underline;}
+
+
+    /* ── PRESENT CONTENT ── */
+    .present-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+    .present-card{border:1px solid var(--gray-border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;}
+    .present-photo{height:120px;background:#c8d4e8;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+    .present-photo img{width:100%;height:100%;object-fit:cover;}
+    .present-photo svg{width:40px;height:40px;color:var(--navy);opacity:.35;}
+    .present-logo{height:120px;background:#e8ecf4;display:flex;align-items:center;justify-content:center;padding:16px;}
+    .present-logo img{width:auto;max-height:50px;object-fit:contain;}
+    .present-body{padding:14px;display:flex;flex-direction:column;flex:1;}
+    .present-body h4{font-size:13px;font-weight:700;color:var(--navy-dk);margin-bottom:6px;}
+    .present-body p{font-size:12px;color:var(--gray-mid);line-height:1.55;margin-bottom:10px;flex:1;}
+    .present-body a{font-size:12px;font-weight:700;color:var(--scarlet);}
+
+    /* ── PANELS ROW ── */
+    .panels-row{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--gray-border);border-radius:var(--radius);overflow:hidden;}
+    .panel{padding:18px 16px;border-right:1px solid var(--gray-border);display:flex;flex-direction:column;}
+    .panel:last-child{border-right:none;}
+    .panel-icon{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:10px;flex-shrink:0;}
+    .panel-icon svg{width:18px;height:18px;}
+    .panel-icon.scarlet{background:var(--scarlet-bg);color:var(--scarlet);}
+    .panel-icon.navy{background:var(--navy-bg);color:var(--navy);}
+    .panel-icon.teal{background:var(--teal-bg);color:var(--teal);}
+    .panel-icon.green{background:var(--green-bg);color:var(--green);}
+    .panel h3{font-size:13px;font-weight:700;color:var(--navy-dk);margin-bottom:6px;line-height:1.3;}
+    .panel > p{font-size:12px;color:var(--gray-mid);line-height:1.55;margin-bottom:10px;}
+    .panel-img{height:80px;border-radius:var(--radius);overflow:hidden;margin-bottom:12px;background:#c8d4e8;}
+    .panel-img img{width:100%;height:100%;object-fit:cover;}
+    .panel-list{list-style:none;display:flex;flex-direction:column;gap:5px;margin-bottom:14px;flex:1;}
+    .panel-list li{font-size:11px;color:var(--gray-dark);line-height:1.4;padding-left:14px;position:relative;}
+    .panel-list li::before{content:'✓';position:absolute;left:0;color:var(--scarlet);font-size:10px;font-weight:700;}
+
+    /* ── LOCATIONS + NEED HELP ── */
+    .locations-section{padding:24px;border-top:1px solid var(--gray-border);display:grid;grid-template-columns:1fr 280px;gap:24px;align-items:start;}
+    .locations-left h2{font-size:18px;font-weight:800;color:var(--navy-dk);margin-bottom:4px;}
+    .locations-left .sub{font-size:13px;color:var(--gray-mid);margin-bottom:16px;}
+    .bldg-row{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:14px;}
+    .bldg-item{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:var(--navy-dk);}
+    .bldg-item svg{width:16px;height:16px;color:var(--gray-mid);}
+    .need-help-box{background:var(--gray-light);border:1px solid var(--gray-border);border-radius:var(--radius);padding:18px;}
+    .need-help-box h3{font-size:15px;font-weight:700;color:var(--navy-dk);margin-bottom:12px;}
+    .contact-items{display:flex;flex-direction:column;gap:8px;margin-bottom:16px;}
+    .contact-item{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gray-dark);}
+    .contact-item svg{width:15px;height:15px;color:var(--scarlet);flex-shrink:0;}
+    .contact-item a{color:var(--gray-dark);}
+    .btn-request{display:block;text-align:center;border:2px solid var(--scarlet);color:var(--scarlet);background:#fff;padding:10px;border-radius:var(--radius);font-size:13px;font-weight:700;text-decoration:none;margin-bottom:14px;}
+    .btn-request:hover{background:var(--scarlet-bg);text-decoration:none;color:var(--scarlet);}
+    .report-box{border-top:1px solid var(--gray-border);padding-top:14px;}
+    .report-box h4{font-size:13px;font-weight:700;color:var(--navy-dk);margin-bottom:4px;}
+    .report-box p{font-size:12px;color:var(--gray-mid);line-height:1.5;margin-bottom:8px;}
+
+    /* ── SUPPORT CARDS ── */
+    .support-row{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--gray-border);}
+    .support-card{padding:22px 20px;border-right:1px solid var(--gray-border);display:flex;align-items:flex-start;gap:14px;}
+    .support-card:last-child{border-right:none;}
+    .sc-icon{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .sc-icon svg{width:20px;height:20px;}
+    .sc-icon.scarlet{background:var(--scarlet-bg);color:var(--scarlet);}
+    .sc-icon.navy{background:var(--navy-bg);color:var(--navy);}
+    .sc-icon.teal{background:var(--teal-bg);color:var(--teal);}
+    .sc-body h4{font-size:14px;font-weight:700;color:var(--navy-dk);margin-bottom:5px;}
+    .sc-body p{font-size:12px;color:var(--gray-mid);line-height:1.55;margin-bottom:10px;}
+    .sc-body a.scarlet{color:var(--scarlet);font-size:12px;font-weight:700;}
+    .sc-body a.navy{color:var(--navy);font-size:12px;font-weight:700;}
+    .sc-body a.teal{color:var(--teal);font-size:12px;font-weight:700;}
+
+  </style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Teaching in Our Classrooms</div>
+    <h1>Teaching in<br>Digital Classrooms</h1>
+    <p>Digital Classrooms at Rutgers–Newark are designed to support flexible, technology-enhanced teaching in small and medium-sized learning spaces.</p>
+    <p>These classrooms support in-person, hybrid, and multimedia instruction with integrated presentation systems, classroom audio, and teaching tools.</p>
+    <div class="hero-btns">
+      <a href="#classroom-types" class="btn-primary">View Digital Classrooms</a>
+      <a href="#support" class="btn-outline">Get Classroom Support</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <!-- Replace src with Wix Media URL after upload -->
+    <img src="https://static.wixstatic.com/media/47bc78_ab390aa704094c018caee784b48d7d2a~mv2.jpg" alt="Instructor teaching in a digital classroom at Rutgers–Newark" />
+    <div class="hero-badge" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      <div>Flexible spaces.<br>Engaged learning.<br>Stronger outcomes.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ GETTING STARTED ══ -->
+<section class="section" id="getting-started">
+  <div class="section-hd">
+    <h2>Getting Started in Your Digital Classroom</h2>
+    <p>Follow these simple steps to get your class started.</p>
+  </div>
+  <div class="steps-layout">
+    <div>
+      <div class="steps-row" role="list">
+
+        <div class="step" role="listitem">
+          <div class="step-num" aria-label="Step 1">1</div>
+          <div class="step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <div class="step-label">Turn on the podium computer</div>
+        </div>
+
+        <div class="step" role="listitem">
+          <div class="step-num" aria-label="Step 2">2</div>
+          <div class="step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <div class="step-label">Log in with your NetID</div>
+        </div>
+
+        <div class="step" role="listitem">
+          <div class="step-num" aria-label="Step 3">3</div>
+          <div class="step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          </div>
+          <div class="step-label">Wake the touch control panel</div>
+        </div>
+
+        <div class="step" role="listitem">
+          <div class="step-num" aria-label="Step 4">4</div>
+          <div class="step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <div class="step-label">Select your presentation source</div>
+        </div>
+
+        <div class="step" role="listitem">
+          <div class="step-num" aria-label="Step 5">5</div>
+          <div class="step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 11.69 19a19.5 19.5 0 0 1-3.77-2.33 19.79 19.79 0 0 1-2.33-3.77A19.79 19.79 0 0 1 3.1 4.18 2 2 0 0 1 5.08 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L9.34 9.62a16 16 0 0 0 5.04 5.04l.99-.99a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div class="step-label">Share content with your class</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="steps-panel">
+      <div class="steps-panel-img">
+        <img src="https://static.wixstatic.com/media/a2caaa_b3a8131164c04a0397602ff4c974bd35~mv2.png" alt="Classroom touch control panel" />
+      </div>
+      <div class="steps-panel-cap">Use the touch control panel to manage sources, displays, audio, and more.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ WHAT YOU CAN DO ══ -->
+<section class="section">
+  <div class="section-hd">
+    <h2>What You Can Do in Digital Classrooms</h2>
+  </div>
+  <div class="features-row">
+
+    <div class="feat-item">
+      <div class="feat-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108.11 108.11" aria-hidden="true"><rect fill="#fff" stroke="#ed1c24" stroke-miterlimit="10" stroke-width="3" x="1.5" y="1.5" width="105.11" height="105.11" rx="12" ry="12"/><path fill="#010101" d="M71.88,30.6l19.18-11.02c1.6-.79,3.54-.13,4.33,1.47.23.46.34.95.34,1.43v33.61c0,1.79-1.44,3.24-3.23,3.24-.6,0-1.16-.16-1.64-.45l-19.18-11.02c-1.14-.56-1.8-1.71-1.8-2.9v-11.36c0-1.36.83-2.52,2.01-3z"/><path fill="#010101" d="M15.18,19.24h48.8c1.79,0,3.24,1.45,3.24,3.24v33.61c0,1.79-1.45,3.24-3.24,3.24H15.18c-1.79,0-3.24-1.45-3.24-3.24V22.48c0-1.79,1.45-3.24,3.24-3.24z"/><text fill="#231f20" font-family="Arial,sans-serif" font-size="12" font-weight="700" x="10.74" y="85.12">InstructorCam</text></svg>
+      </div>
+      <h4>InstructorCam</h4>
+      <p>Use the classroom camera for Zoom, recording, hybrid teaching, and demonstrations.</p>
+      <a href="https://mytech.newark.rutgers.edu/kbarticles/instructorcam-zoom" target="_top" class="feat-link">Learn more →</a>
+    </div>
+
+    <div class="feat-item">
+      <div class="feat-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108.11 108.11" aria-hidden="true"><rect fill="#fff" stroke="#ed1c24" stroke-miterlimit="10" stroke-width="3" x="1.5" y="1.5" width="105.11" height="105.11" rx="12" ry="12"/><text fill="#231f20" font-family="Arial,sans-serif" font-size="12" font-weight="700" x="21.82" y="87.59">Adjustable</text><text fill="#231f20" font-family="Arial,sans-serif" font-size="12" font-weight="700" x="34.0" y="101.99">Height</text><path fill="#010101" d="M48.5,19.76c.35.35.81.53,1.28.53s.92-.18,1.28-.53c.71-.71.71-1.85,0-2.55l-9.17-9.17c-.33-.33-.78-.54-1.28-.54s-.95.2-1.28.53l-9.05,9.05c-.71.71-.71,1.85,0,2.55.71.71,1.85.71,2.55,0l5.97-5.97v50.46l-5.97-5.97c-.71-.71-1.85-.71-2.55,0s-.71,1.85,0,2.55l9.17,9.17c.34.34.8.53,1.28.53s.94-.19,1.28-.53l9.05-9.05c.71-.71.71-1.85,0-2.55s-1.85-.71-2.55,0l-6.09,6.09V13.67l6.09,6.09z"/><path fill="#010101" d="M73.87,31.69c1,0,1.81-.81,1.81-1.81s-.81-1.81-1.81-1.81h-13.32v-2.97h9.24c1,0,1.81-.81,1.81-1.81s-.81-1.81-1.81-1.81h-9.24v-2.97h9.24c1,0,1.81-.81,1.81-1.81s-.81-1.81-1.81-1.81h-9.24v-3.79h13.32c1,0,1.81-.81,1.81-1.81s-.81-1.81-1.81-1.81h-15.13c-1,0-1.81.81-1.81,1.81v60.07c0,1,.81,1.81,1.81,1.81h15.13c1,0,1.81-.81,1.81-1.81s-.81-1.81-1.81-1.81h-13.32v-2.97h9.24c1,0,1.81-.81,1.81-1.81s-.81-1.81-1.81-1.81h-9.24v-2.97h9.24c1,0,1.81-.81,1.81-1.81s-.81-1.81-1.81-1.81h-9.24v-2.97h13.32c1,0,1.81-.81,1.81-1.81s-.81-1.81-1.81-1.81h-13.32v-2.97h9.24c1,0,1.81-.81,1.81-1.81s-.81-1.81-1.81-1.81h-9.24v-2.97h9.24c1,0,1.81-.81,1.81-1.81s-.81-1.81-1.81-1.81h-9.24v-2.97h13.32z"/></svg>
+      </div>
+      <h4>Adjustable Height Podium</h4>
+      <p>Raise or lower the podium for comfort, accessibility, and ergonomic teaching.</p>
+      <!-- TODO: replace # with KBA slug when article is published -->
+      <a href="#" target="_top" class="feat-link">Learn more →</a>
+    </div>
+
+    <div class="feat-item">
+      <div class="feat-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><path d="M8 21h8M12 17v4"/><path d="M9 9l1.5 1.5L14 7"/></svg>
+      </div>
+      <h4>Touch Display</h4>
+      <p>Interact directly with content, annotate presentations, and navigate applications using touch.</p>
+      <!-- TODO: replace # with KBA slug when article is published -->
+      <a href="#" target="_top" class="feat-link">Learn more →</a>
+    </div>
+
+    <div class="feat-item">
+      <div class="feat-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108.11 108.11" aria-hidden="true"><rect fill="#fff" stroke="#ed1c24" stroke-miterlimit="10" stroke-width="3" x="1.5" y="1.5" width="105.11" height="105.11" rx="12" ry="12"/><path fill="#010101" d="M70.22,15.76c-.25,0-.5-.1-.69-.29-7.56-7.56-19.87-7.56-27.43,0-.38.38-1,.38-1.39,0s-.38-1,0-1.39c8.33-8.33,21.87-8.33,30.2,0,.38.38.38,1,0,1.39-.19.19-.44.29-.69.29z"/><path fill="#010101" d="M66.07,19.92c-.25,0-.5-.1-.69-.29-5.27-5.27-13.85-5.27-19.12,0-.38.38-1,.38-1.39,0s-.38-1,0-1.39c6.03-6.04,15.85-6.04,21.89,0,.38.38.38,1,0,1.39-.19.19-.44.29-.69.29z"/><path fill="#010101" d="M61.91,24.07c-.25,0-.5-.1-.69-.29-2.98-2.98-7.83-2.98-10.81,0-.38.38-1,.38-1.39,0-.38-.38-.38-1,0-1.39,3.74-3.74,9.83-3.74,13.58,0,.38.38.38,1,0,1.39-.19.19-.44.29-.69.29z"/><path fill="#010101" d="M27.97,66.64v.2c0,1.83,1.49,3.31,3.31,3.31h50.18c1.83,0,3.31-1.49,3.31-3.31v-.2H27.97zM60.24,69.32h-7.73c-.54,0-.98-.44-.98-.98s.44-.98.98-.98h7.73c.54,0,.98.44.98.98s-.44.98-.98.98z"/><path fill="#010101" d="M75.66,30.63h-38.57c-2.91,0-5.28,2.37-5.28,5.28v28.77h49.13v-28.77c0-2.91-2.37-5.28-5.28-5.28zM76.69,60.33c0,.54-.44.98-.98.98h-38.67c-.54,0-.98-.44-.98-.98v-24.21c0-.54.44-.98.98-.98h38.67c.54,0,.98.43.98.98v24.21z"/><text fill="#231f20" font-family="Arial,sans-serif" font-size="12" font-weight="700" x="28.92" y="85.66">Wireless </text><text fill="#231f20" font-family="Arial,sans-serif" font-size="12" font-weight="700" x="28.42" y="100.06">Projector</text></svg>
+      </div>
+      <h4>Wireless Presentation</h4>
+      <p>Present wirelessly from laptops or mobile devices using AirMedia. Move freely and engage with your class.</p>
+      <!-- TODO: replace # with KBA slug when article is published -->
+      <a href="#" target="_top" class="feat-link">Learn more →</a>
+    </div>
+
+    <div class="feat-item">
+      <div class="feat-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+      </div>
+      <h4>Audio Support</h4>
+      <p>Clear sound with ceiling speakers, microphones, and audio reinforcement in many rooms.</p>
+      <!-- TODO: replace # with KBA slug when article is published -->
+      <a href="#" target="_top" class="feat-link">Learn more →</a>
+    </div>
+
+    <div class="feat-item">
+      <div class="feat-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <h4>Hybrid Teaching</h4>
+      <p>Support in-person, hybrid, and online teaching with tools that connect every learner.</p>
+      <a href="https://mytech.newark.rutgers.edu/kbarticles/zoom-teach-effectively" target="_top" class="feat-link">Learn more →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ PRESENT CONTENT ══ -->
+<section class="section">
+  <div class="section-hd">
+    <h2>Present Content Your Way</h2>
+    <p>Choose the option that works best for your class.</p>
+  </div>
+  <div class="present-grid">
+
+    <div class="present-card">
+      <div class="present-photo">
+        <img src="https://static.wixstatic.com/media/47bc78_42ca2d88b6bd4d0788721dac926c5936~mv2.jpg" alt="Podium computer in classroom" />
+      </div>
+      <div class="present-body">
+        <h4>Podium Computer</h4>
+        <p>Use the built-in podium computer for presentations, internet access, and classroom applications.</p>
+        <!-- TODO: replace # with /kb/podium-computer when article is published -->
+        <a href="#" target="_top">Learn more →</a>
+      </div>
+    </div>
+
+    <div class="present-card">
+      <div class="present-photo">
+        <img src="https://static.wixstatic.com/media/47bc78_929f9028e312463cbe0a7670a7612901~mv2.jpg" alt="Laptop connected via HDMI at podium" />
+      </div>
+      <div class="present-body">
+        <h4>Laptop (HDMI)</h4>
+        <p>Connect your laptop using the HDMI cable at the podium.</p>
+        <!-- TODO: replace # with /kb/laptop-hdmi when article is published -->
+        <a href="#" target="_top">Learn more →</a>
+      </div>
+    </div>
+
+    <div class="present-card">
+      <div class="present-logo">
+        <svg viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" style="width:120px;height:auto;">
+          <text x="10" y="42" font-family="Arial,sans-serif" font-size="32" font-weight="900" fill="#1a2d5a" letter-spacing="-1">Air</text>
+          <text x="72" y="42" font-family="Arial,sans-serif" font-size="32" font-weight="300" fill="#1a2d5a">Media</text>
+        </svg>
+      </div>
+      <div class="present-body">
+        <h4>Wireless Presentation</h4>
+        <p>Share your screen wirelessly from your device to the classroom display. Instructions are shown on the classroom display.</p>
+        <!-- TODO: replace # with /kb/wireless-presentation when article is published -->
+        <a href="#" target="_top">Learn more →</a>
+      </div>
+    </div>
+
+    <div class="present-card">
+      <div class="present-photo">
+        <img src="https://static.wixstatic.com/media/47bc78_f03cae25ccce433785e848fa503bdf54~mv2.jpg" alt="Touch display in classroom" />
+      </div>
+      <div class="present-body">
+        <h4>Touch Displays</h4>
+        <p>Use touch-enabled monitors to annotate, interact, and control classroom content.</p>
+        <!-- TODO: replace # with /kb/touch-displays when article is published -->
+        <a href="#" target="_top">Learn more →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ FEATURE PANELS ══ -->
+<section class="section">
+  <div class="section-hd">
+    <h2>Take Your Teaching Further</h2>
+    <p>Explore recording, polling, hybrid delivery, and instructional support resources.</p>
+  </div>
+  <div class="panels-row">
+
+    <div class="panel">
+      <div class="panel-icon scarlet">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+      </div>
+      <h3>InstructorCam &amp; Hybrid Teaching</h3>
+      <p>Use InstructorCam for video conferencing, hybrid instruction, lecture recordings, and remote participation.</p>
+      <div class="panel-img">
+        <img src="https://static.wixstatic.com/media/47bc78_46cf48d0a1ef4396a6f42c70f789e4ad~mv2.jpg" alt="InstructorCam mounted in classroom" />
+      </div>
+      <ul class="panel-list">
+        <li>Zoom, Teams, Webex, and more</li>
+        <li>Wide room coverage</li>
+        <li>Manual camera control</li>
+        <li>Guest speaker views</li>
+      </ul>
+      <a href="https://mytech.newark.rutgers.edu/kbarticles/instructorcam-zoom" target="_top" class="btn-sm red">Learn About InstructorCam</a>
+    </div>
+
+    <div class="panel">
+      <div class="panel-icon navy">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg>
+      </div>
+      <h3>Classroom Capture</h3>
+      <p>Record and share class sessions with Kaltura Capture.</p>
+      <ul class="panel-list">
+        <li>Record lectures and presentations</li>
+        <li>Capture audio, video, and content</li>
+        <li>Create review materials for students</li>
+        <li>Access in MediaSpace</li>
+      </ul>
+      <a href="https://mytech.newark.rutgers.edu/kbarticles/kaltura-personal-capture-record" target="_top" class="btn-sm dark">Learn About Capture</a>
+    </div>
+
+    <div class="panel">
+      <div class="panel-icon teal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <h3>EchoPoll</h3>
+      <p>Use live polling and audience response to check comprehension and boost participation during class.</p>
+      <ul class="panel-list">
+        <li>Launch polls from any device</li>
+        <li>Real-time student responses</li>
+        <li>Word clouds, quizzes, and surveys</li>
+        <li>Results visible on classroom display</li>
+        <li>Integrates with Canvas gradebook</li>
+      </ul>
+      <a href="https://mytech.newark.rutgers.edu/kbarticles/echopoll" target="_top" class="btn-sm teal">Learn About EchoPoll</a>
+    </div>
+
+    <div class="panel">
+      <div class="panel-icon green">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+      </div>
+      <h3>Faculty Innovation &amp; Teaching Studio (FITS)</h3>
+      <p>Explore, practice, and create with support from teaching technologists.</p>
+      <ul class="panel-list">
+        <li>Try new teaching tools</li>
+        <li>Book the FITS Studio</li>
+        <li>Test hybrid workflows</li>
+        <li>Build confidence with new technology</li>
+      </ul>
+      <!-- TODO: replace # with /kb/fits when article is published; bookats link goes to scheduling -->
+      <a href="https://go.rutgers.edu/bookats" target="_blank" rel="noopener" class="btn-sm navy">Visit FITS</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ LOCATIONS + NEED HELP ══ -->
+<div class="locations-section" id="classroom-types">
+
+  <div class="locations-left">
+    <h2>Digital Classrooms at Rutgers–Newark</h2>
+    <p class="sub">Explore examples of digital classrooms across campus.</p>
+    <div class="bldg-row">
+      <div class="bldg-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 22V12h6v10"/><path d="M3 9h18"/></svg>
+        Ackerson Hall
+      </div>
+      <div class="bldg-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 22V12h6v10"/><path d="M3 9h18"/></svg>
+        Boyden Hall
+      </div>
+      <div class="bldg-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 22V12h6v10"/><path d="M3 9h18"/></svg>
+        Hill Hall
+      </div>
+      <div class="bldg-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 22V12h6v10"/><path d="M3 9h18"/></svg>
+        Engelhard Hall
+      </div>
+      <div class="bldg-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 22V12h6v10"/><path d="M3 9h18"/></svg>
+        Smith Hall
+      </div>
+    </div>
+    <a href="#" class="view-all-link">View all classrooms →</a>
+  </div>
+
+  <div class="need-help-box" id="support">
+    <h3>Need Help?</h3>
+    <p style="font-size:13px;color:var(--gray-mid);margin-bottom:12px;">We're here to help you succeed in your classroom.</p>
+    <div class="contact-items">
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <a href="mailto:atshelp@newark.rutgers.edu">atshelp@newark.rutgers.edu</a>
+      </div>
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 11.69 19a19.5 19.5 0 0 1-3.77-2.33 19.79 19.79 0 0 1-2.33-3.77A19.79 19.79 0 0 1 3.1 4.18 2 2 0 0 1 5.08 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L9.34 9.62a16 16 0 0 0 5.04 5.04l.99-.99a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <a href="tel:9733531713" aria-label="Call 973-353-1713">973-353-1713</a>
+      </div>
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Mon–Fri: 8:00 AM – 6:30 PM
+      </div>
+    </div>
+    <a href="#" class="btn-request">Request Classroom Support</a>
+    <div class="report-box">
+      <h4>Report an Issue</h4>
+      <p>Experiencing a problem in the classroom? Contact us and we'll help right away.</p>
+      <a href="#" class="scarlet" style="font-size:12px;font-weight:700;color:var(--scarlet);">Get Support →</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ SUPPORT CARDS ══ -->
+<div class="support-row">
+
+  <div class="support-card">
+    <div class="sc-icon scarlet">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    </div>
+    <div class="sc-body">
+      <h4>In-Person Training</h4>
+      <p>Request individual training in your classroom or in our Faculty Innovation &amp; Teaching Studio.</p>
+      <a href="https://go.rutgers.edu/bookats" target="_blank" rel="noopener" class="scarlet">Schedule Training →</a>
+    </div>
+  </div>
+
+  <div class="support-card">
+    <div class="sc-icon navy">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+    </div>
+    <div class="sc-body">
+      <h4>User Guides &amp; Resources</h4>
+      <p>Step-by-step guides and videos to help you use classroom technology with confidence.</p>
+      <a href="#" class="navy">View Resources →</a>
+    </div>
+  </div>
+
+  <div class="support-card">
+    <div class="sc-icon teal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    </div>
+    <div class="sc-body">
+      <h4>Report an Issue</h4>
+      <p>Experiencing a problem in the classroom? Contact us and we'll help right away.</p>
+      <a href="#" class="teal">Get Support →</a>
+    </div>
+  </div>
+
+</div>
+
+
+</body>
+</html>
