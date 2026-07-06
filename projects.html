@@ -1,0 +1,350 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Projects &amp; Initiatives | myTech@Newark</title><style>
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --scarlet:#CC0033;--scarlet-dk:#9e0025;--scarlet-bg:#fdf2f4;
+  --black:#1a1a1a;--gray-dark:#333333;--gray-mid:#666666;
+  --gray-light:#f5f5f5;--gray-border:#e0e0e0;--white:#ffffff;
+  --teal:#00626D;--teal-bg:#E3F3F0;
+  --gold:#C96A00;--gold-bg:#FFF4E6;
+  --navy:#1B3A6B;--navy-bg:#EEF2F8;
+  --green:#1A7A4A;--green-bg:#E6F4ED;
+  --purple:#5B2D8E;--purple-bg:#F3EEF9;
+  --font:'Libre Franklin',sans-serif;--max:964px;--radius:6px;
+}
+body{font-family:var(--font);color:var(--gray-dark);background:var(--white);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{color:var(--scarlet);}
+.hero{max-width:calc(var(--max) + 64px);margin:0 auto;padding:32px 32px 8px;}
+.hero-eyebrow{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--scarlet);margin-bottom:8px;}
+.hero-title{font-size:clamp(26px,3.8vw,40px);font-weight:800;color:var(--black);letter-spacing:-.02em;line-height:1.1;margin-bottom:12px;}
+.hero-tagline{font-size:14px;color:var(--gray-mid);line-height:1.6;max-width:680px;}
+.hero-tagline + .hero-tagline{margin-top:10px;}
+.page-body{max-width:calc(var(--max) + 64px);margin:0 auto;padding:8px 32px 32px;}
+.section-divider{border:none;border-top:1px solid var(--gray-border);margin:8px 0 0;}
+.section-hd{padding:22px 0 14px;}
+.section-hd h2{font-size:19px;font-weight:800;color:var(--black);letter-spacing:-.01em;margin-bottom:2px;}
+.section-hd p{font-size:12px;color:var(--gray-mid);}
+/* FEATURED GRID */
+.featured-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:8px;}
+.featured-card{border:1px solid var(--gray-border);border-radius:var(--radius);border-top:3px solid transparent;padding:18px;display:flex;flex-direction:column;transition:box-shadow .12s;}
+.featured-card:hover{box-shadow:0 2px 12px rgba(0,0,0,.08);}
+.featured-card.c-scarlet{border-top-color:var(--scarlet);}
+.featured-card.c-teal{border-top-color:var(--teal);}
+.featured-card.c-gold{border-top-color:var(--gold);}
+.featured-card.c-navy{border-top-color:var(--navy);}
+.featured-card.c-green{border-top-color:var(--green);}
+.featured-card.c-purple{border-top-color:var(--purple);}
+.featured-card h3{font-size:14px;font-weight:800;color:var(--black);margin-bottom:6px;}
+.featured-card p{font-size:12px;color:var(--gray-mid);line-height:1.5;margin-bottom:10px;}
+.featured-card .meta-list{list-style:none;display:flex;flex-direction:column;gap:5px;margin-top:auto;padding-top:8px;border-top:1px solid var(--gray-border);}
+.featured-card .meta-list li{font-size:11px;color:var(--gray-dark);line-height:1.45;}
+.featured-card .meta-list strong{color:var(--black);font-weight:700;}
+/* STATUS BADGES */
+.badge{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:3px 8px;border-radius:999px;margin-bottom:8px;width:fit-content;}
+.badge.planning{background:var(--gray-light);color:var(--gray-mid);}
+.badge.in-progress{background:var(--gold-bg);color:var(--gold);}
+.badge.pilot{background:var(--purple-bg);color:var(--purple);}
+.badge.launching-soon{background:var(--scarlet-bg);color:var(--scarlet);}
+.badge.launched{background:var(--green-bg);color:var(--green);}
+.badge.ongoing{background:var(--teal-bg);color:var(--teal);}
+.badge.completed{background:var(--navy-bg);color:var(--navy);}
+.badge.on-hold{background:var(--gray-light);color:var(--scarlet-dk);}
+/* TABLES */
+.proj-table{width:100%;border-collapse:collapse;border:1px solid var(--gray-border);border-radius:var(--radius);overflow:hidden;margin-bottom:8px;font-size:12.5px;}
+.proj-table th{background:var(--gray-light);text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--gray-mid);padding:10px 14px;border-bottom:1px solid var(--gray-border);}
+.proj-table td{padding:12px 14px;border-bottom:1px solid var(--gray-border);vertical-align:top;color:var(--gray-dark);}
+.proj-table tr:last-child td{border-bottom:none;}
+.proj-table td.proj-name{font-weight:700;color:var(--black);white-space:nowrap;}
+.proj-table td.proj-area{color:var(--gray-mid);white-space:nowrap;}
+.proj-table td.proj-status{white-space:nowrap;}
+/* CURRENT PRIORITIES LIST */
+.priority-list{list-style:none;border:1px solid var(--gray-border);border-radius:var(--radius);overflow:hidden;margin-bottom:8px;}
+.priority-list li{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--gray-border);font-size:13px;}
+.priority-list li:last-child{border-bottom:none;}
+.priority-list .p-name{font-weight:700;color:var(--black);flex:0 0 220px;}
+.priority-list .p-area{color:var(--gray-mid);font-size:12px;flex:1;}
+.priority-list .badge{margin-bottom:0;flex-shrink:0;}
+/* ONGOING PROGRAMS */
+.program-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:8px;}
+.program-card{border:1px solid var(--gray-border);border-radius:var(--radius);border-top:3px solid transparent;padding:18px;}
+.program-card.c-purple{border-top-color:var(--purple);}
+.program-card.c-gold{border-top-color:var(--gold);}
+.program-card h3{font-size:14px;font-weight:800;color:var(--black);margin-bottom:6px;}
+.program-card p{font-size:12px;color:var(--gray-mid);line-height:1.5;}
+/* BROWSE PROJECTS */
+.browse-bar{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;}
+.browse-bar select, .browse-bar input[type=text]{font-family:var(--font);font-size:12.5px;color:var(--gray-dark);border:1px solid var(--gray-border);border-radius:var(--radius);padding:8px 10px;background:var(--white);}
+.browse-bar input[type=text]{flex:1;min-width:180px;}
+.browse-bar select{min-width:140px;}
+.browse-count{font-size:11px;color:var(--gray-mid);margin-bottom:10px;}
+.browse-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.browse-card{border:1px solid var(--gray-border);border-radius:var(--radius);padding:14px;font-size:12px;}
+.browse-card h4{font-size:13px;font-weight:700;color:var(--black);margin-bottom:6px;}
+.browse-card .badge{margin-bottom:6px;}
+.browse-card .b-meta{color:var(--gray-mid);font-size:11px;line-height:1.5;}
+.browse-empty{font-size:12.5px;color:var(--gray-mid);padding:24px 0;text-align:center;display:none;}
+/* CALLOUT */
+.callout-bar{background:var(--scarlet-bg);border-top:1px solid var(--gray-border);padding:28px 32px;margin-top:24px;}
+.callout-inner{max-width:calc(var(--max) + 64px);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+.callout-inner h3{font-size:17px;font-weight:800;color:var(--black);margin-bottom:6px;}
+.callout-inner p{font-size:12.5px;color:var(--gray-dark);line-height:1.55;max-width:600px;}
+.callout-cta{display:inline-flex;align-items:center;gap:6px;background:var(--scarlet);color:var(--white);text-decoration:none;padding:11px 20px;border-radius:var(--radius);font-size:13px;font-weight:700;white-space:nowrap;transition:background .12s;}
+.callout-cta:hover{background:var(--scarlet-dk);}
+@media(max-width:900px){
+  .featured-grid{grid-template-columns:1fr 1fr;}
+  .browse-grid{grid-template-columns:1fr 1fr;}
+  .program-grid{grid-template-columns:1fr;}
+  .proj-table{font-size:11.5px;}
+  .proj-table th, .proj-table td{padding:8px 10px;}
+  .priority-list .p-name{flex:0 0 160px;}
+}
+@media(max-width:640px){
+  .featured-grid{grid-template-columns:1fr;}
+  .browse-grid{grid-template-columns:1fr;}
+  .proj-table thead{display:none;}
+  .proj-table, .proj-table tbody, .proj-table tr, .proj-table td{display:block;width:100%;}
+  .proj-table tr{border-bottom:1px solid var(--gray-border);padding:10px 0;}
+  .proj-table td{border-bottom:none;padding:2px 0;}
+  .proj-table td.proj-name{padding-top:6px;}
+  .priority-list li{flex-wrap:wrap;}
+  .priority-list .p-name{flex:1 1 100%;}
+}
+</style></head><body>
+
+<div class="hero">
+  <p class="hero-eyebrow">myTech@Newark</p>
+  <h1 class="hero-title">Projects &amp; Initiatives</h1>
+  <p class="hero-tagline">Rutgers–Newark IT manages a broad portfolio of projects, programs, pilots, and technology initiatives that support teaching, learning, student success, campus operations, and digital engagement.</p>
+  <p class="hero-tagline">This page highlights selected strategic initiatives and provides a searchable view of current, ongoing, and completed work across the Rutgers–Newark technology ecosystem.</p>
+</div>
+
+<div class="page-body">
+
+  <!-- FEATURED PROJECTS -->
+  <hr class="section-divider">
+  <div class="section-hd">
+    <h2>Featured Projects</h2>
+    <p>High-priority, high-visibility initiatives currently underway.</p>
+  </div>
+  <div class="featured-grid">
+    <div class="featured-card c-scarlet">
+      <span class="badge in-progress">In Progress</span>
+      <h3>RaiderLink Expansion</h3>
+      <p>RaiderLink is Rutgers–Newark's student engagement platform, supporting events, student organizations, orientation activities, checklists, elections, and campus engagement workflows.</p>
+      <ul class="meta-list">
+        <li><strong>Area:</strong> Student Engagement &amp; Success</li>
+        <li><strong>Audience:</strong> Students, Staff, Campus Partners</li>
+        <li><strong>Impact:</strong> Expands the campus's ability to connect students with opportunities, services, organizations, and timely communications.</li>
+      </ul>
+    </div>
+    <div class="featured-card c-teal">
+      <span class="badge in-progress">In Progress</span>
+      <h3>RaiderBot</h3>
+      <p>AI-powered student support chatbot designed to help current students find answers and connect with the right services.</p>
+    </div>
+    <div class="featured-card c-gold">
+      <span class="badge in-progress">In Progress</span>
+      <h3>AI Fluency Program</h3>
+      <p>The AI Fluency Program helps students build practical, responsible, and creative AI skills through a badge-based learning experience. The program introduces foundational AI concepts, responsible use, productivity tools, and creative applications.</p>
+      <ul class="meta-list">
+        <li><strong>Area:</strong> AI &amp; Digital Fluency</li>
+        <li><strong>Audience:</strong> Students</li>
+        <li><strong>Impact:</strong> Supports student readiness for academic, professional, and creative uses of AI.</li>
+      </ul>
+    </div>
+    <div class="featured-card c-navy">
+      <span class="badge in-progress">In Progress</span>
+      <h3>Wix Enterprise Web Modernization</h3>
+      <p>Rutgers–Newark is modernizing websites for schools, centers, and programs through a shared Wix Enterprise platform. This effort supports improved design, accessibility, analytics, content workflows, and long-term sustainability.</p>
+      <ul class="meta-list">
+        <li><strong>Area:</strong> Web &amp; Digital Experience</li>
+        <li><strong>Audience:</strong> Schools, Centers, Programs, Campus Partners</li>
+        <li><strong>Impact:</strong> Helps campus units maintain modern, effective websites that better support enrollment, communications, and service delivery.</li>
+      </ul>
+    </div>
+    <div class="featured-card c-green">
+      <span class="badge in-progress">In Progress</span>
+      <h3>Course Materials Access Project</h3>
+      <p>Work to improve course materials visibility, affordability, inclusive access, and integration with Canvas and student systems.</p>
+    </div>
+    <div class="featured-card c-purple">
+      <span class="badge ongoing">Ongoing Program</span>
+      <h3>Classroom Modernization Program</h3>
+      <p>Rutgers–Newark has made a sustained, campus-wide investment in modernizing centrally managed classrooms and learning spaces to support contemporary teaching, digital learning, student engagement, and instructional innovation.</p>
+      <ul class="meta-list">
+        <li><strong>Area:</strong> Learning Environments</li>
+        <li><strong>Audience:</strong> Faculty, Students, Academic Departments</li>
+        <li><strong>Impact:</strong> Improves classroom reliability, instructional technology, wireless connectivity, active learning, hybrid teaching capabilities, and the overall student learning experience.</li>
+        <li><strong>Last Updated:</strong> July 2026</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- BROWSE PROJECTS -->
+  <hr class="section-divider">
+  <div class="section-hd">
+    <h2>Browse Projects</h2>
+    <p>Search and filter the full portfolio of current, ongoing, and completed work.</p>
+  </div>
+  <div class="browse-bar">
+    <input type="text" id="b-search" placeholder="Search projects...">
+    <select id="b-status"><option value="">All Statuses</option></select>
+    <select id="b-category"><option value="">All Categories</option></select>
+    <select id="b-type"><option value="">All Types</option></select>
+  </div>
+  <p class="browse-count" id="b-count"></p>
+  <div class="browse-grid" id="b-grid"></div>
+  <p class="browse-empty" id="b-empty">No projects match those filters.</p>
+
+  <!-- CURRENT PRIORITIES -->
+  <hr class="section-divider">
+  <div class="section-hd">
+    <h2>Current Priorities</h2>
+    <p>A short, curated list of active strategic work.</p>
+  </div>
+  <ul class="priority-list">
+    <li><span class="badge in-progress">In Progress</span><span class="p-name">RaiderLink Expansion</span><span class="p-area">Student Engagement &amp; Success</span></li>
+    <li><span class="badge in-progress">In Progress</span><span class="p-name">RaiderBot</span><span class="p-area">Student Engagement &amp; Success</span></li>
+    <li><span class="badge in-progress">In Progress</span><span class="p-name">AI Fluency Program</span><span class="p-area">AI &amp; Digital Fluency</span></li>
+    <li><span class="badge in-progress">In Progress</span><span class="p-name">Wix Enterprise Web Modernization</span><span class="p-area">Web &amp; Digital Experience</span></li>
+    <li><span class="badge in-progress">In Progress</span><span class="p-name">Course Materials Access Project</span><span class="p-area">Teaching &amp; Learning</span></li>
+    <li><span class="badge in-progress">In Progress</span><span class="p-name">Classroom Technology Upgrades</span><span class="p-area">Learning Environments — <a href="https://account577280.wixsite.com/mytechnewark/teaching-in-our-classrooms" target="_top">View classroom guide →</a></span></li>
+  </ul>
+
+  <!-- RECENTLY LAUNCHED -->
+  <hr class="section-divider">
+  <div class="section-hd">
+    <h2>Recently Launched</h2>
+    <p>Initiatives that have shipped and moved into regular operation.</p>
+  </div>
+  <table class="proj-table">
+    <thead>
+      <tr><th>Project</th><th>Area</th><th>Status</th><th>Impact</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="proj-name">Final Exam Portal</td>
+        <td class="proj-area">Student Engagement &amp; Success</td>
+        <td class="proj-status"><span class="badge launched">Launched</span></td>
+        <td>Provides students with a personalized final exam schedule.</td>
+      </tr>
+      <tr>
+        <td class="proj-name">RaiderTxt</td>
+        <td class="proj-area">Student Engagement &amp; Success</td>
+        <td class="proj-status"><span class="badge launched">Launched</span></td>
+        <td>Supports SMS outreach for student engagement and targeted communications.</td>
+      </tr>
+      <tr>
+        <td class="proj-name">MyTech@Newark</td>
+        <td class="proj-area">Web &amp; Digital Experience</td>
+        <td class="proj-status"><span class="badge launched">Launched</span></td>
+        <td>Provides a modern entry point for Rutgers–Newark technology services and support.</td>
+      </tr>
+      <tr>
+        <td class="proj-name">Express Newark IT Support Transition</td>
+        <td class="proj-area">Infrastructure &amp; Operations</td>
+        <td class="proj-status"><span class="badge completed">Completed</span></td>
+        <td>Integrated Express Newark into the RUN-IT support model.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ONGOING PROGRAMS -->
+  <hr class="section-divider">
+  <div class="section-hd">
+    <h2>Ongoing Programs</h2>
+    <p>Standing work that continues year over year rather than reaching a single end date.</p>
+  </div>
+  <div class="program-grid">
+    <div class="program-card c-purple">
+      <h3>Classroom Modernization Program</h3>
+      <p>A sustained, campus-wide investment in modernizing centrally managed classrooms and learning spaces to support contemporary teaching, digital learning, student engagement, and instructional innovation. Last updated July 2026.</p>
+    </div>
+    <div class="program-card c-gold">
+      <h3>Classroom Wireless Improvements</h3>
+      <p>Continued work to improve wireless coverage and readiness in instructional spaces as part of the broader classroom infrastructure lifecycle.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="callout-bar">
+  <div class="callout-inner">
+    <div>
+      <h3>Have a technology project idea?</h3>
+      <p>Rutgers–Newark IT works with campus partners to evaluate, plan, and support technology initiatives that advance teaching, learning, student success, operations, and digital engagement. Contact RUN-IT to discuss a potential project or partnership.</p>
+    </div>
+    <a href="https://account577280.wixsite.com/mytechnewark/getting-support" target="_top" class="callout-cta">Contact RUN-IT →</a>
+  </div>
+</div>
+
+<script>
+var PROJECTS = [
+  {title:"RaiderLink Expansion", status:"In Progress", category:"Student Engagement & Success", type:"Platform Implementation", audience:"Students, Staff, Campus Partners", summary:"Expanding use of RaiderLink across campus programs, events, student services, and orientation workflows."},
+  {title:"RaiderBot", status:"In Progress", category:"Student Engagement & Success", type:"Strategic Initiative", audience:"Students", summary:"Developing an AI-enabled chatbot experience for current students with escalation pathways to campus services."},
+  {title:"AI Fluency Program", status:"In Progress", category:"AI & Digital Fluency", type:"Strategic Initiative", audience:"Students", summary:"A student-facing badge program focused on AI literacy, responsible use, productivity, and creative applications."},
+  {title:"Wix Enterprise Web Modernization", status:"In Progress", category:"Web & Digital Experience", type:"Strategic Initiative", audience:"Schools, Centers, Programs, Campus Partners", summary:"Consolidating school and program websites onto a modern, shared web platform with improved governance and support."},
+  {title:"Course Materials Access Project", status:"In Progress", category:"Teaching & Learning", type:"Platform Implementation", audience:"Faculty, Students", summary:"Improving faculty and student access to course materials, inclusive access, OER, and Canvas-integrated tools."},
+  {title:"Classroom Technology Upgrades", status:"In Progress", category:"Learning Environments", type:"Lifecycle Refresh", audience:"Faculty, Students", summary:"Lifecycle upgrades to classrooms, including display, audio, camera, wireless presentation, and hybrid teaching capabilities.", link:"https://account577280.wixsite.com/mytechnewark/teaching-in-our-classrooms"},
+  {title:"Final Exam Portal", status:"Launched", category:"Student Engagement & Success", type:"Platform Implementation", audience:"Students", summary:"Provides students with a personalized final exam schedule."},
+  {title:"RaiderTxt", status:"Launched", category:"Student Engagement & Success", type:"Platform Implementation", audience:"Students", summary:"Supports SMS outreach for student engagement and targeted communications."},
+  {title:"MyTech@Newark", status:"Launched", category:"Web & Digital Experience", type:"Platform Implementation", audience:"Faculty, Staff, Students", summary:"Provides a modern entry point for Rutgers–Newark technology services and support."},
+  {title:"Express Newark IT Support Transition", status:"Completed", category:"Infrastructure & Operations", type:"Service Improvement", audience:"Staff", summary:"Integrated Express Newark into the RUN-IT support model."},
+  {title:"Classroom Wireless Improvements", status:"Ongoing Program", category:"Infrastructure & Operations", type:"Lifecycle Refresh", audience:"Faculty, Students", summary:"Improved wireless coverage and readiness in instructional spaces."},
+  {title:"Classroom Modernization Program", status:"Ongoing Program", category:"Learning Environments", type:"Annual Program", audience:"Faculty, Students, Academic Departments", summary:"Sustained, campus-wide investment in modernizing centrally managed classrooms and learning spaces."}
+];
+var BADGE_CLASS = {"Planning":"planning","In Progress":"in-progress","Pilot":"pilot","Launching Soon":"launching-soon","Launched":"launched","Ongoing Program":"ongoing","Completed":"completed","On Hold":"on-hold"};
+
+function uniqueSorted(arr){ return Array.from(new Set(arr)).sort(); }
+function populateSelect(id, values){
+  var sel = document.getElementById(id);
+  values.forEach(function(v){
+    var opt = document.createElement('option');
+    opt.value = v; opt.textContent = v;
+    sel.appendChild(opt);
+  });
+}
+populateSelect('b-status', uniqueSorted(PROJECTS.map(function(p){return p.status;})));
+populateSelect('b-category', uniqueSorted(PROJECTS.map(function(p){return p.category;})));
+populateSelect('b-type', uniqueSorted(PROJECTS.map(function(p){return p.type;})));
+
+function renderBrowse(){
+  var q = document.getElementById('b-search').value.trim().toLowerCase();
+  var status = document.getElementById('b-status').value;
+  var category = document.getElementById('b-category').value;
+  var type = document.getElementById('b-type').value;
+  var grid = document.getElementById('b-grid');
+  var empty = document.getElementById('b-empty');
+  var count = document.getElementById('b-count');
+  grid.innerHTML = '';
+  var results = PROJECTS.filter(function(p){
+    if(status && p.status !== status) return false;
+    if(category && p.category !== category) return false;
+    if(type && p.type !== type) return false;
+    if(q && (p.title + ' ' + p.summary).toLowerCase().indexOf(q) === -1) return false;
+    return true;
+  });
+  count.textContent = results.length + (results.length === 1 ? ' project' : ' projects');
+  if(results.length === 0){ empty.style.display = 'block'; return; }
+  empty.style.display = 'none';
+  results.forEach(function(p){
+    var card = document.createElement('div');
+    card.className = 'browse-card';
+    var badgeClass = BADGE_CLASS[p.status] || 'planning';
+    var linkHtml = p.link ? ' <a href="' + p.link + '" target="_top">View →</a>' : '';
+    card.innerHTML =
+      '<span class="badge ' + badgeClass + '">' + p.status + '</span>' +
+      '<h4>' + p.title + '</h4>' +
+      '<p class="b-meta">' + p.category + (p.audience ? ' &middot; ' + p.audience : '') + '</p>' +
+      '<p class="b-meta" style="margin-top:6px;">' + p.summary + linkHtml + '</p>';
+    grid.appendChild(card);
+  });
+}
+document.getElementById('b-search').addEventListener('input', renderBrowse);
+document.getElementById('b-status').addEventListener('change', renderBrowse);
+document.getElementById('b-category').addEventListener('change', renderBrowse);
+document.getElementById('b-type').addEventListener('change', renderBrowse);
+renderBrowse();
+</script>
+
+</body></html>
