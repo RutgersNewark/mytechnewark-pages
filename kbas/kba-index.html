@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KBA Index — myTech@Newark</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --scarlet: #CC0033; --scarlet-dk: #9E0025; --scarlet-bg: #FDF2F4;
+    --navy: #1B3A6B; --navy-bg: #EEF2F8;
+    --teal: #00626D; --teal-bg: #E3F3F0;
+    --gold: #A35500; --gold-bg: #FFF4E6;
+    --green: #1A7A4A; --green-bg: #E6F4ED;
+    --black: #1A1A1A; --gray-dark: #333333; --gray-mid: #666666;
+    --gray-light: #F5F5F5; --gray-border: #E0E0E0; --white: #FFFFFF;
+    --font: 'Libre Franklin', -apple-system, BlinkMacSystemFont, sans-serif;
+    --max: 964px; --radius: 6px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font); font-size: 15px; color: var(--black); background: var(--gray-light); }
+
+  header {
+    background: var(--scarlet);
+    color: var(--white);
+    padding: 24px 32px;
+  }
+  header h1 { font-size: 22px; font-weight: 800; }
+  header p { font-size: 13px; opacity: .85; margin-top: 4px; }
+
+  main { max-width: var(--max); margin: 32px auto; padding: 0 24px 48px; }
+
+  .section { margin-bottom: 32px; }
+  .section-label {
+    font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--gray-mid); border-bottom: 2px solid var(--gray-border);
+    padding-bottom: 6px; margin-bottom: 12px;
+  }
+
+  .kba-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .kba-list li a {
+    display: block; background: var(--white); border: 1px solid var(--gray-border);
+    border-left: 4px solid var(--accent, var(--gray-border));
+    border-radius: var(--radius); padding: 12px 16px;
+    text-decoration: none; color: var(--black); font-size: 14px; font-weight: 700;
+    transition: background .15s, border-color .15s;
+  }
+  .kba-list li a:hover { background: var(--gray-light); border-left-color: var(--accent-dk, var(--gray-mid)); }
+  .kba-list li a .badge {
+    display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .05em;
+    text-transform: uppercase; background: var(--badge-bg, var(--gray-border));
+    color: var(--badge-color, var(--gray-dark));
+    border-radius: 3px; padding: 2px 6px; margin-left: 8px; vertical-align: middle;
+  }
+
+  /* Section accent colors */
+  .sec-classroom  { --accent: var(--teal);   --accent-dk: #004a53; }
+  .sec-canvas     { --accent: var(--scarlet); --accent-dk: var(--scarlet-dk); }
+  .sec-echopoll   { --accent: var(--gold);   --accent-dk: #7a4000; }
+  .sec-kaltura    { --accent: var(--navy);   --accent-dk: #122a50; }
+  .sec-teams      { --accent: #5059c9;       --accent-dk: #3b44a0; }
+  .sec-zoom       { --accent: #2d8cff;       --accent-dk: #1a6fd4; }
+  .sec-other      { --accent: var(--green);  --accent-dk: #125a36; }
+
+  .draft { --badge-bg: #FFF4E6; --badge-color: var(--gold); }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>KBA Index — myTech@Newark</h1>
+  <p>All knowledge base articles · Links open local files in <code>kbas/</code></p>
+</header>
+
+<main>
+
+  <div class="section sec-classroom">
+    <div class="section-label">Classrooms</div>
+    <ul class="kba-list">
+      <li><a href="teaching-in-auditoriums-kba.html">Teaching in Auditoriums</a></li>
+      <li><a href="teaching-in-digital-classrooms-kba.html">Teaching in Digital Classrooms</a></li>
+      <li><a href="teaching-in-hybrid-classrooms-kba.html">Teaching in Hybrid Classrooms</a></li>
+      <li><a href="kb-hybrid-best-practices-kba.html">Best Practices for Synchronous Hybrid Class Sessions</a></li>
+      <li><a href="kb-classroom-wireless-success-kba.html">Classroom Wireless Success Guide</a></li>
+    </ul>
+  </div>
+
+  <div class="section sec-canvas">
+    <div class="section-label">Canvas &amp; Course Tools</div>
+    <ul class="kba-list">
+      <li><a href="kb-akindi-kba.html">Using Akindi for Paper-Based Assessments in Canvas</a></li>
+      <li><a href="kb-canvas-ally.html">Using Ally to Improve Course Accessibility</a></li>
+      <li><a href="kb-leganto-kba.html">Using Library Reading Lists (Leganto) in Canvas</a></li>
+      <li><a href="kb-qwickly-attendance.html">Taking Attendance with Qwickly Attendance Pro in Canvas</a></li>
+    </ul>
+  </div>
+
+  <div class="section sec-echopoll">
+    <div class="section-label">EchoPoll</div>
+    <ul class="kba-list">
+      <li><a href="kb-echopoll-getting-started-kba.html">Getting Started with EchoPoll</a></li>
+      <li><a href="kb-echopoll-activity-ideas-kba.html">EchoPoll Activity Ideas for Faculty</a></li>
+      <li><a href="kb-echopoll-attendance-kba.html">Using EchoPoll for Attendance Tracking</a></li>
+      <li><a href="kb-echopoll-engage-students-kba.html">Using EchoPoll to Increase Student Engagement</a></li>
+      <li><a href="kb-echopoll-knowledge-checks-kba.html">Using EchoPoll for Knowledge Checks and Formative Assessment</a></li>
+      <li><a href="kb-echopoll-troubleshooting-kba.html">EchoPoll Troubleshooting</a></li>
+    </ul>
+  </div>
+
+  <div class="section sec-kaltura">
+    <div class="section-label">Kaltura</div>
+    <ul class="kba-list">
+      <li><a href="kb-kaltura-engage-students-kba.html">Using Kaltura to Engage Students in Canvas</a></li>
+      <li><a href="kb-kaltura-personal-capture-record-kba.html">Recording with Kaltura Personal Capture</a></li>
+    </ul>
+  </div>
+
+  <div class="section sec-teams">
+    <div class="section-label">Microsoft Teams</div>
+    <ul class="kba-list">
+      <li><a href="kb-teams-chat-collaboration-approved.html">Teams Chat &amp; Collaboration</a></li>
+      <li><a href="kb-teams-meeting-security-approved.html">Teams Meeting Security</a></li>
+      <li><a href="kb-teams-breakout-rooms-approved.html">Manage Breakout Rooms in Microsoft Teams</a></li>
+      <li><a href="kb-teams-powerpoint-live-approved.html">Use PowerPoint Live in Microsoft Teams</a></li>
+    </ul>
+  </div>
+
+  <div class="section sec-zoom">
+    <div class="section-label">Zoom</div>
+    <ul class="kba-list">
+      <li><a href="kb-zoom-teach-effectively.html">Teach Effectively in Zoom</a></li>
+      <li><a href="kb-zoom-breakout-rooms-kba.html">Using Zoom Breakout Rooms to Improve Student Engagement</a></li>
+    </ul>
+  </div>
+
+  <div class="section sec-other">
+    <div class="section-label">Other Tools</div>
+    <ul class="kba-list">
+      <li><a href="kb-instructorcam-zoom-draft.html">Using the InstructorCam for Zoom and Web Conferencing <span class="badge draft">Draft</span></a></li>
+    </ul>
+  </div>
+
+</main>
+</body>
+</html>
