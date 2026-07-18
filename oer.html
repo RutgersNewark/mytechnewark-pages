@@ -617,12 +617,12 @@
       <p class="oat-body">Rutgers-Newark offers faculty funding awards to support the adoption of open educational resources in place of high-cost commercial textbooks.</p>
       <div class="oat-details">
         <div class="oat-detail">Full-time and part-time Rutgers-Newark faculty teaching undergraduate or graduate courses are eligible</div>
-        <div class="oat-detail">Awards of up to $1,000 per course adoption</div>
+        <div class="oat-detail">Course Redesign awards of $2,500 — or $3,500 to author a new open textbook</div>
         <div class="oat-detail">Apply when replacing a required textbook with OER</div>
       </div>
     </div>
     <div class="oat-actions">
-      <a href="https://www.libraries.rutgers.edu/teaching-support/open-and-affordable-textbooks-program" target="_top" class="btn-gold">Apply for OAT Funding →</a>
+      <a href="https://www.libraries.rutgers.edu/teaching-support/open-and-affordable-textbooks-program/apply-oat-course-redesign-award" target="_top" class="btn-gold">Apply for OAT Funding →</a>
       <a href="https://www.libraries.rutgers.edu/teaching-support/open-and-affordable-textbooks-program" target="_top" class="btn-outline-gold">Learn More About OAT →</a>
     </div>
   </div>
@@ -890,5 +890,14 @@
   </div>
 </div>
 
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    var t=document.getElementById(this.getAttribute('href').slice(1));
+    if(!t)return;e.preventDefault();
+    t.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+</script>
 </body>
 </html>
